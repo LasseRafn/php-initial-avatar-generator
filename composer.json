@@ -1,0 +1,15 @@
+{
+	"name": "lasserafn/php-initial-avatar-generator",
+	"description": "A package to generate avatars with initials for PHP",
+	"type": "library",
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "Lasse Rafn",
+			"email": "lasserafn@gmail.com"
+		}
+	],
+	"require": {
+		"intervention/image": "^2.3"
+	}
+}
