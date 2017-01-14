@@ -11,5 +11,10 @@
 	],
 	"require": {
 		"intervention/image": "^2.3"
+	},
+	"autoload": {
+		"psr-4": {
+			"LasseRafn\\InitialAvatarGenerator\\": "src/"
+		}
 	}
 }
