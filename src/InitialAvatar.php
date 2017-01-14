@@ -27,7 +27,7 @@ class InitialAvatar
 
 		$img->text( $this->generateInitials( $nameOrInitials ), 0, 0, function ( $font ) use ( $fontColor, $size, $font )
 		{
-			$font->file( "fonts/{$font}.ttf" );
+			$font->file( "./fonts/{$font}.ttf" );
 			$font->size( $size * 0.75 );
 			$font->color( $fontColor );
 			$font->align( 'center' );
@@ -52,6 +52,7 @@ class InitialAvatar
 		$nameOrInitials = strtoupper( trim( $nameOrInitials ) );
 
 		$names = explode( $nameOrInitials, ' ' );
+
 		if ( count( $names ) > 1 )
 		{
 			$firstNameLetter = substr( $names[0], 0, 1 );
