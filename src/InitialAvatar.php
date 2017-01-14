@@ -1,6 +1,6 @@
 <?php namespace LasseRafn\InitialAvatarGenerator;
 
-use Intervention\Image\Image;
+use Intervention\Image\ImageManager;
 
 class InitialAvatar
 {
@@ -9,7 +9,7 @@ class InitialAvatar
 
 	public function __construct()
 	{
-		$this->image = new Image();
+		$this->image = new ImageManager();
 	}
 
 	/**
