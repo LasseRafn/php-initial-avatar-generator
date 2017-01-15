@@ -13,35 +13,35 @@ class InitialGenerationTest extends TestCase
 
 		$avatar->name('John Doe');
 
-		$this->assertEquals('JD', $avatar->getParameterName());
+		$this->assertEquals('JD', $avatar->getInitials());
 
 		// Single name
 
 		$avatar->name('John');
 
-		$this->assertEquals('JO', $avatar->getParameterName());
+		$this->assertEquals('JO', $avatar->getInitials());
 
 		// Initials
 
 		$avatar->name('MA');
 
-		$this->assertEquals('MA', $avatar->getParameterName());
+		$this->assertEquals('MA', $avatar->getInitials());
 
 		// Three names
 
 		$avatar->name('John Doe Bergerson');
 
-		$this->assertEquals('JB', $avatar->getParameterName());
+		$this->assertEquals('JB', $avatar->getInitials());
 
 		// Other name
 
 		$avatar->name('Gustav Årgonson');
 
-		$this->assertEquals('GÅ', $avatar->getParameterName());
+		$this->assertEquals('GÅ', $avatar->getInitials());
 
 		$avatar->name('Chanel Butterman');
 
-		$this->assertNotEquals('AB', $avatar->getParameterName());
-		$this->assertEquals('CB', $avatar->getParameterName());
+		$this->assertNotEquals('AB', $avatar->getInitials());
+		$this->assertEquals('CB', $avatar->getInitials());
 	}
 }

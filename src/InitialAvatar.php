@@ -10,7 +10,9 @@ class InitialAvatar
 	private $image;
 
 	private $parameter_cacheTime = 0;
-	private $parameter_name      = 'JD';
+	private $parameter_length    = 2;
+	private $parameter_initials  = 'JD';
+	private $parameter_name      = 'John Doe';
 	private $parameter_size      = 48;
 	private $parameter_bgColor   = '#000';
 	private $parameter_fontColor = '#fff';
@@ -23,7 +25,16 @@ class InitialAvatar
 
 	public function name( string $nameOrInitials ): self
 	{
-		$this->parameter_name = $this->generateInitials( $nameOrInitials );
+		$this->parameter_name     = $nameOrInitials;
+		$this->parameter_initials = $this->generateInitials();
+
+		return $this;
+	}
+
+	public function length( int $length = 2 ): self
+	{
+		$this->parameter_length   = (int) $length;
+		$this->parameter_initials = $this->generateInitials();
 
 		return $this;
 	}
@@ -74,14 +85,14 @@ class InitialAvatar
 	{
 		if ( $name !== null )
 		{
-			$this->parameter_name = $this->generateInitials( $name );
+			$this->parameter_initials = $this->generateInitials( $this->parameter_name );
 		}
 
 		$fontFile = $this->parameter_fontFile;
 		$size     = $this->parameter_size;
 		$color    = $this->parameter_fontColor;
 		$bgColor  = $this->parameter_bgColor;
-		$name     = $this->parameter_name;
+		$name     = $this->parameter_initials;
 
 		$img = $this->image->cache( function ( ImageCache $image ) use ( $size, $bgColor, $color, $fontFile, $name )
 		{
@@ -103,9 +114,9 @@ class InitialAvatar
 	 *
 	 * @return string
 	 */
-	public function getParameterName()
+	public function getInitials()
 	{
-		return $this->parameter_name;
+		return $this->parameter_initials;
 	}
 
 	/**
@@ -114,26 +125,41 @@ class InitialAvatar
 	 * For safety, we limit it to two characters,
 	 * in case its a single, but long, name.
 	 *
-	 * @param string $nameOrInitials
-	 *
 	 * @return string
 	 */
-	private function generateInitials( string $nameOrInitials = 'John Doe' ): string
+	private function generateInitials(): string
 	{
-		$nameOrInitials = mb_strtoupper( trim( $nameOrInitials ) );
-
-		$names = explode( ' ', $nameOrInitials );
+		$nameOrInitials = mb_strtoupper( trim( $this->parameter_name ) );
+		$names          = explode( ' ', $nameOrInitials );
+		$initials       = $nameOrInitials;
+		$assignedNames  = 0;
 
 		if ( count( $names ) > 1 )
 		{
-			$firstNameLetter = mb_substr( $names[0], 0, 1 );
-			$lastNameLetter  = mb_substr( $names[ count( $names ) - 1 ], 0, 1 );
+			$initials = '';
+			$start    = 0;
 
-			$nameOrInitials = "{$firstNameLetter}{$lastNameLetter}";
+			for ( $i = 0; $i < $this->parameter_length; $i ++ )
+			{
+				$index = $i;
+
+				if ( ( $index === ( $this->parameter_length - 1 ) && $index > 0 ) || ( $index > ( count( $names ) - 1 ) ) )
+				{
+					$index = count( $names ) - 1;
+				}
+
+				if ( $assignedNames >= count( $names ) )
+				{
+					$start ++;
+				}
+
+				$initials .= mb_substr( $names[ $index ], $start, 1 );
+				$assignedNames ++;
+			}
 		}
 
-		$nameOrInitials = mb_substr( $nameOrInitials, 0, 2 );
+		$initials = mb_substr( $initials, 0, $this->parameter_length );
 
-		return $nameOrInitials;
+		return $initials;
 	}
 }
