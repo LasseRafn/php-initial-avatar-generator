@@ -105,6 +105,8 @@ Will yield:
 
 ## Tests
 The amount of tests are limited to:
-* Testing if 
+* Testing if initials are generated correctly
+* Testing if image size is set correctly
+* Testing if can limit initials to X length
 
 
