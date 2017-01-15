@@ -82,6 +82,7 @@ Now, using that in a image (sized 48x48 pixels for retina):
 <img src="url-for-avatar-generation" />
 ````
 Will yield:
+
 ![Result](https://raw.githubusercontent.com/LasseRafn/php-initial-avatar-generator/master/demo_result.png)
 
 
