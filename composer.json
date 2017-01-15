@@ -13,6 +13,7 @@
 	"require": {
 		"php": "^7.0|^7.1",
 		"intervention/image": "^2.3",
+		"intervention/imagecache": "^2.3",
 		"phpunit/phpunit": "^5.7"
 	},
 	"autoload": {

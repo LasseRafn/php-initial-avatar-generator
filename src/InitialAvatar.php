@@ -8,6 +8,7 @@ class InitialAvatar
 	/** @var ImageManager */
 	private $image;
 
+	private $parameter_cacheTime = 0;
 	private $parameter_name      = 'John Doe';
 	private $parameter_size      = 48;
 	private $parameter_bgColor   = '#000';
@@ -54,6 +55,13 @@ class InitialAvatar
 		return $this;
 	}
 
+	public function cache( int $minutes = 60 ): this
+	{
+		$this->parameter_cacheTime = (int) $minutes;
+
+		return $this;
+	}
+
 	/**
 	 * Generate the image
 	 *
@@ -71,17 +79,20 @@ class InitialAvatar
 		$fontFile = $this->parameter_fontFile;
 		$size     = $this->parameter_size;
 		$color    = $this->parameter_fontColor;
+		$bgColor  = $this->parameter_bgColor;
+		$name     = $this->parameter_name;
 
-		$img = $this->image->canvas( $size, $size, $this->parameter_bgColor );
-
-		$img->text( $this->parameter_name, $size / 2, $size / 2, function ( $font ) use ( $size, $color, $fontFile )
+		$img = $this->image->cache( function ( Image $image ) use ( $size, $bgColor, $color, $fontFile, $name )
 		{
-			$font->file( __DIR__ . $fontFile );
-			$font->size( $size / 2 );
-			$font->color( $color );
-			$font->align( 'center' );
-			$font->valign( 'center' );
-		} );
+			$image->canvas( $size, $size, $bgColor )->text( $name, $size / 2, $size / 2, function ( $font ) use ( $size, $color, $fontFile )
+			{
+				$font->file( __DIR__ . $fontFile );
+				$font->size( $size / 2 );
+				$font->color( $color );
+				$font->align( 'center' );
+				$font->valign( 'center' );
+			} );
+		}, $this->parameter_cacheTime, true );
 
 		return $img;
 	}

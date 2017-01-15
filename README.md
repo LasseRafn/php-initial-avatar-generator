@@ -65,6 +65,13 @@ The method automatically appends __DIR__ to it, so the font will be: ````__DIR__
 $image = $avatar->font('/fonts/OpenSans-Semibold.ttf')->generate();
 ````
 
+### Cache - default: 0 = no cache
+Will use **intervention/imagecache** to cache the result.
+````php
+$image = $avatar->cache()->generate(); // 60 minutes
+````
+You can simply use ->cache() and it will set cache to 60 minutes, but you can also say ->cache(180) to cache for 180 minutes.
+
 ## Chaining it all together
 We will not use the ->font() method in this example; as I like the regular one.
 
@@ -73,6 +80,7 @@ return $avatar->name('Lasse Rafn')
               ->size(96) // 48 * 2
               ->background('#8BC34A')
               ->color('#fff')
+              ->cache()
               ->generate()
               ->stream('png', 100);
 ````
