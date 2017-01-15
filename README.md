@@ -3,6 +3,16 @@ Ever seen those avatars (basically everywhere) that has your initials — mine w
 
 It's framework agnostic, which is different from basically everything else I do, you're welcome.
 
+<p align="center">
+<a href="https://travis-ci.org/LasseRafn/php-initial-avatar-generator"><img src="https://travis-ci.org/LasseRafn/php-initial-avatar-generator.svg" alt="Build Status"></a>
+
+<a href="https://packagist.org/packages/LasseRafn/php-initial-avatar-generator"><img src="https://poser.pugx.org/LasseRafn/php-initial-avatar-generator/d/total.svg" alt="Total Downloads"></a>
+
+<a href="https://packagist.org/packages/LasseRafn/php-initial-avatar-generator"><img src="https://poser.pugx.org/LasseRafn/php-initial-avatar-generator/v/stable.svg" alt="Latest Stable Version"></a>
+
+<a href="https://packagist.org/packages/LasseRafn/php-initial-avatar-generator"><img src="https://poser.pugx.org/LasseRafn/php-initial-avatar-generator/license.svg" alt="License"></a>
+</p>
+
 ## Installation
 You just require using composer and you're good to go!
 ````bash
@@ -91,6 +101,6 @@ Now, using that in a image (sized 48x48 pixels for retina):
 ````
 Will yield:
 
-![Result](https://raw.githubusercontent.com/LasseRafn/php-initial-avatar-generator/master/demo_result.png)
+<img src="https://raw.githubusercontent.com/LasseRafn/php-initial-avatar-generator/master/demo_result.png" width="48" height="48" alt="Result" />
 
 
