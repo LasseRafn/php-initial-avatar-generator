@@ -9,11 +9,6 @@ matrix:
         - php: 7.0
         - php: hhvm
 
-before_install:
-  - add-apt-repository -y ppa:moti-p/cc
-  - apt-get update
-  - apt-get -y --reinstall install imagemagick
-
 before_script:
   - composer self-update
   - composer install --prefer-source --no-interaction --dev
