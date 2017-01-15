@@ -1,35 +1,84 @@
 <?php namespace LasseRafn\InitialAvatarGenerator;
 
+use Intervention\Image\Image;
 use Intervention\Image\ImageManager;
 
 class InitialAvatar
 {
-	/** @var Image */
+	/** @var ImageManager */
 	private $image;
+
+	private $parameter_name      = 'John Doe';
+	private $parameter_size      = 48;
+	private $parameter_bgColor   = '#000';
+	private $parameter_fontColor = '#fff';
+	private $parameter_fontFile  = '/fonts/OpenSans-Regular.ttf';
 
 	public function __construct()
 	{
 		$this->image = new ImageManager();
 	}
 
+	public function name( string $nameOrInitials ): this
+	{
+		$this->parameter_name = $this->generateInitials( $nameOrInitials );
+
+		return $this;
+	}
+
+	public function size( int $size ): this
+	{
+		$this->parameter_size = (int) $size;
+
+		return $this;
+	}
+
+	public function background( string $background ): this
+	{
+		$this->parameter_bgColor = (string) $background;
+
+		return $this;
+	}
+
+	public function color( string $color ): this
+	{
+		$this->parameter_fontColor = (string) $color;
+
+		return $this;
+	}
+
+	public function font( string $font ): this
+	{
+		$this->parameter_fontFile = (string) $font;
+
+		return $this;
+	}
+
 	/**
-	 * @param        $nameOrInitials
-	 * @param string $bgColor
-	 * @param string $fontColor
-	 * @param int    $size
-	 * @param string $font
+	 * Generate the image
+	 *
+	 * @param null|string $name
 	 *
 	 * @return Image
 	 */
-	public function generate( $nameOrInitials, $bgColor = '#000', $fontColor = '#fff', $size = 48, $font = 'OpenSans-Regular' )
+	public function generate( $name = null ): Image
 	{
-		$img = $this->image->canvas( $size, $size, $bgColor );
-
-		$img->text( $this->generateInitials( $nameOrInitials ), 0, 0, function ( $font ) use ( $fontColor, $size, $font )
+		if ( $name !== null )
 		{
-			$font->file( "./fonts/{$font}.ttf" );
-			$font->size( $size * 0.75 );
-			$font->color( $fontColor );
+			$this->parameter_name = $this->generateInitials( $name );
+		}
+
+		$fontFile = $this->parameter_fontFile;
+		$size     = $this->parameter_size;
+		$color    = $this->parameter_fontColor;
+
+		$img = $this->image->canvas( $size, $size, $this->parameter_bgColor );
+
+		$img->text( $this->parameter_name, $size / 2, $size / 2, function ( $font ) use ( $size, $color, $fontFile )
+		{
+			$font->file( __DIR__ . $fontFile );
+			$font->size( $size / 2 );
+			$font->color( $color );
 			$font->align( 'center' );
 			$font->valign( 'center' );
 		} );
@@ -47,11 +96,11 @@ class InitialAvatar
 	 *
 	 * @return string
 	 */
-	private function generateInitials( $nameOrInitials = 'John Doe' )
+	private function generateInitials( string $nameOrInitials = 'John Doe' ): string
 	{
 		$nameOrInitials = strtoupper( trim( $nameOrInitials ) );
 
-		$names = explode( $nameOrInitials, ' ' );
+		$names = explode( ' ', $nameOrInitials );
 
 		if ( count( $names ) > 1 )
 		{
