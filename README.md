@@ -113,6 +113,8 @@ Will yield:
 
 <img src="https://raw.githubusercontent.com/LasseRafn/php-initial-avatar-generator/master/demo_result.png" width="48" height="48" alt="Result" style="border-radius: 100%" />
 
+*Rounded for appearance; the actual avatar is a filled square*
+
 ## Tests
 The amount of tests are limited to:
 * Testing if initials are generated correctly
