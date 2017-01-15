@@ -107,11 +107,11 @@ return $avatar->name('Lasse Rafn')
 
 Now, using that in a image (sized 48x48 pixels for retina):
 ````html
-<img src="url-for-avatar-generation" width="48" height="48" />
+<img src="url-for-avatar-generation" width="48" height="48" style="border-radius: 100%" />
 ````
 Will yield:
 
-<img src="https://raw.githubusercontent.com/LasseRafn/php-initial-avatar-generator/master/demo_result.png" width="48" height="48" alt="Result" />
+<img src="https://raw.githubusercontent.com/LasseRafn/php-initial-avatar-generator/master/demo_result.png" width="48" height="48" alt="Result" style="border-radius: 100%" />
 
 ## Tests
 The amount of tests are limited to:
