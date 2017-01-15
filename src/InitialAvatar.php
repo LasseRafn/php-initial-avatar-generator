@@ -11,6 +11,7 @@ class InitialAvatar
 
 	private $parameter_cacheTime = 0;
 	private $parameter_length    = 2;
+	private $parameter_fontSize  = 0.5;
 	private $parameter_initials  = 'JD';
 	private $parameter_name      = 'John Doe';
 	private $parameter_size      = 48;
@@ -74,6 +75,13 @@ class InitialAvatar
 		return $this;
 	}
 
+	public function fontSize( float $size = 0.5 ): self
+	{
+		$this->parameter_fontSize = (float) $size;
+
+		return $this;
+	}
+
 	/**
 	 * Generate the image
 	 *
@@ -88,18 +96,19 @@ class InitialAvatar
 			$this->parameter_initials = $this->generateInitials( $this->parameter_name );
 		}
 
-		$fontFile = $this->parameter_fontFile;
 		$size     = $this->parameter_size;
-		$color    = $this->parameter_fontColor;
 		$bgColor  = $this->parameter_bgColor;
 		$name     = $this->parameter_initials;
+		$fontFile = $this->parameter_fontFile;
+		$color    = $this->parameter_fontColor;
+		$fontSize = $this->parameter_fontSize;
 
-		$img = $this->image->cache( function ( ImageCache $image ) use ( $size, $bgColor, $color, $fontFile, $name )
+		$img = $this->image->cache( function ( ImageCache $image ) use ( $size, $bgColor, $color, $fontFile, $name, $fontSize )
 		{
-			$image->canvas( $size, $size, $bgColor )->text( $name, $size / 2, $size / 2, function ( $font ) use ( $size, $color, $fontFile )
+			$image->canvas( $size, $size, $bgColor )->text( $name, $size / 2, $size / 2, function ( $font ) use ( $size, $color, $fontFile, $fontSize )
 			{
 				$font->file( __DIR__ . $fontFile );
-				$font->size( $size / 2 );
+				$font->size( $size * $fontSize );
 				$font->color( $color );
 				$font->align( 'center' );
 				$font->valign( 'center' );

@@ -87,12 +87,19 @@ You can simply use ->cache() and it will set cache to 60 minutes, but you can al
 $image = $avatar->name('John Doe Johnson')->length(3)->generate(); // 3 letters = JDJ
 ````
 
+### Font Size - default: 0.5
+````php
+$image = $avatar->fontSize(0.25)->generate(); // Font will be 25% of image size.
+````
+If the Image size is 50px and fontSize is 0.5, the font size will be 25px.
+
 ## Chaining it all together
 We will not use the ->font() method in this example; as I like the regular one.
 
 ````php
 return $avatar->name('Lasse Rafn')
               ->length(2)
+              ->fontSize(0.5)
               ->size(96) // 48 * 2
               ->background('#8BC34A')
               ->color('#fff')
