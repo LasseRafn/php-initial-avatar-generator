@@ -82,11 +82,17 @@ $image = $avatar->cache()->generate(); // 60 minutes
 ````
 You can simply use ->cache() and it will set cache to 60 minutes, but you can also say ->cache(180) to cache for 180 minutes.
 
+### Length - default: 2
+````php
+$image = $avatar->name('John Doe Johnson')->length(3)->generate(); // 3 letters = JDJ
+````
+
 ## Chaining it all together
 We will not use the ->font() method in this example; as I like the regular one.
 
 ````php
 return $avatar->name('Lasse Rafn')
+              ->length(2)
               ->size(96) // 48 * 2
               ->background('#8BC34A')
               ->color('#fff')
