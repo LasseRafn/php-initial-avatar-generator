@@ -1,6 +1,7 @@
 <?php namespace LasseRafn\InitialAvatarGenerator;
 
 use Intervention\Image\Image;
+use Intervention\Image\ImageCache;
 use Intervention\Image\ImageManager;
 
 class InitialAvatar
@@ -9,7 +10,7 @@ class InitialAvatar
 	private $image;
 
 	private $parameter_cacheTime = 0;
-	private $parameter_name      = 'John Doe';
+	private $parameter_name      = 'JD';
 	private $parameter_size      = 48;
 	private $parameter_bgColor   = '#000';
 	private $parameter_fontColor = '#fff';
@@ -20,42 +21,42 @@ class InitialAvatar
 		$this->image = new ImageManager();
 	}
 
-	public function name( string $nameOrInitials ): this
+	public function name( string $nameOrInitials ): self
 	{
 		$this->parameter_name = $this->generateInitials( $nameOrInitials );
 
 		return $this;
 	}
 
-	public function size( int $size ): this
+	public function size( int $size ): self
 	{
 		$this->parameter_size = (int) $size;
 
 		return $this;
 	}
 
-	public function background( string $background ): this
+	public function background( string $background ): self
 	{
 		$this->parameter_bgColor = (string) $background;
 
 		return $this;
 	}
 
-	public function color( string $color ): this
+	public function color( string $color ): self
 	{
 		$this->parameter_fontColor = (string) $color;
 
 		return $this;
 	}
 
-	public function font( string $font ): this
+	public function font( string $font ): self
 	{
 		$this->parameter_fontFile = (string) $font;
 
 		return $this;
 	}
 
-	public function cache( int $minutes = 60 ): this
+	public function cache( int $minutes = 60 ): self
 	{
 		$this->parameter_cacheTime = (int) $minutes;
 
@@ -82,7 +83,7 @@ class InitialAvatar
 		$bgColor  = $this->parameter_bgColor;
 		$name     = $this->parameter_name;
 
-		$img = $this->image->cache( function ( Image $image ) use ( $size, $bgColor, $color, $fontFile, $name )
+		$img = $this->image->cache( function ( ImageCache $image ) use ( $size, $bgColor, $color, $fontFile, $name )
 		{
 			$image->canvas( $size, $size, $bgColor )->text( $name, $size / 2, $size / 2, function ( $font ) use ( $size, $color, $fontFile )
 			{
@@ -98,6 +99,16 @@ class InitialAvatar
 	}
 
 	/**
+	 * Will return the generated initials
+	 *
+	 * @return string
+	 */
+	public function getParameterName()
+	{
+		return $this->parameter_name;
+	}
+
+	/**
 	 * Generate a two-letter initial from a name,
 	 * and if no name, assume its already initials.
 	 * For safety, we limit it to two characters,
@@ -109,19 +120,19 @@ class InitialAvatar
 	 */
 	private function generateInitials( string $nameOrInitials = 'John Doe' ): string
 	{
-		$nameOrInitials = strtoupper( trim( $nameOrInitials ) );
+		$nameOrInitials = mb_strtoupper( trim( $nameOrInitials ) );
 
 		$names = explode( ' ', $nameOrInitials );
 
 		if ( count( $names ) > 1 )
 		{
-			$firstNameLetter = substr( $names[0], 0, 1 );
-			$lastNameLetter  = substr( $names[ count( $names ) - 1 ], 0, 1 );
+			$firstNameLetter = mb_substr( $names[0], 0, 1 );
+			$lastNameLetter  = mb_substr( $names[ count( $names ) - 1 ], 0, 1 );
 
 			$nameOrInitials = "{$firstNameLetter}{$lastNameLetter}";
 		}
 
-		$nameOrInitials = substr( $nameOrInitials, 0, 2 );
+		$nameOrInitials = mb_substr( $nameOrInitials, 0, 2 );
 
 		return $nameOrInitials;
 	}

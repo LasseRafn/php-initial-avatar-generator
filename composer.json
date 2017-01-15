@@ -1,7 +1,11 @@
 {
 	"name": "lasserafn/php-initial-avatar-generator",
 	"description": "A package to generate avatars with initials for PHP",
-	"keywords": ["initials", "image", "avatar"],
+	"keywords": [
+		"initials",
+		"image",
+		"avatar"
+	],
 	"type": "library",
 	"license": "MIT",
 	"authors": [
@@ -21,8 +25,12 @@
 			"LasseRafn\\InitialAvatarGenerator\\": "src/"
 		}
 	},
+	"autoload-dev": {
+		"psr-4": {
+			"InitialAvatarGenerator\\Tests\\": "tests/"
+		}
+	},
 	"config": {
 		"sort-packages": true
-	},
-	"minimum-stability": "dev"
+	}
 }

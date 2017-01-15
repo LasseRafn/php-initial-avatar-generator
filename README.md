@@ -30,7 +30,7 @@ You can also just pass along the initials, and it will use those. Should you jus
 ## Supported methods and parameters
 Of cause, passing a name is not the only thing this sweet thing does!
 
-### Name - default: John Doe
+### Name (initials) - default: JD
 ````php
 $image = $avatar->name('Albert Magnum')->generate();
 ````
