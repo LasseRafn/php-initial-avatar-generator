@@ -79,7 +79,7 @@ return $avatar->name('Lasse Rafn')
 
 Now, using that in a image (sized 48x48 pixels for retina):
 ````html
-<img src="url-for-avatar-generation" />
+<img src="url-for-avatar-generation" width="48" height="48" />
 ````
 Will yield:
 
