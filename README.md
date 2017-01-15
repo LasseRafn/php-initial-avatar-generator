@@ -18,7 +18,6 @@ You just require using composer and you're good to go!
 ````bash
 composer require lasserafn/php-initial-avatar-generator
 ````
-
 Rad, *and long*, package name.. huh? Sorry. I'm not very good with names.
 
 ## Usage
@@ -26,8 +25,6 @@ As with installation, usage is quite simple. Generating a image is done by runni
 ````php
 $avatar = new LasseRafn\InitialAvatarGenerator\InitialAvatar();
 
-$image = $avatar->generate('Lasse Rafn'); // Will automatically generate initials
-// or
 $image = $avatar->name('Lasse Rafn')->generate();
 ````
 
@@ -122,4 +119,10 @@ The amount of tests are limited to:
 * Testing if image size is set correctly
 * Testing if can limit initials to X length
 
+## Requirements
+* PHP 7.0 or 7.1
+* Fileinfo Extension (from intervention/image)
 
+## Supported Image Libraries (from intervention/image)
+* GD Library (>=2.0)
+* Imagick PHP extension (>=6.5.7)
