@@ -70,7 +70,7 @@ We will not use the ->font() method in this example; as I like the regular one.
 
 ````php
 return $avatar->name('Lasse Rafn')
-              ->size(96) // 48 times two, for retina
+              ->size(96) // 48 * 2
               ->background('#8BC34A')
               ->color('#fff')
               ->generate()
