@@ -33,10 +33,15 @@ class InitialGenerationTest extends TestCase
 
 		$this->assertEquals('JB', $avatar->getParameterName());
 
-		// Other names
+		// Other name
 
 		$avatar->name('Gustav Årgonson');
 
 		$this->assertEquals('GÅ', $avatar->getParameterName());
+
+		$avatar->name('Chanel Butterman');
+
+		$this->assertNotEquals('AB', $avatar->getParameterName());
+		$this->assertEquals('CB', $avatar->getParameterName());
 	}
 }

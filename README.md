@@ -103,4 +103,8 @@ Will yield:
 
 <img src="https://raw.githubusercontent.com/LasseRafn/php-initial-avatar-generator/master/demo_result.png" width="48" height="48" alt="Result" />
 
+## Tests
+The amount of tests are limited to:
+* Testing if 
+
 
