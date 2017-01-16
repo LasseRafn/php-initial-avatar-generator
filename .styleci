@@ -2,6 +2,17 @@ preset: recommended
 
 risky: false
 
+enabled:
+  - align_equals
+  - blank_line_before_return
+  - function_declaration
+  - function_typehint_space
+  - hash_to_slash_comment
+  - linebreak_after_opening_tag
+  - mb_str_functions
+  - method_separation
+  - method_visibility_required
+
 finder:
   exclude:
     - "vendor"
