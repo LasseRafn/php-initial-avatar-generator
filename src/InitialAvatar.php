@@ -77,7 +77,7 @@ class InitialAvatar
 
 	public function fontSize( float $size = 0.5 ): self
 	{
-		$this->parameter_fontSize = (float) $size;
+		$this->parameter_fontSize = number_format( $size, 2 );
 
 		return $this;
 	}
@@ -93,27 +93,21 @@ class InitialAvatar
 	{
 		if ( $name !== null )
 		{
-			$this->parameter_initials = $this->generateInitials( $this->parameter_name );
+			$this->parameter_name     = $name;
+			$this->parameter_initials = $this->generateInitials();
 		}
 
-		$size     = $this->parameter_size;
-		$bgColor  = $this->parameter_bgColor;
-		$name     = $this->parameter_initials;
-		$fontFile = $this->parameter_fontFile;
-		$color    = $this->parameter_fontColor;
-		$fontSize = $this->parameter_fontSize;
-
-		$img = $this->image->cache( function ( ImageCache $image ) use ( $size, $bgColor, $color, $fontFile, $name, $fontSize )
+		if ( $this->parameter_cacheTime === 0 )
 		{
-			$image->canvas( $size, $size, $bgColor )->text( $name, $size / 2, $size / 2, function ( $font ) use ( $size, $color, $fontFile, $fontSize )
+			$img = $this->makeAvatar( $this->image );
+		}
+		else
+		{
+			$img = $this->image->cache( function ( ImageCache $image )
 			{
-				$font->file( __DIR__ . $fontFile );
-				$font->size( $size * $fontSize );
-				$font->color( $color );
-				$font->align( 'center' );
-				$font->valign( 'center' );
-			} );
-		}, $this->parameter_cacheTime, true );
+				return $this->makeAvatar( $image );
+			}, $this->parameter_cacheTime, true );
+		}
 
 		return $img;
 	}
@@ -123,9 +117,49 @@ class InitialAvatar
 	 *
 	 * @return string
 	 */
-	public function getInitials()
+	public function getInitials(): string
 	{
 		return $this->parameter_initials;
+	}
+
+	/**
+	 * Will return the background color parameter
+	 *
+	 * @return string
+	 */
+	public function getParameterBackgroundColor(): string
+	{
+		return $this->parameter_bgColor;
+	}
+
+	/**
+	 * Will return the font color parameter
+	 *
+	 * @return string
+	 */
+	public function getParameterColor(): string
+	{
+		return $this->parameter_fontColor;
+	}
+
+	/**
+	 * Will return the font size parameter
+	 *
+	 * @return float
+	 */
+	public function getParameterFontSize(): float
+	{
+		return $this->parameter_fontSize;
+	}
+
+	/**
+	 * Will return the font size parameter
+	 *
+	 * @return string
+	 */
+	public function getParameterFontFile(): string
+	{
+		return $this->parameter_fontFile;
 	}
 
 	/**
@@ -170,5 +204,29 @@ class InitialAvatar
 		$initials = mb_substr( $initials, 0, $this->parameter_length );
 
 		return $initials;
+	}
+
+	/**
+	 * @param ImageManager|ImageCache $image
+	 *
+	 * @return Image|ImageCache
+	 */
+	private function makeAvatar( $image )
+	{
+		$size     = $this->parameter_size;
+		$bgColor  = $this->parameter_bgColor;
+		$name     = $this->parameter_initials;
+		$fontFile = $this->parameter_fontFile;
+		$color    = $this->parameter_fontColor;
+		$fontSize = $this->parameter_fontSize;
+
+		return $image->canvas( $size, $size, $bgColor )->text( $name, $size / 2, $size / 2, function ( $font ) use ( $size, $color, $fontFile, $fontSize )
+		{
+			$font->file( __DIR__ . $fontFile );
+			$font->size( $size * $fontSize );
+			$font->color( $color );
+			$font->align( 'center' );
+			$font->valign( 'center' );
+		} );
 	}
 }
