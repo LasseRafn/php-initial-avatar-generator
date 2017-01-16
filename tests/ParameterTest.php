@@ -1,55 +1,55 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
 use LasseRafn\InitialAvatarGenerator\InitialAvatar;
+use PHPUnit\Framework\TestCase;
 
 class ParameterTest extends TestCase
 {
-	public function testCanSetBackgroundColor()
-	{
-		$avatar = new InitialAvatar();
+    public function testCanSetBackgroundColor()
+    {
+        $avatar = new InitialAvatar();
 
-		$avatar->background( '#000' );
+        $avatar->background('#000');
 
-		$this->assertEquals( '#000', $avatar->getParameterBackgroundColor() );
+        $this->assertEquals('#000', $avatar->getParameterBackgroundColor());
 
-		$avatar->background( '#fff' );
+        $avatar->background('#fff');
 
-		$this->assertEquals( '#fff', $avatar->getParameterBackgroundColor() );
-	}
+        $this->assertEquals('#fff', $avatar->getParameterBackgroundColor());
+    }
 
-	public function testCanSetFontColor()
-	{
-		$avatar = new InitialAvatar();
+    public function testCanSetFontColor()
+    {
+        $avatar = new InitialAvatar();
 
-		$avatar->color( '#000' );
+        $avatar->color('#000');
 
-		$this->assertEquals( '#000', $avatar->getParameterColor() );
+        $this->assertEquals('#000', $avatar->getParameterColor());
 
-		$avatar->color( '#fff' );
+        $avatar->color('#fff');
 
-		$this->assertEquals( '#fff', $avatar->getParameterColor() );
-	}
+        $this->assertEquals('#fff', $avatar->getParameterColor());
+    }
 
-	public function testCanSetFontSize()
-	{
-		$avatar = new InitialAvatar();
+    public function testCanSetFontSize()
+    {
+        $avatar = new InitialAvatar();
 
-		$avatar->fontSize( 0.3 );
+        $avatar->fontSize(0.3);
 
-		$this->assertEquals( '0.3', $avatar->getParameterFontSize() ); // Had to use strings as floats in PHP are nasty..
+        $this->assertEquals('0.3', $avatar->getParameterFontSize()); // Had to use strings as floats in PHP are nasty..
 
-		$avatar->fontSize( 0.7 );
+        $avatar->fontSize(0.7);
 
-		$this->assertEquals( '0.7', $avatar->getParameterFontSize() ); // Had to use strings as floats in PHP are nasty..
-	}
+        $this->assertEquals('0.7', $avatar->getParameterFontSize()); // Had to use strings as floats in PHP are nasty..
+    }
 
-	public function testCanSetFont()
-	{
-		$avatar = new InitialAvatar();
+    public function testCanSetFont()
+    {
+        $avatar = new InitialAvatar();
 
-		$avatar->font( '/fonts/OpenSans-Semibold.ttf' );
+        $avatar->font('/fonts/OpenSans-Semibold.ttf');
 
-		$this->assertEquals( '/fonts/OpenSans-Semibold.ttf', $avatar->getParameterFontFile() );
-	}
+        $this->assertEquals('/fonts/OpenSans-Semibold.ttf', $avatar->getParameterFontFile());
+    }
 }
