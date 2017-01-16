@@ -1,0 +1,7 @@
+preset: recommended
+
+risky: false
+
+finder:
+  exclude:
+    - "vendor"
