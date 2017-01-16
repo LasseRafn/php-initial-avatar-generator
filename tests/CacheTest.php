@@ -1,23 +1,23 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
 use LasseRafn\InitialAvatarGenerator\InitialAvatar;
+use PHPUnit\Framework\TestCase;
 
 class CacheTest extends TestCase
 {
-	public function testIsCached()
-	{
-		$avatar = new InitialAvatar();
+    public function testIsCached()
+    {
+        $avatar = new InitialAvatar();
 
-		$avatar->cache( 60 );
+        $avatar->cache(60);
 
-		$this->assertEquals( 'CachedImage', class_basename( $avatar->generate() ) );
-	}
+        $this->assertEquals('CachedImage', class_basename($avatar->generate()));
+    }
 
-	public function testIsNotCached()
-	{
-		$avatar = new InitialAvatar();
+    public function testIsNotCached()
+    {
+        $avatar = new InitialAvatar();
 
-		$this->assertEquals( 'Image', class_basename( $avatar->generate() ) );
-	}
+        $this->assertEquals('Image', class_basename($avatar->generate()));
+    }
 }
