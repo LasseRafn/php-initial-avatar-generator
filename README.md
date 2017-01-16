@@ -8,11 +8,11 @@ It's framework agnostic, which is different from basically everything else I do,
     
     <a href="https://coveralls.io/github/LasseRafn/php-initial-avatar-generator"><img src="https://img.shields.io/coveralls/lasserafn/php-initial-avatar-generator.svg?style=flat-square" alt="Coverage"></a>
     
-    <a href="https://packagist.org/packages/LasseRafn/php-initial-avatar-generator"><img src="https://poser.pugx.org/LasseRafn/php-initial-avatar-generator/d/total.svg" alt="Total Downloads"></a>
+    <a href="https://packagist.org/packages/LasseRafn/php-initial-avatar-generator"><img src="https://img.shields.io/packagist/dt/LasseRafn/php-initial-avatar-generator.svg?style=flat-square" alt="Total Downloads"></a>
     
-    <a href="https://packagist.org/packages/LasseRafn/php-initial-avatar-generator"><img src="https://poser.pugx.org/LasseRafn/php-initial-avatar-generator/v/stable.svg" alt="Latest Stable Version"></a>
+    <a href="https://packagist.org/packages/LasseRafn/php-initial-avatar-generator"><img src="https://img.shields.io/packagist/v/LasseRafn/php-initial-avatar-generator.svg?style=flat-square" alt="Latest Stable Version"></a>
     
-    <a href="https://packagist.org/packages/LasseRafn/php-initial-avatar-generator"><img src="https://poser.pugx.org/LasseRafn/php-initial-avatar-generator/license.svg" alt="License"></a>
+    <a href="https://packagist.org/packages/LasseRafn/php-initial-avatar-generator"><img src="https://img.shields.io/packagist/l/LasseRafn/php-initial-avatar-generator.svg?style=flat-square" alt="License"></a>
 </p>
 
 ## Installation
