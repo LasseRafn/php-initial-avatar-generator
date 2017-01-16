@@ -23,6 +23,15 @@ class GenerateTest extends TestCase
         $this->assertEquals('Image', class_basename($image));
     }
 
+    public function testCanMakeARoundedImageObject()
+    {
+        $avatar = new InitialAvatar();
+
+        $image = $avatar->rounded()->generate();
+
+        $this->assertEquals('Image', class_basename($image));
+    }
+
     public function testStreamIsReadable()
     {
         $avatar = new InitialAvatar();
