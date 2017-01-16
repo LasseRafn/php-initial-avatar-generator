@@ -119,12 +119,6 @@ Will yield:
 
 *Rounded for appearance; the actual avatar is a filled square*
 
-## Tests
-The amount of tests are limited to:
-* Testing if initials are generated correctly
-* Testing if image size is set correctly
-* Testing if can limit initials to X length
-
 ## Requirements
 * PHP 7.0 or 7.1
 * Fileinfo Extension (from intervention/image)
