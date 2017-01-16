@@ -4,6 +4,9 @@ Ever seen those avatars (basically everywhere) that has your initials — mine w
 It's framework agnostic, which is different from basically everything else I do, you're welcome.
 
 <p align="center">
+    <img src="https://apricot.dk/github/php-initial-avatar-generator.jpg" alt="Banner" width="600" height="240" />
+     
+     
     <a href="https://travis-ci.org/LasseRafn/php-initial-avatar-generator"><img src="https://img.shields.io/travis/LasseRafn/php-initial-avatar-generator.svg?style=flat-square" alt="Build Status"></a>
     
     <a href="https://coveralls.io/github/LasseRafn/php-initial-avatar-generator"><img src="https://img.shields.io/coveralls/LasseRafn/php-initial-avatar-generator.svg?style=flat-square" alt="Coverage"></a>
