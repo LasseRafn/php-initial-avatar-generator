@@ -4,15 +4,15 @@ Ever seen those avatars (basically everywhere) that has your initials — mine w
 It's framework agnostic, which is different from basically everything else I do, you're welcome.
 
 <p align="center">
-<a href="https://travis-ci.org/LasseRafn/php-initial-avatar-generator"><img src="https://travis-ci.org/LasseRafn/php-initial-avatar-generator.svg" alt="Build Status"></a>
-
-[![Coveralls](https://img.shields.io/coveralls/lasserafn/php-initial-avatar-generator.svg?style=flat-square)](https://coveralls.io/github/LasseRafn/php-initial-avatar-generator)
-
-<a href="https://packagist.org/packages/LasseRafn/php-initial-avatar-generator"><img src="https://poser.pugx.org/LasseRafn/php-initial-avatar-generator/d/total.svg" alt="Total Downloads"></a>
-
-<a href="https://packagist.org/packages/LasseRafn/php-initial-avatar-generator"><img src="https://poser.pugx.org/LasseRafn/php-initial-avatar-generator/v/stable.svg" alt="Latest Stable Version"></a>
-
-<a href="https://packagist.org/packages/LasseRafn/php-initial-avatar-generator"><img src="https://poser.pugx.org/LasseRafn/php-initial-avatar-generator/license.svg" alt="License"></a>
+    <a href="https://travis-ci.org/LasseRafn/php-initial-avatar-generator"><img src="https://travis-ci.org/LasseRafn/php-initial-avatar-generator.svg" alt="Build Status"></a>
+    
+    <a href="https://coveralls.io/github/LasseRafn/php-initial-avatar-generator"><img src="https://img.shields.io/coveralls/lasserafn/php-initial-avatar-generator.svg?style=flat-square" alt="Coverage"></a>
+    
+    <a href="https://packagist.org/packages/LasseRafn/php-initial-avatar-generator"><img src="https://poser.pugx.org/LasseRafn/php-initial-avatar-generator/d/total.svg" alt="Total Downloads"></a>
+    
+    <a href="https://packagist.org/packages/LasseRafn/php-initial-avatar-generator"><img src="https://poser.pugx.org/LasseRafn/php-initial-avatar-generator/v/stable.svg" alt="Latest Stable Version"></a>
+    
+    <a href="https://packagist.org/packages/LasseRafn/php-initial-avatar-generator"><img src="https://poser.pugx.org/LasseRafn/php-initial-avatar-generator/license.svg" alt="License"></a>
 </p>
 
 ## Installation
