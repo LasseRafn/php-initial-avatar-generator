@@ -24,6 +24,13 @@ class InitialAvatar
 		$this->image = new ImageManager();
 	}
 
+	/**
+	 * Set the name used for generating initials
+	 *
+	 * @param string $nameOrInitials
+	 *
+	 * @return InitialAvatar
+	 */
 	public function name( string $nameOrInitials ): self
 	{
 		$this->parameter_name     = $nameOrInitials;
@@ -32,6 +39,13 @@ class InitialAvatar
 		return $this;
 	}
 
+	/**
+	 * Set the length of the generated initials
+	 *
+	 * @param int $length
+	 *
+	 * @return InitialAvatar
+	 */
 	public function length( int $length = 2 ): self
 	{
 		$this->parameter_length   = (int) $length;
@@ -40,6 +54,13 @@ class InitialAvatar
 		return $this;
 	}
 
+	/**
+	 * Set time avatar/image size in pixels
+	 *
+	 * @param int $size
+	 *
+	 * @return InitialAvatar
+	 */
 	public function size( int $size ): self
 	{
 		$this->parameter_size = (int) $size;
@@ -47,6 +68,13 @@ class InitialAvatar
 		return $this;
 	}
 
+	/**
+	 * Set the background color
+	 *
+	 * @param string $background
+	 *
+	 * @return InitialAvatar
+	 */
 	public function background( string $background ): self
 	{
 		$this->parameter_bgColor = (string) $background;
@@ -54,6 +82,13 @@ class InitialAvatar
 		return $this;
 	}
 
+	/**
+	 * Set the font color
+	 *
+	 * @param string $color
+	 *
+	 * @return InitialAvatar
+	 */
 	public function color( string $color ): self
 	{
 		$this->parameter_fontColor = (string) $color;
@@ -61,6 +96,13 @@ class InitialAvatar
 		return $this;
 	}
 
+	/**
+	 * Set the font file by path
+	 *
+	 * @param string $font
+	 *
+	 * @return InitialAvatar
+	 */
 	public function font( string $font ): self
 	{
 		$this->parameter_fontFile = (string) $font;
@@ -68,6 +110,14 @@ class InitialAvatar
 		return $this;
 	}
 
+	/**
+	 * Set cache time (in minutes)
+	 * 0 = no cache
+	 *
+	 * @param int $minutes
+	 *
+	 * @return InitialAvatar
+	 */
 	public function cache( int $minutes = 60 ): self
 	{
 		$this->parameter_cacheTime = (int) $minutes;
@@ -75,6 +125,14 @@ class InitialAvatar
 		return $this;
 	}
 
+	/**
+	 * Set the font size in percentage
+	 * (0.1 = 10%)
+	 *
+	 * @param float $size
+	 *
+	 * @return InitialAvatar
+	 */
 	public function fontSize( float $size = 0.5 ): self
 	{
 		$this->parameter_fontSize = number_format( $size, 2 );

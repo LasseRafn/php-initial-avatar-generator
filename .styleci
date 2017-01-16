@@ -6,6 +6,10 @@ enabled:
   - align_equals
   - linebreak_after_opening_tag
   - mb_str_functions
+  - phpdoc_align
+
+disabled:
+  - unalign_equals
 
 finder:
   exclude:
