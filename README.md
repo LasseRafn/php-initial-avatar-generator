@@ -6,6 +6,8 @@ It's framework agnostic, which is different from basically everything else I do,
 <p align="center">
 <a href="https://travis-ci.org/LasseRafn/php-initial-avatar-generator"><img src="https://travis-ci.org/LasseRafn/php-initial-avatar-generator.svg" alt="Build Status"></a>
 
+<a href='https://coveralls.io/github/LasseRafn/php-initial-avatar-generator?branch=master'><img src='https://coveralls.io/repos/github/LasseRafn/php-initial-avatar-generator/badge.svg?branch=master' alt='Coverage Status' /></a>
+
 <a href="https://packagist.org/packages/LasseRafn/php-initial-avatar-generator"><img src="https://poser.pugx.org/LasseRafn/php-initial-avatar-generator/d/total.svg" alt="Total Downloads"></a>
 
 <a href="https://packagist.org/packages/LasseRafn/php-initial-avatar-generator"><img src="https://poser.pugx.org/LasseRafn/php-initial-avatar-generator/v/stable.svg" alt="Latest Stable Version"></a>

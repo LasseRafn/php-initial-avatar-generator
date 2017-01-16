@@ -20,7 +20,8 @@
 		"intervention/imagecache": "^2.3"
 	},
 	"require-dev": {
-		"phpunit/phpunit": "^5.7"
+		"phpunit/phpunit": "^5.7",
+		"satooshi/php-coveralls": "^1.0"
 	},
 	"autoload": {
 		"psr-4": {
