@@ -10,7 +10,7 @@ class CacheTest extends TestCase
         $avatar = new InitialAvatar();
 
         $avatar->cache(60);
-	    $avatar->generate(); // To generate initial cache
+        $avatar->generate(); // To generate initial cache
 
         $this->assertEquals('CachedImage', class_basename($avatar->generate()));
     }
