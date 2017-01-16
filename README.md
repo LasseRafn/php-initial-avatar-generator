@@ -88,6 +88,12 @@ You can simply use ->cache() and it will set cache to 60 minutes, but you can al
 $image = $avatar->name('John Doe Johnson')->length(3)->generate(); // 3 letters = JDJ
 ````
 
+### Rounded - default: false
+````php
+$image = $avatar->rounded()->generate();
+````
+I recommend that you simply **do not** enable rounding, as the edges are way too sharp, compared to simply setting ````border-radius: 100%```` on the image (see below)
+
 ### Font Size - default: 0.5
 ````php
 $image = $avatar->fontSize(0.25)->generate(); // Font will be 25% of image size.

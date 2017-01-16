@@ -319,7 +319,7 @@ class InitialAvatar
 
 		if ( $this->getParameterRounded() )
 		{
-			$avatar = $avatar->ellipse( $size, $size, $size / 2, $size / 2, function ( $draw ) use ( $bgColor )
+			$avatar = $avatar->circle( $size - 2, $size / 2, $size / 2, function ( $draw ) use ( $bgColor )
 			{
 				return $draw->background( $bgColor );
 			} );
