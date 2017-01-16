@@ -13,9 +13,12 @@
 		<testsuite name="Package Test Suite">
 			<directory suffix=".php">./tests/</directory>
 		</testsuite>
+	</testsuites>
+
+	<whitelist processUncoveredFilesFromWhitelist="true">
 		<exclude>
 			<directory>./vendor</directory>
 			<directory>./tests</directory>
 		</exclude>
-	</testsuites>
+	</whitelist>
 </phpunit>
