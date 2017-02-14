@@ -16,7 +16,6 @@ class InitialAvatar
     private $initials;
 
     private $parameter_cacheTime = 0;
-    private $parameter_length = 2;
     private $parameter_fontSize = 0.5;
     private $parameter_initials = 'JD';
     private $parameter_name = 'John Doe';
