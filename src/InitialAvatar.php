@@ -5,11 +5,15 @@ namespace LasseRafn\InitialAvatarGenerator;
 use Intervention\Image\Image;
 use Intervention\Image\ImageCache;
 use Intervention\Image\ImageManager;
+use LasseRafn\Initials\Initials;
 
 class InitialAvatar
 {
     /** @var ImageManager */
     private $image;
+
+    /** @var Initials */
+    private $initials;
 
     private $parameter_cacheTime = 0;
     private $parameter_length = 2;
@@ -25,6 +29,7 @@ class InitialAvatar
     public function __construct()
     {
         $this->image = new ImageManager();
+        $this->initials = new Initials();
     }
 
     /**
@@ -36,8 +41,7 @@ class InitialAvatar
      */
     public function name(string $nameOrInitials): self
     {
-        $this->parameter_name = $nameOrInitials;
-        $this->parameter_initials = $this->generateInitials();
+	    $this->initials->name($nameOrInitials);
 
         return $this;
     }
@@ -51,8 +55,7 @@ class InitialAvatar
      */
     public function length(int $length = 2): self
     {
-        $this->parameter_length = (int) $length;
-        $this->parameter_initials = $this->generateInitials();
+	    $this->initials->length($length);
 
         return $this;
     }
@@ -168,7 +171,7 @@ class InitialAvatar
     {
         if ($name !== null) {
             $this->parameter_name = $name;
-            $this->parameter_initials = $this->generateInitials();
+            $this->parameter_initials = $this->initials->generate($name);
         }
 
         if ($this->parameter_cacheTime === 0) {
@@ -189,7 +192,7 @@ class InitialAvatar
      */
     public function getInitials(): string
     {
-        return $this->parameter_initials;
+        return $this->initials->getInitials();
     }
 
     /**
@@ -250,46 +253,6 @@ class InitialAvatar
     public function getParameterSize(): int
     {
         return $this->parameter_size;
-    }
-
-    /**
-     * Generate a two-letter initial from a name,
-     * and if no name, assume its already initials.
-     * For safety, we limit it to two characters,
-     * in case its a single, but long, name.
-     *
-     * @return string
-     */
-    private function generateInitials(): string
-    {
-        $nameOrInitials = mb_strtoupper(trim($this->parameter_name));
-        $names = explode(' ', $nameOrInitials);
-        $initials = $nameOrInitials;
-        $assignedNames = 0;
-
-        if (count($names) > 1) {
-            $initials = '';
-            $start = 0;
-
-            for ($i = 0; $i < $this->parameter_length; $i++) {
-                $index = $i;
-
-                if (($index === ($this->parameter_length - 1) && $index > 0) || ($index > (count($names) - 1))) {
-                    $index = count($names) - 1;
-                }
-
-                if ($assignedNames >= count($names)) {
-                    $start++;
-                }
-
-                $initials .= mb_substr($names[$index], $start, 1);
-                $assignedNames++;
-            }
-        }
-
-        $initials = mb_substr($initials, 0, $this->parameter_length);
-
-        return $initials;
     }
 
     /**
