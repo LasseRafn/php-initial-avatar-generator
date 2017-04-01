@@ -40,7 +40,7 @@ class InitialAvatar
      */
     public function name(string $nameOrInitials): self
     {
-	    $this->initials->name($nameOrInitials);
+        $this->initials->name($nameOrInitials);
 
         return $this;
     }
@@ -54,7 +54,7 @@ class InitialAvatar
      */
     public function length(int $length = 2): self
     {
-	    $this->initials->length($length);
+        $this->initials->length($length);
 
         return $this;
     }

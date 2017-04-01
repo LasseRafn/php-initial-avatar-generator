@@ -16,13 +16,12 @@ class GenerateTest extends TestCase
 
     public function testReturnsImageObject()
     {
-    	// Typical
+        // Typical
         $avatar = new InitialAvatar();
 
         $image = $avatar->generate();
 
         $this->assertEquals('Image', class_basename($image));
-
 
         // With emoji
         $avatar = new InitialAvatar();
@@ -30,7 +29,6 @@ class GenerateTest extends TestCase
         $image = $avatar->generate('😅');
 
         $this->assertEquals('Image', class_basename($image));
-
 
         // With Japanese letters
         $avatar = new InitialAvatar();
