@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "8dec9a2ba2ecb8fbe8aafa8c63e2daf7",
+    "content-hash": "7537a8aaac2e10aa76b49db860c1312c",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -512,20 +512,20 @@
         },
         {
             "name": "lasserafn/php-initials",
-            "version": "v2.15",
+            "version": "v2.16",
             "source": {
                 "type": "git",
                 "url": "https://github.com/LasseRafn/php-initials.git",
-                "reference": "d54f33defe58d811cd47ce5eae8c5a4681bd9399"
+                "reference": "9c895d15693d9d66b58a17e3336dec6f7eea2456"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/LasseRafn/php-initials/zipball/d54f33defe58d811cd47ce5eae8c5a4681bd9399",
-                "reference": "d54f33defe58d811cd47ce5eae8c5a4681bd9399",
+                "url": "https://api.github.com/repos/LasseRafn/php-initials/zipball/9c895d15693d9d66b58a17e3336dec6f7eea2456",
+                "reference": "9c895d15693d9d66b58a17e3336dec6f7eea2456",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.0|^7.1"
+                "php": "^5.6|^7.0|^7.1"
             },
             "require-dev": {
                 "phpunit/phpunit": "^5.7",
@@ -552,7 +552,7 @@
                 "Initials",
                 "php"
             ],
-            "time": "2017-05-30T10:42:10+00:00"
+            "time": "2017-06-14T09:18:19+00:00"
         },
         {
             "name": "nesbot/carbon",
@@ -2903,7 +2903,7 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": "^7.0|^7.1"
+        "php": "^5.6|^7.0|^7.1"
     },
     "platform-dev": []
 }
