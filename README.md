@@ -125,7 +125,7 @@ Will yield:
 *Rounded for appearance; the actual avatar is a filled square*
 
 ## Requirements
-* PHP 7.0 or 7.1
+* PHP 5.6, 7.0 or 7.1
 * Fileinfo Extension (from intervention/image)
 
 ## Supported Image Libraries (from intervention/image)
