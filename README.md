@@ -18,92 +18,92 @@ It's framework agnostic, which is different from basically everything else I do,
 
 ## Installation
 You just require using composer and you're good to go!
-```bash
+````bash
 composer require lasserafn/php-initial-avatar-generator
-```
+````
 Rad, *and long*, package name.. huh? Sorry. I'm not very good with names.
 
 ## Usage
 As with installation, usage is quite simple. Generating a image is done by running:
-```php
+````php
 $avatar = new LasseRafn\InitialAvatarGenerator\InitialAvatar();
 
 $image = $avatar->name('Lasse Rafn')->generate();
-```
+````
 
 Thats it! The method will return a instance of [Image from Intervention](https://github.com/Intervention/image) so you can stream, download or even encode the image:
-```php
+````php
 return $image->stream('png', 100);
-```
+````
 You can also just pass along the initials, and it will use those. Should you just include a first name, it will use the first two letters of it.
 
 ## Supported methods and parameters
 Of cause, passing a name is not the only thing this sweet thing does!
 
 ### Name (initials) - default: JD
-```php
+````php
 $image = $avatar->name('Albert Magnum')->generate();
-```
+````
 
 ### Size - default: 48
-```php
+````php
 // will be 96x96 pixels.
 $image = $avatar->size(96)->generate();
-```
+````
 
 ### Background color - default: #000
-```php
+````php
 // will be red
 $image = $avatar->background('#ff0000')->generate();
-```
+````
 
 ### Font color - default: #fff
-```php
+````php
 // will be red
 $image = $avatar->color('#ff0000')->generate();
-```
+````
 
 ### Font file - default: /fonts/OpenSans-Regular.ttf
 Two fonts are included:
 * /fonts/OpenSans-Regular.ttf
 * /fonts/OpenSans-Semibold.ttf
 
-The method automatically appends __DIR__ to it, so the font will be: `__DIR__ . '/fonts/OpenSans-Regular.ttf'`
+The method automatically appends __DIR__ to it, so the font will be: ````__DIR__ . '/fonts/OpenSans-Regular.ttf'````
 
-```php
+````php
 // will be Semibold
 $image = $avatar->font('/fonts/OpenSans-Semibold.ttf')->generate();
-```
+````
 
 ### Cache - default: 0 = no cache
 Will use **intervention/imagecache** to cache the result.
-```php
+````php
 $image = $avatar->cache()->generate(); // 60 minutes
-```
+````
 You can simply use ->cache() and it will set cache to 60 minutes, but you can also say ->cache(180) to cache for 180 minutes.
 
 ### Length - default: 2
-```php
+````php
 $image = $avatar->name('John Doe Johnson')->length(3)->generate(); // 3 letters = JDJ
-```
+````
 
 ### Rounded - default: false
-```php
+````php
 $image = $avatar->rounded()->generate();
-```
+````
 
-I recommend that you simply **do not** enable rounding, as the edges can become way too sharp, compared to simply setting `border-radius: 100%` on the image (see below)
+I recommend that you simply **do not** enable rounding, as the edges are way too sharp, compared to simply setting ````border-radius: 100%```` on the image (see below)
 
 ### Font Size - default: 0.5
-```php
+````php
 $image = $avatar->fontSize(0.25)->generate(); // Font will be 25% of image size.
-```
+````
 If the Image size is 50px and fontSize is 0.5, the font size will be 25px.
 
 ## Chaining it all together
 We will not use the ->font() method in this example; as I like the regular one.
 
-```php
+````php
 return $avatar->name('Lasse Rafn')
               ->length(2)
               ->fontSize(0.5)
@@ -113,13 +113,12 @@ return $avatar->name('Lasse Rafn')
               ->cache()
               ->generate()
               ->stream('png', 100);
-```
+````
 
 Now, using that in a image (sized 48x48 pixels for retina):
-```html
+````html
 <img src="url-for-avatar-generation" width="48" height="48" style="border-radius: 100%" />
-```
-
+````
 Will yield:
 
 <img src="https://raw.githubusercontent.com/LasseRafn/php-initial-avatar-generator/master/demo_result.png" width="48" height="48" alt="Result" style="border-radius: 100%" />
