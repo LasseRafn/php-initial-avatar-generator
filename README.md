@@ -16,6 +16,8 @@ It's framework agnostic, which is different from basically everything else I do,
 <a href="https://packagist.org/packages/LasseRafn/php-initial-avatar-generator"><img src="https://img.shields.io/packagist/l/LasseRafn/php-initial-avatar-generator.svg?style=flat-square" alt="License"></a>
 </p>
 
+*Want to generate initials, without the image? Try my core package: [lasserafn/php-initials](https://github.com/lasserafn/php-initials)*
+
 ## Installation
 You just require using composer and you're good to go!
 ````bash
