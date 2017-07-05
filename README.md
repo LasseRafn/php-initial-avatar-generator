@@ -4,7 +4,7 @@ Ever seen those avatars (basically everywhere) that has your initials — mine w
 It's framework agnostic, which is different from basically everything else I do, you're welcome.
 
 <p align="center">
-    <img src="https://apricot.dk/github/php-initial-avatar-generator.jpg" alt="Banner" width="600" height="240" />
+    <img src="https://apricot.dk/github/php-initial-avatar-generator.jpg" alt="Banner" height="240" />
 </p>
  
 <p align="center"> 
