@@ -94,7 +94,16 @@ $image = $avatar->name('John Doe Johnson')->length(3)->generate(); // 3 letters 
 $image = $avatar->rounded()->generate();
 ````
 
-I recommend that you simply **do not** enable rounding, as the edges are way too sharp, compared to simply setting ````border-radius: 100%```` on the image (see below)
+### Smooth - default: false
+
+Makes rounding smoother with a resizing hack. Could be slower.
+
+````php
+$image = $avatar->rounded()->smooth()->generate();
+````
+
+If you are going to use `rounded()`, you want to use `smooth()` to avoid pixelated edges. Disabled by default because it _COULD_ be slower.
+I would recommend just rounding with CSS.
 
 ### Font Size - default: 0.5
 ````php

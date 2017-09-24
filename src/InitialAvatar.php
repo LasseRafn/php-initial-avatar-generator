@@ -23,6 +23,7 @@ class InitialAvatar
     private $parameter_bgColor = '#000';
     private $parameter_fontColor = '#fff';
     private $parameter_rounded = false;
+    private $parameter_smooth = false;
     private $parameter_fontFile = '/fonts/OpenSans-Regular.ttf';
 
     public function __construct()
@@ -145,6 +146,20 @@ class InitialAvatar
     }
 
     /**
+     * Set if should make a rounding smoother with a resizing hack.
+     *
+     * @param bool $smooth
+     *
+     * @return InitialAvatar
+     */
+    public function smooth($smooth = true)
+    {
+        $this->parameter_smooth = (bool) $smooth;
+
+        return $this;
+    }
+
+    /**
      * Set the font size in percentage
      * (0.1 = 10%).
      *
@@ -245,6 +260,16 @@ class InitialAvatar
     }
 
     /**
+     * Will return the smooth parameter.
+     *
+     * @return bool
+     */
+    public function getParameterSmooth()
+    {
+        return $this->parameter_smooth;
+    }
+
+    /**
      * Will return the round parameter.
      *
      * @return int
@@ -268,6 +293,10 @@ class InitialAvatar
         $color = $this->getParameterColor();
         $fontSize = $this->getParameterFontSize();
 
+	    if ( $this->getParameterRounded() && $this->getParameterSmooth() ) {
+		    $size *= 5;
+	    }
+
         $avatar = $image->canvas($size, $size, !$this->getParameterRounded() ? $bgColor : null);
 
         if ($this->getParameterRounded()) {
@@ -275,6 +304,11 @@ class InitialAvatar
                 return $draw->background($bgColor);
             });
         }
+
+	    if ( $this->getParameterRounded() && $this->getParameterSmooth() ) {
+		    $size /= 5;
+		    $avatar->resize( $size, $size );
+	    }
 
         return $avatar->text($name, $size / 2, $size / 2, function ($font) use ($size, $color, $fontFile, $fontSize) {
             $font->file(__DIR__.$fontFile);
