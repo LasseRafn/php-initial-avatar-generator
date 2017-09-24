@@ -47,6 +47,15 @@ class GenerateTest extends TestCase
         $this->assertEquals('Image', class_basename($image));
     }
 
+    public function testCanMakeASmoothRoundedImageObject()
+    {
+        $avatar = new InitialAvatar();
+
+        $image = $avatar->rounded()->smooth()->generate();
+
+        $this->assertEquals('Image', class_basename($image));
+    }
+
     public function testStreamIsReadable()
     {
         $avatar = new InitialAvatar();

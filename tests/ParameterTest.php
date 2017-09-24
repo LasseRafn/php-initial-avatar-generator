@@ -65,4 +65,17 @@ class ParameterTest extends TestCase
 
         $this->assertNotTrue($avatar->getParameterRounded());
     }
+
+    public function testCanSetSmooth()
+    {
+        $avatar = new InitialAvatar();
+
+        $avatar->smooth();
+
+        $this->assertTrue($avatar->getParameterSmooth());
+
+        $avatar->smooth(false);
+
+        $this->assertNotTrue($avatar->getParameterSmooth());
+    }
 }
