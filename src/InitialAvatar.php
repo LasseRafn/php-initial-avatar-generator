@@ -293,9 +293,9 @@ class InitialAvatar
         $color = $this->getParameterColor();
         $fontSize = $this->getParameterFontSize();
 
-	    if ( $this->getParameterRounded() && $this->getParameterSmooth() ) {
-		    $size *= 5;
-	    }
+        if ($this->getParameterRounded() && $this->getParameterSmooth()) {
+            $size *= 5;
+        }
 
         $avatar = $image->canvas($size, $size, !$this->getParameterRounded() ? $bgColor : null);
 
@@ -305,10 +305,10 @@ class InitialAvatar
             });
         }
 
-	    if ( $this->getParameterRounded() && $this->getParameterSmooth() ) {
-		    $size /= 5;
-		    $avatar->resize( $size, $size );
-	    }
+        if ($this->getParameterRounded() && $this->getParameterSmooth()) {
+            $size /= 5;
+            $avatar->resize($size, $size);
+        }
 
         return $avatar->text($name, $size / 2, $size / 2, function ($font) use ($size, $color, $fontFile, $fontSize) {
             $font->file(__DIR__.$fontFile);
