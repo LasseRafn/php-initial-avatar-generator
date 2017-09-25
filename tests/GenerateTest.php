@@ -70,4 +70,22 @@ class GenerateTest extends TestCase
 
         $this->assertTrue($avatar->generate()->stream()->isReadable());
     }
+
+    public function testWithSpecifiedLocalFont()
+    {
+	    $avatar = new InitialAvatar();
+
+	    $image = $avatar->font('/tests/fonts/NotoSans-Regular.otf')->generate();
+
+	    $this->assertEquals('Image', class_basename($image));
+    }
+
+    public function testFontWithoutSlash()
+    {
+	    $avatar = new InitialAvatar();
+
+	    $image = $avatar->font('fonts/NotoSans-Regular.otf')->generate();
+
+	    $this->assertEquals('Image', class_basename($image));
+    }
 }
