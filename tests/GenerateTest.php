@@ -75,7 +75,7 @@ class GenerateTest extends TestCase
     {
         $avatar = new InitialAvatar();
 
-        $image = $avatar->font(__DIR__ . '/fonts/NotoSans-Regular.otf')->generate();
+        $image = $avatar->font(__DIR__.'/fonts/NotoSans-Regular.otf')->generate();
 
         $this->assertEquals('Image', class_basename($image));
     }
