@@ -311,7 +311,7 @@ class InitialAvatar
         }
 
         return $avatar->text($name, $size / 2, $size / 2, function ($font) use ($size, $color, $fontFile, $fontSize) {
-            $font->file(__DIR__.$fontFile);
+            $font->file($fontFile);
             $font->size($size * $fontSize);
             $font->color($color);
             $font->align('center');
