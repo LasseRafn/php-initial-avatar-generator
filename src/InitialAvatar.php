@@ -323,7 +323,7 @@ class InitialAvatar
 	{
 		$fontFile = $this->getParameterFontFile();
 
-		if(is_int($fontFile) && in_array($fontFile, [1,2,3,4,5], true)) {
+		if(is_int($fontFile) && in_array($fontFile, [1,2,3,4,5], false)) {
 			return $fontFile;
 		}
 
