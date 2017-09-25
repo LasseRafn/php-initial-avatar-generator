@@ -69,6 +69,8 @@ $image = $avatar->color('#ff0000')->generate();
 Two fonts are included:
 * /fonts/OpenSans-Regular.ttf
 * /fonts/OpenSans-Semibold.ttf
+* /fonts/NotoSans-Medium.otf
+* /fonts/NotoSans-Regular.otf
 
 The method automatically appends __DIR__ to it, so the font will be: ````__DIR__ . '/fonts/OpenSans-Regular.ttf'````
 
