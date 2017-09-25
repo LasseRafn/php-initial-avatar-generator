@@ -319,26 +319,26 @@ class InitialAvatar
         });
     }
 
-	private function findFontFile()
-	{
-		$fontFile = $this->getParameterFontFile();
+    private function findFontFile()
+    {
+        $fontFile = $this->getParameterFontFile();
 
-		if(is_int($fontFile) && in_array($fontFile, [1,2,3,4,5], false)) {
-			return $fontFile;
-		}
+        if (is_int($fontFile) && in_array($fontFile, [1, 2, 3, 4, 5], false)) {
+            return $fontFile;
+        }
 
-		if( file_exists($fontFile)) {
-			return $fontFile;
-		}
+        if (file_exists($fontFile)) {
+            return $fontFile;
+        }
 
-		if( file_exists(__DIR__ . $fontFile)) {
-			return __DIR__ . $fontFile;
-		}
+        if (file_exists(__DIR__.$fontFile)) {
+            return __DIR__.$fontFile;
+        }
 
-		if( file_exists(__DIR__ . '/' . $fontFile)) {
-			return __DIR__ . '/' . $fontFile;
-		}
+        if (file_exists(__DIR__.'/'.$fontFile)) {
+            return __DIR__.'/'.$fontFile;
+        }
 
-		return 1;
-	}
+        return 1;
+    }
 }

@@ -43,7 +43,7 @@ class GenerateTest extends TestCase
         $image = $avatar->font(2)->generate('LR');
 
         $this->assertEquals('Image', class_basename($image));
-	    $this->assertTrue($image->stream()->isReadable());
+        $this->assertTrue($image->stream()->isReadable());
     }
 
     public function testCanMakeARoundedImageObject()
