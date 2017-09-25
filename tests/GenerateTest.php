@@ -80,6 +80,15 @@ class GenerateTest extends TestCase
         $this->assertEquals('Image', class_basename($image));
     }
 
+    public function testWithFontFallback()
+    {
+        $avatar = new InitialAvatar();
+
+        $image = $avatar->font('no-font')->generate();
+
+        $this->assertEquals('Image', class_basename($image));
+    }
+
     public function testFontWithoutSlash()
     {
         $avatar = new InitialAvatar();
