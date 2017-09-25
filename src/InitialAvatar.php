@@ -103,15 +103,15 @@ class InitialAvatar
     }
 
     /**
-     * Set the font file by path.
+     * Set the font file by path or int (1-5).
      *
-     * @param string $font
+     * @param string|int $font
      *
      * @return InitialAvatar
      */
     public function font($font)
     {
-        $this->parameter_fontFile = (string) $font;
+        $this->parameter_fontFile = $font;
 
         return $this;
     }
@@ -242,7 +242,7 @@ class InitialAvatar
     /**
      * Will return the font size parameter.
      *
-     * @return string
+     * @return string|int
      */
     public function getParameterFontFile()
     {
