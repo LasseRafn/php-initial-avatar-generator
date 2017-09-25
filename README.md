@@ -72,7 +72,7 @@ Two fonts with two variants are included:
 * /fonts/NotoSans-Medium.otf`
 * /fonts/NotoSans-Regular.otf
 
-The method will look for the font, if none found it will append `__DIR__ and try again, and if not it will default to the first GD Internal Font.
+The method will look for the font, if none found it will append `__DIR__` and try again, and if not it will default to the first GD Internal Font.
 If you input an integer between 1 and 5, it will use a GD Internal font as per that number.
 
 ````php
