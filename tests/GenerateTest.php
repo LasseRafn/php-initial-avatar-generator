@@ -73,19 +73,19 @@ class GenerateTest extends TestCase
 
     public function testWithSpecifiedLocalFont()
     {
-	    $avatar = new InitialAvatar();
+        $avatar = new InitialAvatar();
 
-	    $image = $avatar->font('/tests/fonts/NotoSans-Regular.otf')->generate();
+        $image = $avatar->font('/tests/fonts/NotoSans-Regular.otf')->generate();
 
-	    $this->assertEquals('Image', class_basename($image));
+        $this->assertEquals('Image', class_basename($image));
     }
 
     public function testFontWithoutSlash()
     {
-	    $avatar = new InitialAvatar();
+        $avatar = new InitialAvatar();
 
-	    $image = $avatar->font('fonts/NotoSans-Regular.otf')->generate();
+        $image = $avatar->font('fonts/NotoSans-Regular.otf')->generate();
 
-	    $this->assertEquals('Image', class_basename($image));
+        $this->assertEquals('Image', class_basename($image));
     }
 }
