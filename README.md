@@ -66,7 +66,7 @@ $image = $avatar->color('#ff0000')->generate();
 ````
 
 ### Font file - default: /fonts/OpenSans-Regular.ttf
-Two fonts are included:
+Two fonts with two variants are included:
 * /fonts/OpenSans-Regular.ttf
 * /fonts/OpenSans-Semibold.ttf
 * /fonts/NotoSans-Medium.otf
