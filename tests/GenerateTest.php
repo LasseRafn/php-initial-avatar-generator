@@ -36,6 +36,14 @@ class GenerateTest extends TestCase
         $image = $avatar->font('/fonts/NotoSans-Medium.otf')->generate('こんにちは');
 
         $this->assertEquals('Image', class_basename($image));
+
+        // With GD font
+        $avatar = new InitialAvatar();
+
+        $image = $avatar->font(2)->generate('LR');
+
+        $this->assertEquals('Image', class_basename($image));
+	    $this->assertTrue($image->stream()->isReadable());
     }
 
     public function testCanMakeARoundedImageObject()
