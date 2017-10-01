@@ -1,10 +1,8 @@
 # Generate avatars with initials
 Ever seen those avatars (basically everywhere) that has your initials — mine would be LR; Lasse Rafn — well this package allows you to generate those, in a simple manner.
 
-It's framework agnostic, which is different from basically everything else I do, you're welcome.
-
 <p align="center">
-    <img src="https://apricot.dk/github/php-initial-avatar-generator.jpg" alt="Banner" />
+<img src="https://apricot.dk/github/php-initial-avatar-generator.jpg" alt="Banner" />
 </p>
  
 <p align="center"> 
@@ -17,6 +15,8 @@ It's framework agnostic, which is different from basically everything else I do,
 </p>
 
 *Want to generate initials, without the image? Try my core package: [lasserafn/php-initials](https://github.com/lasserafn/php-initials)*
+
+**There's also a api you can use: [https://ui-avatars.com](https://ui-avatars.com)**
 
 ## Installation
 You just require using composer and you're good to go!
