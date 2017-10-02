@@ -33,7 +33,7 @@ class GenerateTest extends TestCase
         // With Japanese letters
         $avatar = new InitialAvatar();
 
-        $image = $avatar->font('/fonts/NotoSans-Medium.otf')->generate('こんにちは');
+        $image = $avatar->font('/fonts/NotoSans-Medium.ttf')->generate('こんにちは');
 
         $this->assertEquals('Image', class_basename($image));
 
@@ -75,7 +75,7 @@ class GenerateTest extends TestCase
     {
         $avatar = new InitialAvatar();
 
-        $image = $avatar->font(__DIR__.'/fonts/NotoSans-Regular.otf')->generate();
+        $image = $avatar->font(__DIR__.'/fonts/NotoSans-Regular.ttf')->generate();
 
         $this->assertEquals('Image', class_basename($image));
     }
@@ -93,7 +93,7 @@ class GenerateTest extends TestCase
     {
         $avatar = new InitialAvatar();
 
-        $image = $avatar->font('fonts/NotoSans-Regular.otf')->generate();
+        $image = $avatar->font('fonts/NotoSans-Regular.ttf')->generate();
 
         $this->assertEquals('Image', class_basename($image));
     }
