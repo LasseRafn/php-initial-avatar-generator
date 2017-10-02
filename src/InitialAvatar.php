@@ -350,9 +350,9 @@ class InitialAvatar
     {
         $fontFile = $this->getParameterFontFile();
 
-	    if ($this->getParameterAutoFont()) {
-		    return $this->getFontByScript();
-	    }
+        if ($this->getParameterAutoFont()) {
+            return $this->getFontByScript();
+        }
 
         if (is_int($fontFile) && in_array($fontFile, [1, 2, 3, 4, 5], false)) {
             return $fontFile;
@@ -375,38 +375,38 @@ class InitialAvatar
 
     private function getFontByScript()
     {
-		if (StringScript::isArabic($this->getInitials())) {
-			return __DIR__ . '/fonts/script/Noto-Arabic-Regular.ttf';
-		}
+        if (StringScript::isArabic($this->getInitials())) {
+            return __DIR__.'/fonts/script/Noto-Arabic-Regular.ttf';
+        }
 
-		if (StringScript::isArmenian($this->getInitials())) {
-			return __DIR__ . '/fonts/script/Noto-Armenian-Regular.ttf';
-		}
+        if (StringScript::isArmenian($this->getInitials())) {
+            return __DIR__.'/fonts/script/Noto-Armenian-Regular.ttf';
+        }
 
-		if (StringScript::isBengali($this->getInitials())) {
-			return __DIR__ . '/fonts/script/Noto-Bengali-Regular.ttf';
-		}
+        if (StringScript::isBengali($this->getInitials())) {
+            return __DIR__.'/fonts/script/Noto-Bengali-Regular.ttf';
+        }
 
-		if (StringScript::isGeorgian($this->getInitials())) {
-			return __DIR__ . '/fonts/script/Noto-Georgian-Regular.ttf';
-		}
+        if (StringScript::isGeorgian($this->getInitials())) {
+            return __DIR__.'/fonts/script/Noto-Georgian-Regular.ttf';
+        }
 
-		if (StringScript::isHebrew($this->getInitials())) {
-			return __DIR__ . '/fonts/script/Noto-Hebrew-Regular.ttf';
-		}
+        if (StringScript::isHebrew($this->getInitials())) {
+            return __DIR__.'/fonts/script/Noto-Hebrew-Regular.ttf';
+        }
 
-		if (StringScript::isMongolian($this->getInitials())) {
-			return __DIR__ . '/fonts/script/Noto-Mongolian-Regular.ttf';
-		}
+        if (StringScript::isMongolian($this->getInitials())) {
+            return __DIR__.'/fonts/script/Noto-Mongolian-Regular.ttf';
+        }
 
-		if (StringScript::isThai($this->getInitials())) {
-			return __DIR__ . '/fonts/script/Noto-Thai-Regular.ttf';
-		}
+        if (StringScript::isThai($this->getInitials())) {
+            return __DIR__.'/fonts/script/Noto-Thai-Regular.ttf';
+        }
 
-		if (StringScript::isTibetan($this->getInitials())) {
-			return __DIR__ . '/fonts/script/Noto-Tibetan-Regular.ttf';
-		}
+        if (StringScript::isTibetan($this->getInitials())) {
+            return __DIR__.'/fonts/script/Noto-Tibetan-Regular.ttf';
+        }
 
-		return $this->getParameterFontFile();
+        return $this->getParameterFontFile();
     }
 }
