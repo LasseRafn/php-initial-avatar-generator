@@ -78,4 +78,17 @@ class ParameterTest extends TestCase
 
         $this->assertNotTrue($avatar->getParameterSmooth());
     }
+
+    public function testCanSetAutoFont()
+    {
+        $avatar = new InitialAvatar();
+
+        $avatar->autoFont();
+
+        $this->assertTrue($avatar->getParameterAutoFont());
+
+        $avatar->autoFont(false);
+
+        $this->assertNotTrue($avatar->getParameterAutoFont());
+    }
 }
