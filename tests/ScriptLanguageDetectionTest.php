@@ -56,5 +56,11 @@ class ScriptLanguageDetectionTest extends TestCase
 
         $this->assertEquals('Image', class_basename($image));
         $this->assertTrue($image->stream()->isReadable());
+
+        // Uncommon
+        $image = $avatar->autoFont()->generate('ψψ');
+
+        $this->assertEquals('Image', class_basename($image));
+        $this->assertTrue($image->stream()->isReadable());
     }
 }
