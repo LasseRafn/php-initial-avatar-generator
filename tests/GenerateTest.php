@@ -33,7 +33,7 @@ class GenerateTest extends TestCase
         // With Japanese letters
         $avatar = new InitialAvatar();
 
-        $image = $avatar->font('/fonts/NotoSans-Medium.ttf')->generate('こんにちは');
+        $image = $avatar->font('/fonts/NotoSans-Bold.ttf')->generate('こんにちは');
 
         $this->assertEquals('Image', class_basename($image));
 
