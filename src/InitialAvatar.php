@@ -6,6 +6,7 @@ use Intervention\Image\Image;
 use Intervention\Image\ImageCache;
 use Intervention\Image\ImageManager;
 use LasseRafn\Initials\Initials;
+use LasseRafn\StringScript;
 
 class InitialAvatar
 {
@@ -24,6 +25,7 @@ class InitialAvatar
     private $parameter_fontColor = '#fff';
     private $parameter_rounded = false;
     private $parameter_smooth = false;
+    private $parameter_autofont = false;
     private $parameter_fontFile = '/fonts/OpenSans-Regular.ttf';
 
     public function __construct()
@@ -141,6 +143,21 @@ class InitialAvatar
     public function rounded($rounded = true)
     {
         $this->parameter_rounded = (bool) $rounded;
+
+        return $this;
+    }
+
+    /**
+     * Set if should detect character script
+     * and use a font that supports it.
+     *
+     * @param bool $autofont
+     *
+     * @return InitialAvatar
+     */
+    public function autoFont($autofont = true)
+    {
+        $this->parameter_autofont = (bool) $autofont;
 
         return $this;
     }
@@ -280,6 +297,16 @@ class InitialAvatar
     }
 
     /**
+     * Will return the autofont parameter.
+     *
+     * @return bool
+     */
+    public function getParameterAutoFont()
+    {
+        return $this->parameter_autofont;
+    }
+
+    /**
      * @param ImageManager|ImageCache $image
      *
      * @return Image|ImageCache
@@ -323,6 +350,10 @@ class InitialAvatar
     {
         $fontFile = $this->getParameterFontFile();
 
+	    if ($this->getParameterAutoFont()) {
+		    return $this->getFontByScript();
+	    }
+
         if (is_int($fontFile) && in_array($fontFile, [1, 2, 3, 4, 5], false)) {
             return $fontFile;
         }
@@ -340,5 +371,42 @@ class InitialAvatar
         }
 
         return 1;
+    }
+
+    private function getFontByScript()
+    {
+		if (StringScript::isArabic($this->getInitials())) {
+			return __DIR__ . '/fonts/script/Noto-Arabic-Regular.ttf';
+		}
+
+		if (StringScript::isArmenian($this->getInitials())) {
+			return __DIR__ . '/fonts/script/Noto-Armenian-Regular.ttf';
+		}
+
+		if (StringScript::isBengali($this->getInitials())) {
+			return __DIR__ . '/fonts/script/Noto-Bengali-Regular.ttf';
+		}
+
+		if (StringScript::isGeorgian($this->getInitials())) {
+			return __DIR__ . '/fonts/script/Noto-Georgian-Regular.ttf';
+		}
+
+		if (StringScript::isHebrew($this->getInitials())) {
+			return __DIR__ . '/fonts/script/Noto-Hebrew-Regular.ttf';
+		}
+
+		if (StringScript::isMongolian($this->getInitials())) {
+			return __DIR__ . '/fonts/script/Noto-Mongolian-Regular.ttf';
+		}
+
+		if (StringScript::isThai($this->getInitials())) {
+			return __DIR__ . '/fonts/script/Noto-Thai-Regular.ttf';
+		}
+
+		if (StringScript::isTibetan($this->getInitials())) {
+			return __DIR__ . '/fonts/script/Noto-Tibetan-Regular.ttf';
+		}
+
+		return $this->getParameterFontFile();
     }
 }

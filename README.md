@@ -47,6 +47,14 @@ Of cause, passing a name is not the only thing this sweet thing does!
 $image = $avatar->name('Albert Magnum')->generate();
 ````
 
+### AutoFont - default: false
+
+Will detect language script (using [lasserafn/php-string-script-language](https://github.com/lasserafn/php-string-script-language)) and use a font that supports it.
+
+````php
+$image = $avatar->autoFont()->generate();
+````
+
 ### Size - default: 48
 ````php
 // will be 96x96 pixels.
