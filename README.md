@@ -151,6 +151,19 @@ Will yield:
 * PHP 5.6, 7.0 or 7.1
 * Fileinfo Extension (from intervention/image)
 
+## Script/Language support
+Some letters are not supported by the default font files, so I added some fonts to add support. You must use `autoFont()` to enable this feature. Supported are:
+Supported:
+
+* Arabic
+* Armenian
+* Bengali
+* Georgian
+* Hebrew
+* Mongolian
+* Thai
+* Tibetan
+
 ## Supported Image Libraries (from intervention/image)
 * GD Library (>=2.0)
 * Imagick PHP extension (>=6.5.7)
