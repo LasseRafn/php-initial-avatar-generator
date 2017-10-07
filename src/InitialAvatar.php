@@ -411,6 +411,10 @@ class InitialAvatar
             return __DIR__.'/fonts/script/Noto-CJKJP-Regular.otf';
         }
 
+        if (StringScript::isJapanese($this->getInitials())) {
+            return __DIR__.'/fonts/script/Noto-CJKJP-Regular.otf';
+        }
+
         return $this->getParameterFontFile();
     }
 }
