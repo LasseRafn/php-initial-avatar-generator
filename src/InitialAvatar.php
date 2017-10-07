@@ -407,6 +407,10 @@ class InitialAvatar
             return __DIR__.'/fonts/script/Noto-Tibetan-Regular.ttf';
         }
 
+        if (StringScript::isChinese($this->getInitials())) {
+            return __DIR__.'/fonts/script/Noto-CJKJP-Regular.otf';
+        }
+
         return $this->getParameterFontFile();
     }
 }

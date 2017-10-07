@@ -161,6 +161,7 @@ Supported:
 * Georgian
 * Hebrew
 * Mongolian
+* Chinese
 * Thai
 * Tibetan
 
