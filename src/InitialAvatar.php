@@ -238,7 +238,7 @@ class InitialAvatar
      */
     public function getInitials()
     {
-        return $this->initials->getInitials();
+        return $this->initials->keepCase($this->getParameterKeepCase())->getInitials();
     }
 
     /**
