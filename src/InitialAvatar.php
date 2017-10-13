@@ -26,6 +26,7 @@ class InitialAvatar
     private $parameter_rounded = false;
     private $parameter_smooth = false;
     private $parameter_autofont = false;
+    private $parameter_keepCase = false;
     private $parameter_fontFile = '/fonts/OpenSans-Regular.ttf';
 
     public function __construct()
@@ -177,6 +178,20 @@ class InitialAvatar
     }
 
     /**
+     * Set if should skip uppercasing the name.
+     *
+     * @param bool $keepCase
+     *
+     * @return InitialAvatar
+     */
+    public function keepCase($keepCase = true)
+    {
+        $this->parameter_keepCase = (bool) $keepCase;
+
+        return $this;
+    }
+
+    /**
      * Set the font size in percentage
      * (0.1 = 10%).
      *
@@ -202,7 +217,7 @@ class InitialAvatar
     {
         if ($name !== null) {
             $this->parameter_name = $name;
-            $this->parameter_initials = $this->initials->generate($name);
+            $this->parameter_initials = $this->initials->keepCase($this->getParameterKeepCase())->generate($name);
         }
 
         if ($this->parameter_cacheTime === 0) {
@@ -294,6 +309,16 @@ class InitialAvatar
     public function getParameterSize()
     {
         return $this->parameter_size;
+    }
+
+    /**
+     * Will return the keepCase parameter.
+     *
+     * @return boolean
+     */
+    public function getParameterKeepCase()
+    {
+        return $this->parameter_keepCase;
     }
 
     /**
