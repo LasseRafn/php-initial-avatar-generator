@@ -49,8 +49,8 @@ class InitialAvatar
 
 		return $this;
 	}
-	
-	/**
+
+    /**
      * Transforms a unicode string to the proper format
      *
      * @param string $char the code to be converted (e.g., f007 would mean the "user" symbol)
@@ -58,12 +58,12 @@ class InitialAvatar
      * @return $this
      */
 	public function glyph($char)
-	{
+    {
 	    $uChar = json_decode(sprintf('"\u%s"', $char));
 	    $this->name($uChar);
 
 	    return $this;
-    }
+	}
 
 	/**
 	 * Set the length of the generated initials.
