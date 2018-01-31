@@ -10,22 +10,22 @@ use LasseRafn\StringScript;
 class InitialAvatar
 {
 	/** @var ImageManager */
-	private $image;
+	protected $image;
 
 	/** @var Initials */
-	private $initials;
+	protected $initials;
 
-	private $parameter_fontSize = 0.5;
-	private $parameter_initials = 'JD';
-	private $parameter_name = 'John Doe';
-	private $parameter_size = 48;
-	private $parameter_bgColor = '#000';
-	private $parameter_fontColor = '#fff';
-	private $parameter_rounded = false;
-	private $parameter_smooth = false;
-	private $parameter_autofont = false;
-	private $parameter_keepCase = false;
-	private $parameter_fontFile = '/fonts/OpenSans-Regular.ttf';
+	protected $parameter_fontSize = 0.5;
+	protected $parameter_initials = 'JD';
+	protected $parameter_name = 'John Doe';
+	protected $parameter_size = 48;
+	protected $parameter_bgColor = '#000';
+	protected $parameter_fontColor = '#fff';
+	protected $parameter_rounded = false;
+	protected $parameter_smooth = false;
+	protected $parameter_autofont = false;
+	protected $parameter_keepCase = false;
+	protected $parameter_fontFile = '/fonts/OpenSans-Regular.ttf';
 
 	public function __construct()
 	{
