@@ -142,6 +142,28 @@ Will yield:
 
 *Rounded for appearance; the actual avatar is a filled square*
 
+## Font Awesome Support
+
+The package supports FontAwesome (v5) and already distributes the free version as `otf` format (see `/fonts` folder).
+
+However, when using FontAwesome you may want to display one specific icon instead of the user's initials. This package, therefore, provides a handy `glyph($code)` method to be used along with FontAwesome.
+
+First, you need to "find" the respective unicode for the glyph you want to insert. For example, you may want to display a typical "user" icon (unicode: `f007`). The unicode is located near the name of the icon (e.g., see here the user icon as an example here: [https://fontawesome.com/icons/user](https://fontawesome.com/icons/user) ).
+
+An example for rendering a red avatar with a white "user" glyph would look like this:
+
+```php
+// note that we
+// 1) use glyph() instead of name
+// 2) change the font to FontAwesome!
+return $avatar->glyph('f007')
+              ->font('/fonts/FontAwesome5Free-Regular-400.ttf')
+              ->color('#fff')
+              ->background('#ff0000')
+              ->generate()
+              ->stream('png', 100);
+```
+
 ## Requirements
 * PHP 5.6, 7.0, 7.1 or 7.2
 * Fileinfo Extension (from intervention/image)
