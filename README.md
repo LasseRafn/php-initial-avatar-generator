@@ -88,12 +88,8 @@ If you input an integer between 1 and 5, it will use a GD Internal font as per t
 $image = $avatar->font('/fonts/OpenSans-Semibold.ttf')->generate();
 ````
 
-### Cache - default: 0 = no cache
-Will use **intervention/imagecache** to cache the result.
-````php
-$image = $avatar->cache()->generate(); // 60 minutes
-````
-You can simply use ->cache() and it will set cache to 60 minutes, but you can also say ->cache(180) to cache for 180 minutes.
+### Cache - removed!
+Cache has been removed. Performance-wise it was not doing much anyway.
 
 ### Length - default: 2
 ````php
