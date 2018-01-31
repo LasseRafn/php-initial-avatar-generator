@@ -157,7 +157,7 @@ An example for rendering a red avatar with a white "user" glyph would look like 
 // 1) use glyph() instead of name
 // 2) change the font to FontAwesome!
 return $avatar->glyph('f007')
-              ->font('/fonts/FontAwesome5Free-Regular-400.ttf')
+              ->font('/fonts/FontAwesome5Free-Regular-400.otf')
               ->color('#fff')
               ->background('#ff0000')
               ->generate()
