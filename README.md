@@ -128,7 +128,6 @@ return $avatar->name('Lasse Rafn')
               ->size(96) // 48 * 2
               ->background('#8BC34A')
               ->color('#fff')
-              ->cache()
               ->generate()
               ->stream('png', 100);
 ````
