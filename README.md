@@ -143,7 +143,7 @@ Will yield:
 *Rounded for appearance; the actual avatar is a filled square*
 
 ## Requirements
-* PHP 5.6, 7.0 or 7.1
+* PHP 5.6, 7.0, 7.1 or 7.2
 * Fileinfo Extension (from intervention/image)
 
 ## Script/Language support
