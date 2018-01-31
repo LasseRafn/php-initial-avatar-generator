@@ -21,28 +21,28 @@ class GenerateTest extends TestCase
 
         $image = $avatar->generate();
 
-        $this->assertEquals('Image', class_basename($image));
+        $this->assertEquals('Intervention\Image\Image', get_class($image));
 
         // With emoji
         $avatar = new InitialAvatar();
 
         $image = $avatar->generate('😅');
 
-        $this->assertEquals('Image', class_basename($image));
+        $this->assertEquals('Intervention\Image\Image', get_class($image));
 
         // With Japanese letters
         $avatar = new InitialAvatar();
 
         $image = $avatar->font(__DIR__.'/fonts/NotoSans-Regular.otf')->generate('こんにちは');
 
-        $this->assertEquals('Image', class_basename($image));
+        $this->assertEquals('Intervention\Image\Image', get_class($image));
 
         // With GD font
         $avatar = new InitialAvatar();
 
         $image = $avatar->font(2)->generate('LR');
 
-        $this->assertEquals('Image', class_basename($image));
+        $this->assertEquals('Intervention\Image\Image', get_class($image));
         $this->assertTrue($image->stream()->isReadable());
     }
 
@@ -52,7 +52,7 @@ class GenerateTest extends TestCase
 
         $image = $avatar->rounded()->generate();
 
-        $this->assertEquals('Image', class_basename($image));
+        $this->assertEquals('Intervention\Image\Image', get_class($image));
     }
 
     public function testCanMakeASmoothRoundedImageObject()
@@ -61,7 +61,7 @@ class GenerateTest extends TestCase
 
         $image = $avatar->rounded()->smooth()->generate();
 
-        $this->assertEquals('Image', class_basename($image));
+        $this->assertEquals('Intervention\Image\Image', get_class($image));
     }
 
     public function testStreamIsReadable()
@@ -77,7 +77,7 @@ class GenerateTest extends TestCase
 
         $image = $avatar->font(__DIR__.'/fonts/NotoSans-Regular.ttf')->generate();
 
-        $this->assertEquals('Image', class_basename($image));
+        $this->assertEquals('Intervention\Image\Image', get_class($image));
     }
 
     public function testWithFontFallback()
@@ -86,7 +86,7 @@ class GenerateTest extends TestCase
 
         $image = $avatar->font('no-font')->generate();
 
-        $this->assertEquals('Image', class_basename($image));
+        $this->assertEquals('Intervention\Image\Image', get_class($image));
     }
 
     public function testFontWithoutSlash()
@@ -95,6 +95,6 @@ class GenerateTest extends TestCase
 
         $image = $avatar->font('fonts/NotoSans-Regular.ttf')->generate();
 
-        $this->assertEquals('Image', class_basename($image));
+        $this->assertEquals('Intervention\Image\Image', get_class($image));
     }
 }

@@ -3,7 +3,6 @@
 namespace LasseRafn\InitialAvatarGenerator;
 
 use Intervention\Image\Image;
-use Intervention\Image\ImageCache;
 use Intervention\Image\ImageManager;
 use LasseRafn\Initials\Initials;
 use LasseRafn\StringScript;
@@ -16,7 +15,6 @@ class InitialAvatar
 	/** @var Initials */
 	private $initials;
 
-	private $parameter_cacheTime = 0;
 	private $parameter_fontSize = 0.5;
 	private $parameter_initials = 'JD';
 	private $parameter_name = 'John Doe';
@@ -121,17 +119,13 @@ class InitialAvatar
 	}
 
 	/**
-	 * Set cache time (in minutes)
-	 * 0 = no cache.
-	 *
 	 * @param int $minutes
+	 * @deprecated cache has been removed from this package.
 	 *
 	 * @return InitialAvatar
 	 */
 	public function cache($minutes = 60)
 	{
-		$this->parameter_cacheTime = (int) $minutes;
-
 		return $this;
 	}
 
@@ -221,15 +215,7 @@ class InitialAvatar
 			$this->parameter_initials = $this->initials->keepCase($this->getParameterKeepCase())->generate($name);
 		}
 
-		if ($this->parameter_cacheTime === 0) {
-			$img = $this->makeAvatar($this->image);
-		} else {
-			$img = $this->image->cache(function (ImageCache $image) {
-				return $this->makeAvatar($image);
-			}, $this->parameter_cacheTime, true);
-		}
-
-		return $img;
+		return $this->makeAvatar($this->image);
 	}
 
 	/**
@@ -333,9 +319,9 @@ class InitialAvatar
 	}
 
 	/**
-	 * @param ImageManager|ImageCache $image
+	 * @param ImageManager $image
 	 *
-	 * @return Image|ImageCache
+	 * @return Image
 	 */
 	private function makeAvatar($image)
 	{
