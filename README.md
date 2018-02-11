@@ -181,6 +181,9 @@ Some letters are not supported by the default font files, so I added some fonts 
 * Thai
 * Tibetan
 
+## [Contributors](https://github.com/LasseRafn/php-initial-avatar-generator/graphs/contributors)
+Open Source is best when supported by a community. Any size of contribution is **very** appreciated.
+
 ## Supported Image Libraries (from intervention/image)
 * GD Library (>=2.0)
 * Imagick PHP extension (>=6.5.7)
