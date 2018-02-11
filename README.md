@@ -170,7 +170,6 @@ return $avatar->glyph('f007')
 
 ## Script/Language support
 Some letters are not supported by the default font files, so I added some fonts to add support. You must use `autoFont()` to enable this feature. Supported are:
-Supported:
 
 * Arabic
 * Armenian
