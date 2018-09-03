@@ -5,43 +5,58 @@ use PHPUnit\Framework\TestCase;
 
 class InitialGenerationTest extends TestCase
 {
-    public function testInitialsAreGeneratedFromFullname()
-    {
-        $avatar = new InitialAvatar();
+	/** @test */
+	public function initials_are_generated_from_full_name() {
+		$avatar = new InitialAvatar();
 
-        // Two names
+		$avatar->name( 'John Doe' );
 
-        $avatar->name('John Doe');
+		$this->assertEquals( 'JD', $avatar->getInitials() );
+	}
 
-        $this->assertEquals('JD', $avatar->getInitials());
+	/** @test */
+	public function initials_are_generated_from_single_name() {
+		$avatar = new InitialAvatar();
 
-        // Single name
+		$avatar->name( 'John' );
 
-        $avatar->name('John');
+		$this->assertEquals( 'JO', $avatar->getInitials() );
+	}
 
-        $this->assertEquals('JO', $avatar->getInitials());
+	/** @test */
+	public function initials_are_generated_from_initals() {
+		$avatar = new InitialAvatar();
 
-        // Initials
+		$avatar->name( 'MA' );
 
-        $avatar->name('MA');
+		$this->assertEquals( 'MA', $avatar->getInitials() );
+	}
 
-        $this->assertEquals('MA', $avatar->getInitials());
+	/** @test */
+	public function initials_are_generated_from_three_names() {
+		$avatar = new InitialAvatar();
 
-        // Three names
+		$avatar->name( 'John Doe Bergerson' );
 
-        $avatar->name('John Doe Bergerson');
+		$this->assertEquals( 'JB', $avatar->getInitials() );
+	}
 
-        $this->assertEquals('JB', $avatar->getInitials());
+	/** @test */
+	public function initials_are_generated_with_dialect_specific_letters() {
+		$avatar = new InitialAvatar();
 
-        // Other name
+		$avatar->name( 'Gustav Årgonson' );
 
-        $avatar->name('Gustav Årgonson');
+		$this->assertEquals( 'GÅ', $avatar->getInitials() );
+	}
 
-        $this->assertEquals('GÅ', $avatar->getInitials());
+	/** @test */
+	public function initials_are_generated_from_name() {
+		$avatar = new InitialAvatar();
 
-        $avatar->name('Chanel Butterman');
+		$avatar->name( 'Chanel Butterman' );
 
-        $this->assertNotEquals('AB', $avatar->getInitials());
-        $this->assertEquals('CB', $avatar->getInitials());
-    }
+		$this->assertNotEquals( 'AB', $avatar->getInitials() );
+		$this->assertEquals( 'CB', $avatar->getInitials() );
+	}
 }

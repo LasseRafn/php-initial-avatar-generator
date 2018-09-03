@@ -5,7 +5,8 @@ use PHPUnit\Framework\TestCase;
 
 class ParameterTest extends TestCase
 {
-    public function testCanSetBackgroundColor()
+	/** @test */
+    public function can_set_background_color()
     {
         $avatar = new InitialAvatar();
 
@@ -18,7 +19,8 @@ class ParameterTest extends TestCase
         $this->assertEquals('#fff', $avatar->getBackgroundColor());
     }
 
-    public function testCanSetFontColor()
+    /** @test */
+    public function can_set_font_color()
     {
         $avatar = new InitialAvatar();
 
@@ -31,7 +33,8 @@ class ParameterTest extends TestCase
         $this->assertEquals('#fff', $avatar->getColor());
     }
 
-    public function testCanSetFontSize()
+    /** @test */
+    public function can_set_font_size()
     {
         $avatar = new InitialAvatar();
 
@@ -44,7 +47,8 @@ class ParameterTest extends TestCase
         $this->assertEquals('0.7', $avatar->getFontSize()); // Had to use strings as floats in PHP are nasty..
     }
 
-    public function testCanSetFont()
+    /** @test */
+    public function can_set_font()
     {
         $avatar = new InitialAvatar();
 
@@ -53,7 +57,8 @@ class ParameterTest extends TestCase
         $this->assertEquals('/fonts/OpenSans-Semibold.ttf', $avatar->getFontFile());
     }
 
-    public function testCanSetRounded()
+    /** @test */
+    public function can_set_rounded()
     {
         $avatar = new InitialAvatar();
 
@@ -66,7 +71,8 @@ class ParameterTest extends TestCase
         $this->assertNotTrue($avatar->getRounded());
     }
 
-    public function testCanSetSmooth()
+    /** @test */
+    public function can_set_smooth()
     {
         $avatar = new InitialAvatar();
 
@@ -79,7 +85,8 @@ class ParameterTest extends TestCase
         $this->assertNotTrue($avatar->getSmooth());
     }
 
-    public function testCanSetAutoFont()
+    /** @test */
+    public function can_set_auto_font()
     {
         $avatar = new InitialAvatar();
 
