@@ -135,7 +135,7 @@ class InitialAvatar
 	}
 
 	/**
-	 * Use imagick as the driver
+	 * Use imagick as the driver.
 	 *
 	 * @return $this
 	 */
@@ -148,7 +148,7 @@ class InitialAvatar
 	}
 
 	/**
-	 * Use GD as the driver
+	 * Use GD as the driver.
 	 *
 	 * @return $this
 	 */

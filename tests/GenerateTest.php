@@ -46,6 +46,26 @@ class GenerateTest extends TestCase
         $this->assertTrue($image->stream()->isReadable());
     }
 
+    /** @test */
+    public function can_use_imagick_driver() {
+	    $avatar = new InitialAvatar();
+
+	    $image = $avatar->imagick()->generate('LR');
+
+	    $this->assertEquals('Intervention\Image\Image', get_class($image));
+	    $this->assertTrue($image->stream()->isReadable());
+    }
+
+    /** @test */
+    public function can_use_gd_driver() {
+	    $avatar = new InitialAvatar();
+
+	    $image = $avatar->gd()->generate('LR');
+
+	    $this->assertEquals('Intervention\Image\Image', get_class($image));
+	    $this->assertTrue($image->stream()->isReadable());
+    }
+
     public function testCanMakeARoundedImageObject()
     {
         $avatar = new InitialAvatar();
