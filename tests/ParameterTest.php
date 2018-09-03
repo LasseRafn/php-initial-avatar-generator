@@ -11,11 +11,11 @@ class ParameterTest extends TestCase
 
         $avatar->background('#000');
 
-        $this->assertEquals('#000', $avatar->getParameterBackgroundColor());
+        $this->assertEquals('#000', $avatar->getBackgroundColor());
 
         $avatar->background('#fff');
 
-        $this->assertEquals('#fff', $avatar->getParameterBackgroundColor());
+        $this->assertEquals('#fff', $avatar->getBackgroundColor());
     }
 
     public function testCanSetFontColor()
@@ -24,11 +24,11 @@ class ParameterTest extends TestCase
 
         $avatar->color('#000');
 
-        $this->assertEquals('#000', $avatar->getParameterColor());
+        $this->assertEquals('#000', $avatar->getColor());
 
         $avatar->color('#fff');
 
-        $this->assertEquals('#fff', $avatar->getParameterColor());
+        $this->assertEquals('#fff', $avatar->getColor());
     }
 
     public function testCanSetFontSize()
@@ -37,11 +37,11 @@ class ParameterTest extends TestCase
 
         $avatar->fontSize(0.3);
 
-        $this->assertEquals('0.3', $avatar->getParameterFontSize()); // Had to use strings as floats in PHP are nasty..
+        $this->assertEquals('0.3', $avatar->getFontSize()); // Had to use strings as floats in PHP are nasty..
 
         $avatar->fontSize(0.7);
 
-        $this->assertEquals('0.7', $avatar->getParameterFontSize()); // Had to use strings as floats in PHP are nasty..
+        $this->assertEquals('0.7', $avatar->getFontSize()); // Had to use strings as floats in PHP are nasty..
     }
 
     public function testCanSetFont()
@@ -50,7 +50,7 @@ class ParameterTest extends TestCase
 
         $avatar->font('/fonts/OpenSans-Semibold.ttf');
 
-        $this->assertEquals('/fonts/OpenSans-Semibold.ttf', $avatar->getParameterFontFile());
+        $this->assertEquals('/fonts/OpenSans-Semibold.ttf', $avatar->getFontFile());
     }
 
     public function testCanSetRounded()
@@ -59,11 +59,11 @@ class ParameterTest extends TestCase
 
         $avatar->rounded();
 
-        $this->assertTrue($avatar->getParameterRounded());
+        $this->assertTrue($avatar->getRounded());
 
         $avatar->rounded(false);
 
-        $this->assertNotTrue($avatar->getParameterRounded());
+        $this->assertNotTrue($avatar->getRounded());
     }
 
     public function testCanSetSmooth()
@@ -72,11 +72,11 @@ class ParameterTest extends TestCase
 
         $avatar->smooth();
 
-        $this->assertTrue($avatar->getParameterSmooth());
+        $this->assertTrue($avatar->getSmooth());
 
         $avatar->smooth(false);
 
-        $this->assertNotTrue($avatar->getParameterSmooth());
+        $this->assertNotTrue($avatar->getSmooth());
     }
 
     public function testCanSetAutoFont()
@@ -85,10 +85,10 @@ class ParameterTest extends TestCase
 
         $avatar->autoFont();
 
-        $this->assertTrue($avatar->getParameterAutoFont());
+        $this->assertTrue($avatar->getAutoFont());
 
         $avatar->autoFont(false);
 
-        $this->assertNotTrue($avatar->getParameterAutoFont());
+        $this->assertNotTrue($avatar->getAutoFont());
     }
 }
