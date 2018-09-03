@@ -161,17 +161,6 @@ class InitialAvatar
 	}
 
 	/**
-	 * @param int $minutes
-	 *
-	 * @deprecated cache has been removed from this package.
-	 *
-	 * @return $this
-	 */
-	public function cache( $minutes = 60 ) {
-		return $this;
-	}
-
-	/**
 	 * Set if should make a round image or not.
 	 *
 	 * @param bool $rounded

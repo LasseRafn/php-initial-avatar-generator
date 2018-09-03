@@ -157,7 +157,7 @@ An example for rendering a red avatar with a white "user" glyph would look like 
 // 1) use glyph() instead of name
 // 2) change the font to FontAwesome!
 return $avatar->glyph('f007')
-              ->font('/fonts/FontAwesome5Free-Regular-400.ttf')
+              ->font('/fonts/FontAwesome5Free-Regular-400.otf')
               ->color('#fff')
               ->background('#ff0000')
               ->generate()
@@ -170,7 +170,6 @@ return $avatar->glyph('f007')
 
 ## Script/Language support
 Some letters are not supported by the default font files, so I added some fonts to add support. You must use `autoFont()` to enable this feature. Supported are:
-Supported:
 
 * Arabic
 * Armenian
@@ -181,6 +180,9 @@ Supported:
 * Chinese
 * Thai
 * Tibetan
+
+## [Contributors](https://github.com/LasseRafn/php-initial-avatar-generator/graphs/contributors)
+Open Source is best when supported by a community. Any size of contribution is **very** appreciated.
 
 ## Supported Image Libraries (from intervention/image)
 * GD Library (>=2.0)
