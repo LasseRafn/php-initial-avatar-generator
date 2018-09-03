@@ -16,7 +16,7 @@ class InitialAvatar
 	/** @var Initials */
 	protected $initials_generator;
 
-	protected $library            = 'gd'; // imagick or gd
+	protected $driver             = 'gd'; // imagick or gd
 	protected $fontSize           = 0.5;
 	protected $name               = 'John Doe';
 	protected $size               = 48;
@@ -30,8 +30,15 @@ class InitialAvatar
 	protected $generated_initials = 'JD';
 
 	public function __construct() {
-		$this->image              = new ImageManager();
+		$this->setupImageManager();
 		$this->initials_generator = new Initials();
+	}
+
+	/**
+	 * Create a ImageManager instance
+	 */
+	protected function setupImageManager() {
+		$this->image = new ImageManager( [ 'driver' => $this->getDriver() ] );
 	}
 
 	/**
@@ -39,7 +46,7 @@ class InitialAvatar
 	 *
 	 * @param string $nameOrInitials
 	 *
-	 * @return InitialAvatar
+	 * @return $this
 	 */
 	public function name( $nameOrInitials ) {
 		$this->name = $nameOrInitials;
@@ -67,7 +74,7 @@ class InitialAvatar
 	 *
 	 * @param int $length
 	 *
-	 * @return InitialAvatar
+	 * @return $this
 	 */
 	public function length( $length = 2 ) {
 		$this->initials_generator->length( $length );
@@ -80,7 +87,7 @@ class InitialAvatar
 	 *
 	 * @param int $size
 	 *
-	 * @return InitialAvatar
+	 * @return $this
 	 */
 	public function size( $size ) {
 		$this->size = (int) $size;
@@ -93,7 +100,7 @@ class InitialAvatar
 	 *
 	 * @param string $background
 	 *
-	 * @return InitialAvatar
+	 * @return $this
 	 */
 	public function background( $background ) {
 		$this->bgColor = (string) $background;
@@ -106,7 +113,7 @@ class InitialAvatar
 	 *
 	 * @param string $color
 	 *
-	 * @return InitialAvatar
+	 * @return $this
 	 */
 	public function color( $color ) {
 		$this->fontColor = (string) $color;
@@ -119,10 +126,36 @@ class InitialAvatar
 	 *
 	 * @param string|int $font
 	 *
-	 * @return InitialAvatar
+	 * @return $this
 	 */
 	public function font( $font ) {
 		$this->fontFile = $font;
+
+		return $this;
+	}
+
+	/**
+	 * Use imagick as the driver
+	 *
+	 * @return $this
+	 */
+	public function imagick() {
+		$this->driver = 'imagick';
+
+		$this->setupImageManager();
+
+		return $this;
+	}
+
+	/**
+	 * Use GD as the driver
+	 *
+	 * @return $this
+	 */
+	public function gd() {
+		$this->driver = 'gd';
+
+		$this->setupImageManager();
 
 		return $this;
 	}
@@ -132,7 +165,7 @@ class InitialAvatar
 	 *
 	 * @deprecated cache has been removed from this package.
 	 *
-	 * @return InitialAvatar
+	 * @return $this
 	 */
 	public function cache( $minutes = 60 ) {
 		return $this;
@@ -143,7 +176,7 @@ class InitialAvatar
 	 *
 	 * @param bool $rounded
 	 *
-	 * @return InitialAvatar
+	 * @return $this
 	 */
 	public function rounded( $rounded = true ) {
 		$this->rounded = (bool) $rounded;
@@ -157,7 +190,7 @@ class InitialAvatar
 	 *
 	 * @param bool $autofont
 	 *
-	 * @return InitialAvatar
+	 * @return $this
 	 */
 	public function autoFont( $autofont = true ) {
 		$this->autofont = (bool) $autofont;
@@ -170,7 +203,7 @@ class InitialAvatar
 	 *
 	 * @param bool $smooth
 	 *
-	 * @return InitialAvatar
+	 * @return $this
 	 */
 	public function smooth( $smooth = true ) {
 		$this->smooth = (bool) $smooth;
@@ -183,7 +216,7 @@ class InitialAvatar
 	 *
 	 * @param bool $keepCase
 	 *
-	 * @return InitialAvatar
+	 * @return $this
 	 */
 	public function keepCase( $keepCase = true ) {
 		$this->keepCase = (bool) $keepCase;
@@ -197,7 +230,7 @@ class InitialAvatar
 	 *
 	 * @param float $size
 	 *
-	 * @return InitialAvatar
+	 * @return $this
 	 */
 	public function fontSize( $size = 0.5 ) {
 		$this->fontSize = number_format( $size, 2 );
@@ -237,6 +270,15 @@ class InitialAvatar
 	 */
 	public function getBackgroundColor() {
 		return $this->bgColor;
+	}
+
+	/**
+	 * Will return the set driver.
+	 *
+	 * @return string
+	 */
+	public function getDriver() {
+		return $this->driver;
 	}
 
 	/**
