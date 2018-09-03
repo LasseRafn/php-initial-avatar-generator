@@ -16,7 +16,7 @@
 	],
 	"require": {
 		"php": "^5.6|^7.0|^7.1|^7.2|^7.3",
-		"ext-json": "^1.5",
+		"ext-json": "*",
 		"intervention/image": "^2.3",
 		"lasserafn/php-initials": "^2.20",
 		"lasserafn/php-string-script-language": "^0.1.0"
