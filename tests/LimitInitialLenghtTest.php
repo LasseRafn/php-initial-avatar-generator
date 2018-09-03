@@ -14,7 +14,6 @@ class LimitInitialLenghtTest extends TestCase
 
 		$this->assertEquals( 'J', $avatar->getInitials() );
 		$this->assertEquals( 1, strlen( $avatar->getInitials() ) );
-
 	}
 
 	/** @test */
@@ -25,7 +24,6 @@ class LimitInitialLenghtTest extends TestCase
 
 		$this->assertEquals( 'JD', $avatar->getInitials() );
 		$this->assertEquals( 2, strlen( $avatar->getInitials() ) );
-
 	}
 
 	/** @test */
@@ -36,7 +34,6 @@ class LimitInitialLenghtTest extends TestCase
 
 		$this->assertEquals( 'JDJ', $avatar->getInitials() );
 		$this->assertEquals( 3, strlen( $avatar->getInitials() ) );
-
 	}
 
 	/** @test */
@@ -47,7 +44,6 @@ class LimitInitialLenghtTest extends TestCase
 
 		$this->assertEquals( 'JDO', $avatar->getInitials() );
 		$this->assertEquals( 3, strlen( $avatar->getInitials() ) );
-
 	}
 
 	/** @test */
@@ -69,7 +65,6 @@ class LimitInitialLenghtTest extends TestCase
 
 		$this->assertEquals( 'JOHN', $avatar->getInitials() );
 		$this->assertEquals( 4, strlen( $avatar->getInitials() ) );
-
 	}
 
 	/** @test */
@@ -80,7 +75,6 @@ class LimitInitialLenghtTest extends TestCase
 
 		$this->assertEquals( 'LASSE', $avatar->getInitials() );
 		$this->assertEquals( 5, strlen( $avatar->getInitials() ) );
-
 	}
 
 	/** @test */

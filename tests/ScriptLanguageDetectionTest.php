@@ -13,7 +13,6 @@ class ScriptLanguageDetectionTest extends TestCase
 
 		$this->assertEquals( 'Intervention\Image\Image', get_class( $image ) );
 		$this->assertTrue( $image->stream()->isReadable() );
-
 	}
 
 	/** @test */
@@ -24,7 +23,6 @@ class ScriptLanguageDetectionTest extends TestCase
 
 		$this->assertEquals( 'Intervention\Image\Image', get_class( $image ) );
 		$this->assertTrue( $image->stream()->isReadable() );
-
 	}
 
 	/** @test */
@@ -35,7 +33,6 @@ class ScriptLanguageDetectionTest extends TestCase
 
 		$this->assertEquals( 'Intervention\Image\Image', get_class( $image ) );
 		$this->assertTrue( $image->stream()->isReadable() );
-
 	}
 
 	/** @test */
@@ -46,7 +43,6 @@ class ScriptLanguageDetectionTest extends TestCase
 
 		$this->assertEquals( 'Intervention\Image\Image', get_class( $image ) );
 		$this->assertTrue( $image->stream()->isReadable() );
-
 	}
 
 	/** @test */
@@ -57,7 +53,6 @@ class ScriptLanguageDetectionTest extends TestCase
 
 		$this->assertEquals( 'Intervention\Image\Image', get_class( $image ) );
 		$this->assertTrue( $image->stream()->isReadable() );
-
 	}
 
 	/** @test */
@@ -68,7 +63,6 @@ class ScriptLanguageDetectionTest extends TestCase
 
 		$this->assertEquals( 'Intervention\Image\Image', get_class( $image ) );
 		$this->assertTrue( $image->stream()->isReadable() );
-
 	}
 
 	/** @test */
@@ -79,7 +73,6 @@ class ScriptLanguageDetectionTest extends TestCase
 
 		$this->assertEquals( 'Intervention\Image\Image', get_class( $image ) );
 		$this->assertTrue( $image->stream()->isReadable() );
-
 	}
 
 	/** @test */
@@ -90,7 +83,6 @@ class ScriptLanguageDetectionTest extends TestCase
 
 		$this->assertEquals( 'Intervention\Image\Image', get_class( $image ) );
 		$this->assertTrue( $image->stream()->isReadable() );
-
 	}
 
 	/** @test */
