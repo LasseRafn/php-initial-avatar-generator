@@ -96,6 +96,12 @@ Cache has been removed. Performance-wise it was not doing much anyway.
 $image = $avatar->name('John Doe Johnson')->length(3)->generate(); // 3 letters = JDJ
 ````
 
+### Switching driver - default: gd
+````php
+$image = $avatar->gd()->generate(); // Uses GD driver
+$image = $avatar->imagick()->generate(); // Uses Imagick driver
+````
+
 ### Rounded - default: false
 ````php
 $image = $avatar->rounded()->generate();
