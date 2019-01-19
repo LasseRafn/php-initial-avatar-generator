@@ -108,7 +108,46 @@ class InitialAvatar
 		return $this;
 	}
 
-	/**
+    /**
+     * Generate random color
+     * Stolen from here: https://stackoverflow.com/a/5614583/1103397
+     *
+     * @return string Random hex color
+     */
+    public function generateRandomColor() {
+        $color = [];
+        for ($i = 0; $i < 3; $i++){
+            $color[] = str_pad(dechex(mt_rand(0, 255)), 2, '0', STR_PAD_LEFT);
+        }
+
+        return implode('', $color);
+    }
+
+    /**
+     * Set random background color
+     *
+     * @return $this
+     */
+    public function randBackground()
+    {
+        $this->background($this->generateRandomColor());
+
+        return $this;
+	}
+
+    /**
+     * Set random font color
+     *
+     * @return $this
+     */
+    public function randColor()
+    {
+        $this->color($this->generateRandomColor());
+
+        return $this;
+	}
+
+    /**
 	 * Set the font color.
 	 *
 	 * @param string $color
