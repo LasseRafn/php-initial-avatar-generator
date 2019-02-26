@@ -510,7 +510,7 @@ class InitialAvatar
 		$originalFile = $fontFile;
 
 		foreach ( $weightsToTry as $weight ) {
-			$fontFile = str_replace( '/(\-(Bold|Semibold|Regular))/', $weight, $originalFile );
+			$fontFile = preg_replace( '/(\-(Bold|Semibold|Regular))/', "-{$weight}", $originalFile );
 
 			if ( file_exists( $fontFile ) ) {
 				return $fontFile;
