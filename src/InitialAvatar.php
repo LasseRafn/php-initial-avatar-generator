@@ -7,6 +7,7 @@ use Intervention\Image\Image;
 use Intervention\Image\ImageManager;
 use LasseRafn\Initials\Initials;
 use LasseRafn\StringScript;
+use LasseRafn\InitialAvatarGenerator\Translator\Base;
 
 class InitialAvatar
 {
@@ -29,6 +30,30 @@ class InitialAvatar
 	protected $fontFile           = '/fonts/OpenSans-Regular.ttf';
 	protected $generated_initials = 'JD';
 
+    /**
+     * Language eg.en zh-CN
+     *
+     * @var string
+     */
+    protected $language = 'en';
+
+    /**
+     * Role translator
+     *
+     * @var Base
+     */
+    protected $translator;
+
+    /**
+     * Language related to translator
+     *
+     * @var array
+     */
+    protected $translatorMap = [
+        'en' => 'LasseRafn\\InitialAvatarGenerator\\Translator\\En',
+        'zh-CN' => 'LasseRafn\\InitialAvatarGenerator\\Translator\\ZhCN',
+    ];
+
 	public function __construct() {
 		$this->setupImageManager();
 		$this->initials_generator = new Initials();
@@ -49,6 +74,7 @@ class InitialAvatar
 	 * @return $this
 	 */
 	public function name( $nameOrInitials ) {
+        $nameOrInitials = $this->translate($nameOrInitials);
 		$this->name = $nameOrInitials;
 		$this->initials_generator->name( $nameOrInitials );
 
@@ -341,6 +367,66 @@ class InitialAvatar
 	public function getAutoFont() {
 		return $this->autofont;
 	}
+
+    /**
+     * Set language of name, pls use `language` before `name`, just like
+     * ```php
+     * $avatar->language('en')->name('Mr Green'); // Right
+     * $avatar->name('Mr Green')->language('en'); // Wrong
+     * ```
+     *
+     * @param string $language
+     * @return $this
+     */
+    public function language($language)
+    {
+        $this->language = $language ? : 'en';
+
+        return $this;
+    }
+
+    /**
+     * Add new translators designed by user
+     *
+     * @param array $translatorMap
+     * ```php
+     * $translatorMap = [
+     *     'fr' => 'foo\bar\Fr',
+     *     'zh-TW' => 'foo\bar\ZhTW'
+     * ];
+     * ```
+     * @return $this
+     */
+    public function addTranslators($translatorMap)
+    {
+        $this->translatorMap = array_merge($this->translatorMap, $translatorMap);
+
+        return $this;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    protected function translate($nameOrInitials)
+    {
+        return $this->getTranslator()->translate($nameOrInitials);
+    }
+
+    /**
+     * Instance the translator by language
+     *
+     * @return Base
+     */
+    protected function getTranslator()
+    {
+        if ($this->translator instanceof Base && $this->translator->getSourceLanguage() === $this->language) {
+            return $this->translator;
+        }
+
+        $translatorClass = array_key_exists($this->language, $this->translatorMap) ? $this->translatorMap[$this->language] : 'LasseRafn\\InitialAvatarGenerator\\Translator\\En';
+
+        return $this->translato = new $translatorClass();
+    }
 
 	/**
 	 * @param ImageManager $image
