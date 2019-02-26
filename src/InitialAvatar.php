@@ -388,7 +388,7 @@ class InitialAvatar
 			$fontFile = $this->getFontByScript();
 		}
 
-		if ( is_int( $fontFile ) && in_array( $fontFile, [ 1, 2, 3, 4, 5 ], false ) ) {
+		if ( is_int( $fontFile ) && \in_array( $fontFile, [ 1, 2, 3, 4, 5 ], false ) ) {
 			return $fontFile;
 		}
 
