@@ -5,9 +5,11 @@ namespace LasseRafn\InitialAvatarGenerator;
 use Intervention\Image\AbstractFont;
 use Intervention\Image\Image;
 use Intervention\Image\ImageManager;
+use LasseRafn\InitialAvatarGenerator\Translator\Base;
+use LasseRafn\InitialAvatarGenerator\Translator\En;
+use LasseRafn\InitialAvatarGenerator\Translator\ZhCN;
 use LasseRafn\Initials\Initials;
 use LasseRafn\StringScript;
-use LasseRafn\InitialAvatarGenerator\Translator\Base;
 
 class InitialAvatar
 {
@@ -29,30 +31,31 @@ class InitialAvatar
 	protected $keepCase           = false;
 	protected $fontFile           = '/fonts/OpenSans-Regular.ttf';
 	protected $generated_initials = 'JD';
+	protected $preferBold         = false;
 
-    /**
-     * Language eg.en zh-CN
-     *
-     * @var string
-     */
-    protected $language = 'en';
+	/**
+	 * Language eg.en zh-CN
+	 *
+	 * @var string
+	 */
+	protected $language = 'en';
 
-    /**
-     * Role translator
-     *
-     * @var Base
-     */
-    protected $translator;
+	/**
+	 * Role translator
+	 *
+	 * @var Base
+	 */
+	protected $translator;
 
-    /**
-     * Language related to translator
-     *
-     * @var array
-     */
-    protected $translatorMap = [
-        'en' => 'LasseRafn\\InitialAvatarGenerator\\Translator\\En',
-        'zh-CN' => 'LasseRafn\\InitialAvatarGenerator\\Translator\\ZhCN',
-    ];
+	/**
+	 * Language related to translator
+	 *
+	 * @var array
+	 */
+	protected $translatorMap = [
+		'en'    => En::class,
+		'zh-CN' => ZhCN::class,
+	];
 
 	public function __construct() {
 		$this->setupImageManager();
@@ -74,8 +77,8 @@ class InitialAvatar
 	 * @return $this
 	 */
 	public function name( $nameOrInitials ) {
-        $nameOrInitials = $this->translate($nameOrInitials);
-		$this->name = $nameOrInitials;
+		$nameOrInitials = $this->translate( $nameOrInitials );
+		$this->name     = $nameOrInitials;
 		$this->initials_generator->name( $nameOrInitials );
 
 		return $this;
@@ -117,6 +120,28 @@ class InitialAvatar
 	 */
 	public function size( $size ) {
 		$this->size = (int) $size;
+
+		return $this;
+	}
+
+	/**
+	 * Prefer bold fonts (if possible)
+	 *
+	 * @return $this
+	 */
+	public function preferBold() {
+		$this->preferBold = true;
+
+		return $this;
+	}
+
+	/**
+	 * Prefer regular fonts (if possible)
+	 *
+	 * @return $this
+	 */
+	public function preferRegular() {
+		$this->preferBold = false;
 
 		return $this;
 	}
@@ -368,72 +393,70 @@ class InitialAvatar
 		return $this->autofont;
 	}
 
-    /**
-     * Set language of name, pls use `language` before `name`, just like
-     * ```php
-     * $avatar->language('en')->name('Mr Green'); // Right
-     * $avatar->name('Mr Green')->language('en'); // Wrong
-     * ```
-     *
-     * @param string $language
-     * @return $this
-     */
-    public function language($language)
-    {
-        $this->language = $language ? : 'en';
+	/**
+	 * Set language of name, pls use `language` before `name`, just like
+	 * ```php
+	 * $avatar->language('en')->name('Mr Green'); // Right
+	 * $avatar->name('Mr Green')->language('en'); // Wrong
+	 * ```
+	 *
+	 * @param string $language
+	 *
+	 * @return $this
+	 */
+	public function language( $language ) {
+		$this->language = $language ?: 'en';
 
-        return $this;
-    }
+		return $this;
+	}
 
-    /**
-     * Add new translators designed by user
-     *
-     * @param array $translatorMap
-     * ```php
-     * $translatorMap = [
-     *     'fr' => 'foo\bar\Fr',
-     *     'zh-TW' => 'foo\bar\ZhTW'
-     * ];
-     * ```
-     * @return $this
-     */
-    public function addTranslators($translatorMap)
-    {
-        $this->translatorMap = array_merge($this->translatorMap, $translatorMap);
+	/**
+	 * Add new translators designed by user
+	 *
+	 * @param array $translatorMap
+	 *     ```php
+	 *     $translatorMap = [
+	 *     'fr' => 'foo\bar\Fr',
+	 *     'zh-TW' => 'foo\bar\ZhTW'
+	 *     ];
+	 *     ```
+	 *
+	 * @return $this
+	 */
+	public function addTranslators( $translatorMap ) {
+		$this->translatorMap = array_merge( $this->translatorMap, $translatorMap );
 
-        return $this;
-    }
+		return $this;
+	}
 
-    /**
-     * @inheritdoc
-     */
-    protected function translate($nameOrInitials)
-    {
-        return $this->getTranslator()->translate($nameOrInitials);
-    }
+	/**
+	 * @inheritdoc
+	 */
+	protected function translate( $nameOrInitials ) {
+		return $this->getTranslator()->translate( $nameOrInitials );
+	}
 
-    /**
-     * Instance the translator by language
-     *
-     * @return Base
-     */
-    protected function getTranslator()
-    {
-        if ($this->translator instanceof Base && $this->translator->getSourceLanguage() === $this->language) {
-            return $this->translator;
-        }
+	/**
+	 * Instance the translator by language
+	 *
+	 * @return Base
+	 */
+	protected function getTranslator() {
+		if ( $this->translator instanceof Base && $this->translator->getSourceLanguage() === $this->language ) {
+			return $this->translator;
+		}
 
-        $translatorClass = array_key_exists($this->language, $this->translatorMap) ? $this->translatorMap[$this->language] : 'LasseRafn\\InitialAvatarGenerator\\Translator\\En';
+		$translatorClass = array_key_exists( $this->language, $this->translatorMap ) ? $this->translatorMap[ $this->language ] : 'LasseRafn\\InitialAvatarGenerator\\Translator\\En';
 
-        return $this->translato = new $translatorClass();
-    }
+		return $this->translato = new $translatorClass();
+	}
 
 	/**
 	 * @param ImageManager $image
 	 *
 	 * @return Image
 	 */
-	private function makeAvatar( $image ) {
+	protected function makeAvatar( $image ) {
 		$size     = $this->getSize();
 		$bgColor  = $this->getBackgroundColor();
 		$name     = $this->getInitials();
@@ -467,7 +490,7 @@ class InitialAvatar
 		} );
 	}
 
-	private function findFontFile() {
+	protected function findFontFile() {
 		$fontFile = $this->getFontFile();
 
 		if ( $this->getAutoFont() ) {
@@ -478,59 +501,76 @@ class InitialAvatar
 			return $fontFile;
 		}
 
-		if ( file_exists( $fontFile ) ) {
-			return $fontFile;
+		$weightsToTry = [ 'Regular' ];
+
+		if ( $this->preferBold ) {
+			$weightsToTry = [ 'Bold', 'Semibold', 'Regular' ];
 		}
 
-		if ( file_exists( __DIR__ . $fontFile ) ) {
-			return __DIR__ . $fontFile;
-		}
+		$originalFile = $fontFile;
 
-		if ( file_exists( __DIR__ . '/' . $fontFile ) ) {
-			return __DIR__ . '/' . $fontFile;
+		foreach ( $weightsToTry as $weight ) {
+			$fontFile = str_replace( '/(\-(Bold|Semibold|Regular))/', $weight, $originalFile );
+
+			if ( file_exists( $fontFile ) ) {
+				return $fontFile;
+			}
+
+			if ( file_exists( __DIR__ . $fontFile ) ) {
+				return __DIR__ . $fontFile;
+			}
+
+			if ( file_exists( __DIR__ . '/' . $fontFile ) ) {
+				return __DIR__ . '/' . $fontFile;
+			}
 		}
 
 		return 1;
 	}
 
-	private function getFontByScript() {
+	protected function getFontByScript() {
+		// Arabic
 		if ( StringScript::isArabic( $this->getInitials() ) ) {
 			return __DIR__ . '/fonts/script/Noto-Arabic-Regular.ttf';
 		}
 
+		// Armenian
 		if ( StringScript::isArmenian( $this->getInitials() ) ) {
 			return __DIR__ . '/fonts/script/Noto-Armenian-Regular.ttf';
 		}
 
+		// Bengali
 		if ( StringScript::isBengali( $this->getInitials() ) ) {
 			return __DIR__ . '/fonts/script/Noto-Bengali-Regular.ttf';
 		}
 
+		// Georgian
 		if ( StringScript::isGeorgian( $this->getInitials() ) ) {
 			return __DIR__ . '/fonts/script/Noto-Georgian-Regular.ttf';
 		}
 
+		// Hebrew
 		if ( StringScript::isHebrew( $this->getInitials() ) ) {
 			return __DIR__ . '/fonts/script/Noto-Hebrew-Regular.ttf';
 		}
 
+		// Mongolian
 		if ( StringScript::isMongolian( $this->getInitials() ) ) {
 			return __DIR__ . '/fonts/script/Noto-Mongolian-Regular.ttf';
 		}
 
+		// Thai
 		if ( StringScript::isThai( $this->getInitials() ) ) {
 			return __DIR__ . '/fonts/script/Noto-Thai-Regular.ttf';
 		}
 
+		// Tibetan
 		if ( StringScript::isTibetan( $this->getInitials() ) ) {
 			return __DIR__ . '/fonts/script/Noto-Tibetan-Regular.ttf';
 		}
 
-		if ( StringScript::isChinese( $this->getInitials() ) ) {
-			return __DIR__ . '/fonts/script/Noto-CJKJP-Regular.otf';
-		}
-
-		if ( StringScript::isJapanese( $this->getInitials() ) ) {
+		// Chinese & Japanese
+		if ( StringScript::isJapanese( $this->getInitials() ) || StringScript::isChinese( $this->getInitials() ) ) {
 			return __DIR__ . '/fonts/script/Noto-CJKJP-Regular.otf';
 		}
 
