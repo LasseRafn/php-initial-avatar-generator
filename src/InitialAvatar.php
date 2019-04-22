@@ -557,6 +557,7 @@ class InitialAvatar
 
 		if ( $this->getRounded() && $this->getSmooth() ) {
 			$width *= 5;
+			$height *= 5;
 		}
 
 		$avatar = $image->canvas( $width, $height, ! $this->getRounded() ? $bgColor : null );
@@ -569,6 +570,7 @@ class InitialAvatar
 
 		if ( $this->getRounded() && $this->getSmooth() ) {
 			$width /= 5;
+			$height /= 5;
 			$avatar->resize( $width, $height );
 		}
 
