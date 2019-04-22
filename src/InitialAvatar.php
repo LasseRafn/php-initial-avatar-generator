@@ -10,6 +10,11 @@ use LasseRafn\InitialAvatarGenerator\Translator\En;
 use LasseRafn\InitialAvatarGenerator\Translator\ZhCN;
 use LasseRafn\Initials\Initials;
 use LasseRafn\StringScript;
+use SVG\Nodes\Shapes\SVGCircle;
+use SVG\Nodes\Shapes\SVGRect;
+use SVG\Nodes\Structures\SVGFont;
+use SVG\Nodes\Texts\SVGText;
+use SVG\SVG;
 
 class InitialAvatar
 {
@@ -22,14 +27,16 @@ class InitialAvatar
 	protected $driver             = 'gd'; // imagick or gd
 	protected $fontSize           = 0.5;
 	protected $name               = 'John Doe';
-	protected $size               = 48;
-	protected $bgColor            = '#000';
-	protected $fontColor          = '#fff';
+	protected $width              = 48;
+	protected $height             = 48;
+	protected $bgColor            = '#f0e9e9';
+	protected $fontColor          = '#8b5d5d';
 	protected $rounded            = false;
 	protected $smooth             = false;
 	protected $autofont           = false;
 	protected $keepCase           = false;
 	protected $fontFile           = '/fonts/OpenSans-Regular.ttf';
+	protected $fontName           = 'OpenSans, sans-serif';
 	protected $generated_initials = 'JD';
 	protected $preferBold         = false;
 
@@ -92,7 +99,7 @@ class InitialAvatar
 	 * @return $this
 	 */
 	public function glyph( $char ) {
-		$uChar = json_decode( sprintf( '"\u%s"', $char ) );
+		$uChar = json_decode( sprintf( '"\u%s"', $char ), false );
 		$this->name( $uChar );
 
 		return $this;
@@ -112,14 +119,41 @@ class InitialAvatar
 	}
 
 	/**
-	 * Set time avatar/image size in pixels.
+	 * Set the avatar/image size in pixels.
 	 *
 	 * @param int $size
 	 *
 	 * @return $this
 	 */
 	public function size( $size ) {
-		$this->size = (int) $size;
+		$this->width  = (int) $size;
+		$this->height = (int) $size;
+
+		return $this;
+	}
+
+	/**
+	 * Set the avatar/image height in pixels.
+	 *
+	 * @param int $height
+	 *
+	 * @return $this
+	 */
+	public function height( $height ) {
+		$this->height = (int) $height;
+
+		return $this;
+	}
+
+	/**
+	 * Set the avatar/image width in pixels.
+	 *
+	 * @param int $width
+	 *
+	 * @return $this
+	 */
+	public function width( $width ) {
+		$this->width = (int) $width;
 
 		return $this;
 	}
@@ -181,6 +215,21 @@ class InitialAvatar
 	 */
 	public function font( $font ) {
 		$this->fontFile = $font;
+
+		return $this;
+	}
+
+	/**
+	 * Set the font name
+	 *
+	 * Example: "Open Sans"
+	 *
+	 * @param string $name
+	 *
+	 * @return $this
+	 */
+	public function fontName( $name ) {
+		$this->fontName = $name;
 
 		return $this;
 	}
@@ -295,6 +344,22 @@ class InitialAvatar
 	}
 
 	/**
+	 * Generate the image.
+	 *
+	 * @param null|string $name
+	 *
+	 * @return SVG
+	 */
+	public function generateSvg( $name = null ) {
+		if ( $name !== null ) {
+			$this->name               = $name;
+			$this->generated_initials = $this->initials_generator->keepCase( $this->getKeepCase() )->generate( $name );
+		}
+
+		return $this->makeSvgAvatar();
+	}
+
+	/**
 	 * Will return the generated initials.
 	 *
 	 * @return string
@@ -340,12 +405,21 @@ class InitialAvatar
 	}
 
 	/**
-	 * Will return the font size parameter.
+	 * Will return the font file parameter.
 	 *
 	 * @return string|int
 	 */
 	public function getFontFile() {
 		return $this->fontFile;
+	}
+
+	/**
+	 * Will return the font name parameter for SVGs.
+	 *
+	 * @return string
+	 */
+	public function getFontName() {
+		return $this->fontName;
 	}
 
 	/**
@@ -367,12 +441,28 @@ class InitialAvatar
 	}
 
 	/**
-	 * Will return the round parameter.
+	 * @deprecated for getWidth and getHeight
+	 */
+	public function getSize() {
+		return $this->getWidth();
+	}
+
+	/**
+	 * Will return the width parameter.
 	 *
 	 * @return int
 	 */
-	public function getSize() {
-		return $this->size;
+	public function getWidth() {
+		return $this->width;
+	}
+
+	/**
+	 * Will return the height parameter.
+	 *
+	 * @return int
+	 */
+	public function getHeight() {
+		return $this->height;
 	}
 
 	/**
@@ -457,7 +547,8 @@ class InitialAvatar
 	 * @return Image
 	 */
 	protected function makeAvatar( $image ) {
-		$size     = $this->getSize();
+		$width    = $this->getWidth();
+		$height   = $this->getHeight();
 		$bgColor  = $this->getBackgroundColor();
 		$name     = $this->getInitials();
 		$fontFile = $this->findFontFile();
@@ -465,29 +556,68 @@ class InitialAvatar
 		$fontSize = $this->getFontSize();
 
 		if ( $this->getRounded() && $this->getSmooth() ) {
-			$size *= 5;
+			$width *= 5;
 		}
 
-		$avatar = $image->canvas( $size, $size, ! $this->getRounded() ? $bgColor : null );
+		$avatar = $image->canvas( $width, $height, ! $this->getRounded() ? $bgColor : null );
 
 		if ( $this->getRounded() ) {
-			$avatar = $avatar->circle( $size - 2, $size / 2, $size / 2, function ( $draw ) use ( $bgColor ) {
+			$avatar = $avatar->circle( $width - 2, $width / 2, $height / 2, function ( $draw ) use ( $bgColor ) {
 				return $draw->background( $bgColor );
 			} );
 		}
 
 		if ( $this->getRounded() && $this->getSmooth() ) {
-			$size /= 5;
-			$avatar->resize( $size, $size );
+			$width /= 5;
+			$avatar->resize( $width, $height );
 		}
 
-		return $avatar->text( $name, $size / 2, $size / 2, function ( AbstractFont $font ) use ( $size, $color, $fontFile, $fontSize ) {
+		return $avatar->text( $name, $width / 2, $height / 2, function ( AbstractFont $font ) use ( $width, $color, $fontFile, $fontSize ) {
 			$font->file( $fontFile );
-			$font->size( $size * $fontSize );
+			$font->size( $width * $fontSize );
 			$font->color( $color );
 			$font->align( 'center' );
 			$font->valign( 'center' );
 		} );
+	}
+
+	/**
+	 * @return SVG
+	 */
+	protected function makeSvgAvatar() {
+		// Original document
+		$image    = new SVG( $this->getWidth(), $this->getHeight() );
+		$document = $image->getDocument();
+
+		// Background
+		if ( $this->getRounded() ) {
+			// Circle
+			$background = new SVGCircle( $this->getWidth() / 2, $this->getHeight() / 2, $this->getWidth() / 2 );
+		} else {
+			// Rectangle
+			$background = new SVGRect( 0, 0, $this->getWidth(), $this->getHeight() );
+		}
+
+		$background->setStyle( 'fill', $this->getBackgroundColor() );
+		$document->addChild( $background );
+
+		// Text
+		$text = new SVGText( $this->getInitials(), '50%', '50%' );
+		$text->setFont( new SVGFont( $this->getFontName(), $this->findFontFile() ) );
+		$text->setSize( $this->getFontSize() * $this->getWidth() );
+		$text->setStyle( 'line-height', 1 );
+		$text->setAttribute( 'dy', '.1em' );
+		$text->setAttribute( 'fill', $this->getColor() );
+		$text->setAttribute( 'text-anchor', 'middle' );
+		$text->setAttribute( 'dominant-baseline', 'middle' );
+
+		if ( $this->preferBold ) {
+			$text->setStyle( 'font-weight', 600 );
+		}
+
+		$document->addChild( $text );
+
+		return $image;
 	}
 
 	protected function findFontFile() {

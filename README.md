@@ -39,6 +39,13 @@ return $image->stream('png', 100);
 ````
 You can also just pass along the initials, and it will use those. Should you just include a first name, it will use the first two letters of it.
 
+## SVG generation
+````php
+$avatar = new LasseRafn\InitialAvatarGenerator\InitialAvatar();
+
+echo $avatar->name('Lasse Rafn')->generateSvg()->toXMLString(); // returns SVG XML string
+````
+
 ## Supported methods and parameters
 Of cause, passing a name is not the only thing this sweet thing does!
 
@@ -55,19 +62,31 @@ Will detect language script (using [lasserafn/php-string-script-language](https:
 $image = $avatar->autoFont()->generate();
 ````
 
-### Size - default: 48
+### Width - default: 48
+````php
+// will be 96 pixels wide.
+$image = $avatar->width(96)->generate();
+````
+
+### Height - default: 48
+````php
+// will be 96 pixels tall.
+$image = $avatar->height(96)->generate();
+````
+
+### Size - default: 48 (proxy for `$avatar->width(X)->height(X)`)
 ````php
 // will be 96x96 pixels.
 $image = $avatar->size(96)->generate();
 ````
 
-### Background color - default: #000
+### Background color - default: #f0e9e9
 ````php
 // will be red
 $image = $avatar->background('#ff0000')->generate();
 ````
 
-### Font color - default: #fff
+### Font color - default: #8b5d5d
 ````php
 // will be red
 $image = $avatar->color('#ff0000')->generate();
@@ -88,8 +107,11 @@ If you input an integer between 1 and 5, it will use a GD Internal font as per t
 $image = $avatar->font('/fonts/OpenSans-Semibold.ttf')->generate();
 ````
 
-### Cache - removed!
-Cache has been removed. Performance-wise it was not doing much anyway.
+### Font name (for SVGs) - default: Open Sans, sans-serif
+
+````php
+$image = $avatar->fontName('Arial, Helvetica, sans-serif')->generate();
+````
 
 ### Length - default: 2
 ````php
@@ -171,7 +193,7 @@ return $avatar->glyph('f007')
 ```
 
 ## Requirements
-* PHP 5.6, 7.0, 7.1 or 7.2
+* PHP +7.0
 * Fileinfo Extension (from intervention/image)
 
 ## Script/Language support
