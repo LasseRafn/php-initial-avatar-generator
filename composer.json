@@ -5,7 +5,7 @@
 		"initials",
 		"image",
 		"avatar",
-		"svg",
+		"svg"
 	],
 	"type": "library",
 	"license": "MIT",
