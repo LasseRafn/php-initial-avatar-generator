@@ -14,7 +14,26 @@ Ever seen those avatars (basically everywhere) that has your initials — mine w
 <a href="https://packagist.org/packages/LasseRafn/php-initial-avatar-generator"><img src="https://img.shields.io/packagist/l/LasseRafn/php-initial-avatar-generator.svg?style=flat-square" alt="License"></a>
 </p>
 
-*Want to generate initials, without the image? Try my core package: [lasserafn/php-initials](https://github.com/lasserafn/php-initials)*
+## Backers
+
+Thank you to all our backers! 🙏 [[Become a backer](https://opencollective.com/ui-avatars#backer)]
+
+<a href="https://opencollective.com/ui-avatars#backers" target="_blank"><img src="https://opencollective.com/ui-avatars/backers.svg?width=890"></a>
+
+## Sponsors
+
+Support this project by becoming a sponsor. Your logo will show up here with a link to your website. [[Become a sponsor](https://opencollective.com/ui-avatars#sponsor)]
+
+<a href="https://opencollective.com/ui-avatars/sponsor/0/website" target="_blank"><img src="https://opencollective.com/ui-avatars/sponsor/0/avatar.svg"></a>
+<a href="https://opencollective.com/ui-avatars/sponsor/1/website" target="_blank"><img src="https://opencollective.com/ui-avatars/sponsor/1/avatar.svg"></a>
+<a href="https://opencollective.com/ui-avatars/sponsor/2/website" target="_blank"><img src="https://opencollective.com/ui-avatars/sponsor/2/avatar.svg"></a>
+<a href="https://opencollective.com/ui-avatars/sponsor/3/website" target="_blank"><img src="https://opencollective.com/ui-avatars/sponsor/3/avatar.svg"></a>
+<a href="https://opencollective.com/ui-avatars/sponsor/4/website" target="_blank"><img src="https://opencollective.com/ui-avatars/sponsor/4/avatar.svg"></a>
+<a href="https://opencollective.com/ui-avatars/sponsor/5/website" target="_blank"><img src="https://opencollective.com/ui-avatars/sponsor/5/avatar.svg"></a>
+<a href="https://opencollective.com/ui-avatars/sponsor/6/website" target="_blank"><img src="https://opencollective.com/ui-avatars/sponsor/6/avatar.svg"></a>
+<a href="https://opencollective.com/ui-avatars/sponsor/7/website" target="_blank"><img src="https://opencollective.com/ui-avatars/sponsor/7/avatar.svg"></a>
+<a href="https://opencollective.com/ui-avatars/sponsor/8/website" target="_blank"><img src="https://opencollective.com/ui-avatars/sponsor/8/avatar.svg"></a>
+<a href="https://opencollective.com/ui-avatars/sponsor/9/website" target="_blank"><img src="https://opencollective.com/ui-avatars/sponsor/9/avatar.svg"></a>
 
 **There's also a api you can use: [https://ui-avatars.com](https://ui-avatars.com)**
 
