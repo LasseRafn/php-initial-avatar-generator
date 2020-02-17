@@ -369,7 +369,9 @@ class InitialAvatar
 	public function generateSvg( $name = null ) {
 		if ( $name !== null ) {
 			$this->name               = $name;
-			$this->generated_initials = $this->initials_generator->keepCase( $this->getKeepCase() )->generate( $name );
+			$this->generated_initials = $this->initials_generator->keepCase( $this->getKeepCase() )
+			                                                     ->allowSpecialCharacters( $this->getAllowSpecialCharacters() )
+			                                                     ->generate( $name );
 		}
 
 		return $this->makeSvgAvatar();
@@ -381,7 +383,10 @@ class InitialAvatar
 	 * @return string
 	 */
 	public function getInitials() {
-		return $this->initials_generator->keepCase( $this->getKeepCase() )->name( $this->name )->getInitials();
+		return $this->initials_generator->keepCase( $this->getKeepCase() )
+		                                ->allowSpecialCharacters( $this->getAllowSpecialCharacters() )
+		                                ->name( $this->name )
+		                                ->getInitials();
 	}
 
 	/**
