@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c3b9dc39fd434371ef33dd19210b8d06",
+    "content-hash": "2af46c9fa5fd6cee0d8c5b1465078093",
     "packages": [
         {
             "name": "guzzlehttp/psr7",
@@ -193,16 +193,16 @@
         },
         {
             "name": "lasserafn/php-string-script-language",
-            "version": "0.1",
+            "version": "0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/LasseRafn/php-string-script-language.git",
-                "reference": "afde8404f211af21f7ec8b453eb84ce70bbd3692"
+                "reference": "4030ceaf4b4fe5a9f104b2388e9438725e3fd81d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/LasseRafn/php-string-script-language/zipball/afde8404f211af21f7ec8b453eb84ce70bbd3692",
-                "reference": "afde8404f211af21f7ec8b453eb84ce70bbd3692",
+                "url": "https://api.github.com/repos/LasseRafn/php-string-script-language/zipball/4030ceaf4b4fe5a9f104b2388e9438725e3fd81d",
+                "reference": "4030ceaf4b4fe5a9f104b2388e9438725e3fd81d",
                 "shasum": ""
             },
             "require": {
@@ -237,7 +237,7 @@
                 "php",
                 "string"
             ],
-            "time": "2017-10-02T18:34:33+00:00"
+            "time": "2017-10-02T19:14:19+00:00"
         },
         {
             "name": "meyfa/php-svg",
