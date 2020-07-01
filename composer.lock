@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c3b9dc39fd434371ef33dd19210b8d06",
+    "content-hash": "f90151f9be2a5b6b8ed8f5461f2f6ba9",
     "packages": [
         {
             "name": "guzzlehttp/psr7",
@@ -241,26 +241,29 @@
         },
         {
             "name": "meyfa/php-svg",
-            "version": "v0.9.1",
+            "version": "v0.10.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/meyfa/php-svg.git",
-                "reference": "34401edef1f724898f468f71b85505fbcc8351bb"
+                "reference": "acc4cd9d4a10eb99af92fe4279b3ee7015b0944f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/meyfa/php-svg/zipball/34401edef1f724898f468f71b85505fbcc8351bb",
-                "reference": "34401edef1f724898f468f71b85505fbcc8351bb",
+                "url": "https://api.github.com/repos/meyfa/php-svg/zipball/acc4cd9d4a10eb99af92fe4279b3ee7015b0944f",
+                "reference": "acc4cd9d4a10eb99af92fe4279b3ee7015b0944f",
                 "shasum": ""
             },
             "require": {
-                "ext-gd": "*",
-                "ext-simplexml": "*",
                 "php": ">=5.3.3"
             },
             "require-dev": {
                 "meyfa/phpunit-assert-gd": "^1.1",
+                "phpmd/phpmd": "@stable",
                 "phpunit/phpunit": "^4.8"
+            },
+            "suggest": {
+                "ext-gd": "Needed to rasterize images",
+                "ext-simplexml": "Needed to read SVG strings and files"
             },
             "type": "library",
             "autoload": {
@@ -283,7 +286,7 @@
             "keywords": [
                 "svg"
             ],
-            "time": "2019-07-30T18:41:25+00:00"
+            "time": "2020-06-28T00:35:23+00:00"
         },
         {
             "name": "overtrue/pinyin",
@@ -2615,5 +2618,6 @@
     "platform-dev": [],
     "platform-overrides": {
         "php": "7.0"
-    }
+    },
+    "plugin-api-version": "1.1.0"
 }
