@@ -636,10 +636,10 @@ class InitialAvatar
 		// Text
 		$text = new SVGText( $this->getInitials(), '50%', '50%' );
 		$text->setFont( new SVGFont( $this->getFontName(), $this->findFontFile() ) );
-		$text->setSize( $this->getFontSize() * $this->getWidth() );
 		$text->setStyle( 'line-height', 1 );
 		$text->setAttribute( 'dy', '.1em' );
 		$text->setAttribute( 'fill', $this->getColor() );
+		$text->setAttribute('font-size', $this->getFontSize() * $this->getWidth());		
 		$text->setAttribute( 'text-anchor', 'middle' );
 		$text->setAttribute( 'dominant-baseline', 'middle' );
 
