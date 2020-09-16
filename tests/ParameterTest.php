@@ -99,7 +99,8 @@ class ParameterTest extends TestCase
         $this->assertNotTrue($avatar->getAutoFont());
     }
 
-    public function can_set_background_color()
+    /** @test */
+    public function can_set_auto_color()
     {
         $avatar = new InitialAvatar();
 
@@ -109,6 +110,4 @@ class ParameterTest extends TestCase
 
         $this->assertEquals('#000000', $avatar->getColor());
     }
-
-
 }
