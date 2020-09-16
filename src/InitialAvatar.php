@@ -24,22 +24,22 @@ class InitialAvatar
     /** @var Initials */
     protected $initials_generator;
 
-    protected $driver                           = 'gd'; // imagick or gd
-    protected $fontSize                         = 0.5;
-    protected $name                             = 'John Doe';
-    protected $width                            = 48;
-    protected $height                           = 48;
-    protected $bgColor                          = '#f0e9e9';
-    protected $fontColor                        = '#8b5d5d';
-    protected $rounded                          = false;
-    protected $smooth                           = false;
-    protected $autofont                         = false;
-    protected $keepCase                         = false;
-    protected $allowSpecialCharacters           = true;
-    protected $fontFile                         = '/fonts/OpenSans-Regular.ttf';
-    protected $fontName                         = 'OpenSans, sans-serif';
-    protected $generated_initials               = 'JD';
-    protected $preferBold                       = false;
+    protected $driver = 'gd'; // imagick or gd
+    protected $fontSize = 0.5;
+    protected $name = 'John Doe';
+    protected $width = 48;
+    protected $height = 48;
+    protected $bgColor = '#f0e9e9';
+    protected $fontColor = '#8b5d5d';
+    protected $rounded = false;
+    protected $smooth = false;
+    protected $autofont = false;
+    protected $keepCase = false;
+    protected $allowSpecialCharacters = true;
+    protected $fontFile = '/fonts/OpenSans-Regular.ttf';
+    protected $fontName = 'OpenSans, sans-serif';
+    protected $generated_initials = 'JD';
+    protected $preferBold = false;
 
     /**
      * Language eg.en zh-CN
@@ -65,7 +65,8 @@ class InitialAvatar
         'zh-CN' => ZhCN::class,
     ];
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->setupImageManager();
         $this->initials_generator = new Initials();
     }
@@ -73,8 +74,9 @@ class InitialAvatar
     /**
      * Create a ImageManager instance
      */
-    protected function setupImageManager() {
-        $this->image = new ImageManager( [ 'driver' => $this->getDriver() ] );
+    protected function setupImageManager()
+    {
+        $this->image = new ImageManager(['driver' => $this->getDriver()]);
     }
 
     /**
@@ -84,10 +86,11 @@ class InitialAvatar
      *
      * @return $this
      */
-    public function name( $nameOrInitials ) {
-        $nameOrInitials = $this->translate( $nameOrInitials );
+    public function name($nameOrInitials)
+    {
+        $nameOrInitials = $this->translate($nameOrInitials);
         $this->name     = $nameOrInitials;
-        $this->initials_generator->name( $nameOrInitials );
+        $this->initials_generator->name($nameOrInitials);
 
         return $this;
     }
@@ -99,9 +102,10 @@ class InitialAvatar
      *
      * @return $this
      */
-    public function glyph( $char ) {
-        $uChar = json_decode( sprintf( '"\u%s"', $char ), false );
-        $this->name( $uChar );
+    public function glyph($char)
+    {
+        $uChar = json_decode(sprintf('"\u%s"', $char), false);
+        $this->name($uChar);
 
         return $this;
     }
@@ -113,8 +117,9 @@ class InitialAvatar
      *
      * @return $this
      */
-    public function length( $length = 2 ) {
-        $this->initials_generator->length( $length );
+    public function length($length = 2)
+    {
+        $this->initials_generator->length($length);
 
         return $this;
     }
@@ -126,7 +131,8 @@ class InitialAvatar
      *
      * @return $this
      */
-    public function size( $size ) {
+    public function size($size)
+    {
         $this->width  = (int) $size;
         $this->height = (int) $size;
 
@@ -140,7 +146,8 @@ class InitialAvatar
      *
      * @return $this
      */
-    public function height( $height ) {
+    public function height($height)
+    {
         $this->height = (int) $height;
 
         return $this;
@@ -153,7 +160,8 @@ class InitialAvatar
      *
      * @return $this
      */
-    public function width( $width ) {
+    public function width($width)
+    {
         $this->width = (int) $width;
 
         return $this;
@@ -164,7 +172,8 @@ class InitialAvatar
      *
      * @return $this
      */
-    public function preferBold() {
+    public function preferBold()
+    {
         $this->preferBold = true;
 
         return $this;
@@ -175,7 +184,8 @@ class InitialAvatar
      *
      * @return $this
      */
-    public function preferRegular() {
+    public function preferRegular()
+    {
         $this->preferBold = false;
 
         return $this;
@@ -188,7 +198,8 @@ class InitialAvatar
      *
      * @return $this
      */
-    public function background( $background ) {
+    public function background($background)
+    {
         $this->bgColor = (string) $background;
 
         return $this;
@@ -201,7 +212,8 @@ class InitialAvatar
      *
      * @return $this
      */
-    public function color( $color ) {
+    public function color($color)
+    {
         $this->fontColor = (string) $color;
 
         return $this;
@@ -235,7 +247,8 @@ class InitialAvatar
      *
      * @return $this
      */
-    public function font( $font ) {
+    public function font($font)
+    {
         $this->fontFile = $font;
 
         return $this;
@@ -250,7 +263,8 @@ class InitialAvatar
      *
      * @return $this
      */
-    public function fontName( $name ) {
+    public function fontName($name)
+    {
         $this->fontName = $name;
 
         return $this;
@@ -261,7 +275,8 @@ class InitialAvatar
      *
      * @return $this
      */
-    public function imagick() {
+    public function imagick()
+    {
         $this->driver = 'imagick';
 
         $this->setupImageManager();
@@ -274,7 +289,8 @@ class InitialAvatar
      *
      * @return $this
      */
-    public function gd() {
+    public function gd()
+    {
         $this->driver = 'gd';
 
         $this->setupImageManager();
@@ -289,7 +305,8 @@ class InitialAvatar
      *
      * @return $this
      */
-    public function rounded( $rounded = true ) {
+    public function rounded($rounded = true)
+    {
         $this->rounded = (bool) $rounded;
 
         return $this;
@@ -303,7 +320,8 @@ class InitialAvatar
      *
      * @return $this
      */
-    public function autoFont( $autofont = true ) {
+    public function autoFont($autofont = true)
+    {
         $this->autofont = (bool) $autofont;
 
         return $this;
@@ -316,7 +334,8 @@ class InitialAvatar
      *
      * @return $this
      */
-    public function smooth( $smooth = true ) {
+    public function smooth($smooth = true)
+    {
         $this->smooth = (bool) $smooth;
 
         return $this;
@@ -329,7 +348,8 @@ class InitialAvatar
      *
      * @return $this
      */
-    public function keepCase( $keepCase = true ) {
+    public function keepCase($keepCase = true)
+    {
         $this->keepCase = (bool) $keepCase;
 
         return $this;
@@ -342,7 +362,8 @@ class InitialAvatar
      *
      * @return $this
      */
-    public function allowSpecialCharacters( $allowSpecialCharacters = true ) {
+    public function allowSpecialCharacters($allowSpecialCharacters = true)
+    {
         $this->allowSpecialCharacters = (bool) $allowSpecialCharacters;
 
         return $this;
@@ -356,8 +377,9 @@ class InitialAvatar
      *
      * @return $this
      */
-    public function fontSize( $size = 0.5 ) {
-        $this->fontSize = number_format( $size, 2 );
+    public function fontSize($size = 0.5)
+    {
+        $this->fontSize = number_format($size, 2);
 
         return $this;
     }
@@ -369,15 +391,16 @@ class InitialAvatar
      *
      * @return Image
      */
-    public function generate( $name = null ) {
-        if ( $name !== null ) {
+    public function generate($name = null)
+    {
+        if ($name !== null) {
             $this->name               = $name;
-            $this->generated_initials = $this->initials_generator->keepCase( $this->getKeepCase() )
-                                                                 ->allowSpecialCharacters( $this->getAllowSpecialCharacters() )
-                                                                 ->generate( $name );
+            $this->generated_initials = $this->initials_generator->keepCase($this->getKeepCase())
+                ->allowSpecialCharacters($this->getAllowSpecialCharacters())
+                ->generate($name);
         }
 
-        return $this->makeAvatar( $this->image );
+        return $this->makeAvatar($this->image);
     }
 
     /**
@@ -387,12 +410,13 @@ class InitialAvatar
      *
      * @return SVG
      */
-    public function generateSvg( $name = null ) {
-        if ( $name !== null ) {
+    public function generateSvg($name = null)
+    {
+        if ($name !== null) {
             $this->name               = $name;
-            $this->generated_initials = $this->initials_generator->keepCase( $this->getKeepCase() )
-                                                                 ->allowSpecialCharacters( $this->getAllowSpecialCharacters() )
-                                                                 ->generate( $name );
+            $this->generated_initials = $this->initials_generator->keepCase($this->getKeepCase())
+                ->allowSpecialCharacters($this->getAllowSpecialCharacters())
+                ->generate($name);
         }
 
         return $this->makeSvgAvatar();
@@ -403,11 +427,12 @@ class InitialAvatar
      *
      * @return string
      */
-    public function getInitials() {
-        return $this->initials_generator->keepCase( $this->getKeepCase() )
-                                        ->allowSpecialCharacters( $this->getAllowSpecialCharacters() )
-                                        ->name( $this->name )
-                                        ->getInitials();
+    public function getInitials()
+    {
+        return $this->initials_generator->keepCase($this->getKeepCase())
+            ->allowSpecialCharacters($this->getAllowSpecialCharacters())
+            ->name($this->name)
+            ->getInitials();
     }
 
     /**
@@ -415,7 +440,8 @@ class InitialAvatar
      *
      * @return string
      */
-    public function getBackgroundColor() {
+    public function getBackgroundColor()
+    {
         return $this->bgColor;
     }
 
@@ -424,7 +450,8 @@ class InitialAvatar
      *
      * @return string
      */
-    public function getDriver() {
+    public function getDriver()
+    {
         return $this->driver;
     }
 
@@ -433,7 +460,8 @@ class InitialAvatar
      *
      * @return string
      */
-    public function getColor() {
+    public function getColor()
+    {
         return $this->fontColor;
     }
 
@@ -442,7 +470,8 @@ class InitialAvatar
      *
      * @return float
      */
-    public function getFontSize() {
+    public function getFontSize()
+    {
         return $this->fontSize;
     }
 
@@ -451,7 +480,8 @@ class InitialAvatar
      *
      * @return string|int
      */
-    public function getFontFile() {
+    public function getFontFile()
+    {
         return $this->fontFile;
     }
 
@@ -460,7 +490,8 @@ class InitialAvatar
      *
      * @return string
      */
-    public function getFontName() {
+    public function getFontName()
+    {
         return $this->fontName;
     }
 
@@ -469,7 +500,8 @@ class InitialAvatar
      *
      * @return bool
      */
-    public function getRounded() {
+    public function getRounded()
+    {
         return $this->rounded;
     }
 
@@ -478,14 +510,16 @@ class InitialAvatar
      *
      * @return bool
      */
-    public function getSmooth() {
+    public function getSmooth()
+    {
         return $this->smooth;
     }
 
     /**
      * @deprecated for getWidth and getHeight
      */
-    public function getSize() {
+    public function getSize()
+    {
         return $this->getWidth();
     }
 
@@ -494,7 +528,8 @@ class InitialAvatar
      *
      * @return int
      */
-    public function getWidth() {
+    public function getWidth()
+    {
         return $this->width;
     }
 
@@ -503,7 +538,8 @@ class InitialAvatar
      *
      * @return int
      */
-    public function getHeight() {
+    public function getHeight()
+    {
         return $this->height;
     }
 
@@ -512,7 +548,8 @@ class InitialAvatar
      *
      * @return boolean
      */
-    public function getKeepCase() {
+    public function getKeepCase()
+    {
         return $this->keepCase;
     }
 
@@ -521,7 +558,8 @@ class InitialAvatar
      *
      * @return boolean
      */
-    public function getAllowSpecialCharacters() {
+    public function getAllowSpecialCharacters()
+    {
         return $this->allowSpecialCharacters;
     }
 
@@ -530,7 +568,8 @@ class InitialAvatar
      *
      * @return bool
      */
-    public function getAutoFont() {
+    public function getAutoFont()
+    {
         return $this->autofont;
     }
 
@@ -545,7 +584,8 @@ class InitialAvatar
      *
      * @return $this
      */
-    public function language( $language ) {
+    public function language($language)
+    {
         $this->language = $language ?: 'en';
 
         return $this;
@@ -564,8 +604,9 @@ class InitialAvatar
      *
      * @return $this
      */
-    public function addTranslators( $translatorMap ) {
-        $this->translatorMap = array_merge( $this->translatorMap, $translatorMap );
+    public function addTranslators($translatorMap)
+    {
+        $this->translatorMap = array_merge($this->translatorMap, $translatorMap);
 
         return $this;
     }
@@ -573,8 +614,9 @@ class InitialAvatar
     /**
      * @inheritdoc
      */
-    protected function translate( $nameOrInitials ) {
-        return $this->getTranslator()->translate( $nameOrInitials );
+    protected function translate($nameOrInitials)
+    {
+        return $this->getTranslator()->translate($nameOrInitials);
     }
 
     /**
@@ -582,12 +624,13 @@ class InitialAvatar
      *
      * @return Base
      */
-    protected function getTranslator() {
-        if ( $this->translator instanceof Base && $this->translator->getSourceLanguage() === $this->language ) {
+    protected function getTranslator()
+    {
+        if ($this->translator instanceof Base && $this->translator->getSourceLanguage() === $this->language) {
             return $this->translator;
         }
 
-        $translatorClass = array_key_exists( $this->language, $this->translatorMap ) ? $this->translatorMap[ $this->language ] : 'LasseRafn\\InitialAvatarGenerator\\Translator\\En';
+        $translatorClass = array_key_exists($this->language, $this->translatorMap) ? $this->translatorMap[$this->language] : 'LasseRafn\\InitialAvatarGenerator\\Translator\\En';
 
         return $this->translato = new $translatorClass();
     }
@@ -597,7 +640,8 @@ class InitialAvatar
      *
      * @return Image
      */
-    protected function makeAvatar( $image ) {
+    protected function makeAvatar($image)
+    {
         $width    = $this->getWidth();
         $height   = $this->getHeight();
         $bgColor  = $this->getBackgroundColor();
@@ -606,104 +650,106 @@ class InitialAvatar
         $color    = $this->getColor();
         $fontSize = $this->getFontSize();
 
-        if ( $this->getRounded() && $this->getSmooth() ) {
+        if ($this->getRounded() && $this->getSmooth()) {
             $width *= 5;
             $height *= 5;
         }
 
-        $avatar = $image->canvas( $width, $height, ! $this->getRounded() ? $bgColor : null );
+        $avatar = $image->canvas($width, $height, !$this->getRounded() ? $bgColor : null);
 
-        if ( $this->getRounded() ) {
-            $avatar = $avatar->circle( $width - 2, $width / 2, $height / 2, function ( $draw ) use ( $bgColor ) {
-                return $draw->background( $bgColor );
-            } );
+        if ($this->getRounded()) {
+            $avatar = $avatar->circle($width - 2, $width / 2, $height / 2, function ($draw) use ($bgColor) {
+                return $draw->background($bgColor);
+            });
         }
 
-        if ( $this->getRounded() && $this->getSmooth() ) {
+        if ($this->getRounded() && $this->getSmooth()) {
             $width /= 5;
             $height /= 5;
-            $avatar->resize( $width, $height );
+            $avatar->resize($width, $height);
         }
 
-        return $avatar->text( $name, $width / 2, $height / 2, function ( AbstractFont $font ) use ( $width, $color, $fontFile, $fontSize ) {
-            $font->file( $fontFile );
-            $font->size( $width * $fontSize );
-            $font->color( $color );
-            $font->align( 'center' );
-            $font->valign( 'center' );
-        } );
+        return $avatar->text($name, $width / 2, $height / 2, function (AbstractFont $font) use ($width, $color, $fontFile, $fontSize) {
+            $font->file($fontFile);
+            $font->size($width * $fontSize);
+            $font->color($color);
+            $font->align('center');
+            $font->valign('center');
+        });
     }
 
     /**
      * @return SVG
      */
-    protected function makeSvgAvatar() {
+    protected function makeSvgAvatar()
+    {
         // Original document
-        $image    = new SVG( $this->getWidth(), $this->getHeight() );
+        $image    = new SVG($this->getWidth(), $this->getHeight());
         $document = $image->getDocument();
 
         // Background
-        if ( $this->getRounded() ) {
+        if ($this->getRounded()) {
             // Circle
-            $background = new SVGCircle( $this->getWidth() / 2, $this->getHeight() / 2, $this->getWidth() / 2 );
+            $background = new SVGCircle($this->getWidth() / 2, $this->getHeight() / 2, $this->getWidth() / 2);
         } else {
             // Rectangle
-            $background = new SVGRect( 0, 0, $this->getWidth(), $this->getHeight() );
+            $background = new SVGRect(0, 0, $this->getWidth(), $this->getHeight());
         }
 
-        $background->setStyle( 'fill', $this->getBackgroundColor() );
-        $document->addChild( $background );
+        $background->setStyle('fill', $this->getBackgroundColor());
+        $document->addChild($background);
 
         // Text
-        $text = new SVGText( $this->getInitials(), '50%', '50%' );
-        $text->setFont( new SVGFont( $this->getFontName(), $this->findFontFile() ) );
-        $text->setStyle( 'line-height', 1 );
-        $text->setAttribute( 'dy', '.1em' );
-        $text->setAttribute( 'fill', $this->getColor() );
-        $text->setAttribute('font-size', $this->getFontSize() * $this->getWidth());        
-        $text->setAttribute( 'text-anchor', 'middle' );
-        $text->setAttribute( 'dominant-baseline', 'middle' );
+        $text = new SVGText($this->getInitials(), '50%', '50%');
+        $text->setFont(new SVGFont($this->getFontName(), $this->findFontFile()));
+        $text->setStyle('line-height', 1);
+        $text->setAttribute('dy', '.1em');
+        $text->setAttribute('fill', $this->getColor());
+        $text->setAttribute('font-size', $this->getFontSize() * $this->getWidth());
+        $text->setAttribute('text-anchor', 'middle');
+        $text->setAttribute('dominant-baseline', 'middle');
 
-        if ( $this->preferBold ) {
-            $text->setStyle( 'font-weight', 600 );
+        if ($this->preferBold) {
+            $text->setStyle('font-weight', 600);
         }
 
-        $document->addChild( $text );
+        $document->addChild($text);
 
         return $image;
     }
 
-    protected function findFontFile() {
+    protected function findFontFile()
+    {
         $fontFile = $this->getFontFile();
 
-        if ( $this->getAutoFont() ) {
+        if ($this->getAutoFont()) {
             $fontFile = $this->getFontByScript();
         }
 
-        if ( is_int( $fontFile ) && \in_array( $fontFile, [ 1, 2, 3, 4, 5 ], false ) ) {
+        if (is_int($fontFile) && \in_array($fontFile, [1, 2, 3, 4, 5], false)) {
             return $fontFile;
         }
 
-        $weightsToTry = [ 'Regular' ];
+        $weightsToTry = ['Regular'];
 
-        if ( $this->preferBold ) {
-            $weightsToTry = [ 'Bold', 'Semibold', 'Regular' ];
+        if ($this->preferBold) {
+            $weightsToTry = ['Bold', 'Semibold', 'Regular'];
         }
 
         $originalFile = $fontFile;
 
-        foreach ( $weightsToTry as $weight ) {
-            $fontFile = preg_replace( '/(\-(Bold|Semibold|Regular))/', "-{$weight}", $originalFile );
+        foreach ($weightsToTry as $weight) {
+            $fontFile = preg_replace('/(\-(Bold|Semibold|Regular))/', "-{$weight}", $originalFile);
 
-            if ( file_exists( $fontFile ) ) {
+            if (file_exists($fontFile)) {
                 return $fontFile;
             }
 
-            if ( file_exists( __DIR__ . $fontFile ) ) {
+            if (file_exists(__DIR__ . $fontFile)) {
                 return __DIR__ . $fontFile;
             }
 
-            if ( file_exists( __DIR__ . '/' . $fontFile ) ) {
+            if (file_exists(__DIR__ . '/' . $fontFile)) {
                 return __DIR__ . '/' . $fontFile;
             }
         }
@@ -711,49 +757,50 @@ class InitialAvatar
         return 1;
     }
 
-    protected function getFontByScript() {
+    protected function getFontByScript()
+    {
         // Arabic
-        if ( StringScript::isArabic( $this->getInitials() ) ) {
+        if (StringScript::isArabic($this->getInitials())) {
             return __DIR__ . '/fonts/script/Noto-Arabic-Regular.ttf';
         }
 
         // Armenian
-        if ( StringScript::isArmenian( $this->getInitials() ) ) {
+        if (StringScript::isArmenian($this->getInitials())) {
             return __DIR__ . '/fonts/script/Noto-Armenian-Regular.ttf';
         }
 
         // Bengali
-        if ( StringScript::isBengali( $this->getInitials() ) ) {
+        if (StringScript::isBengali($this->getInitials())) {
             return __DIR__ . '/fonts/script/Noto-Bengali-Regular.ttf';
         }
 
         // Georgian
-        if ( StringScript::isGeorgian( $this->getInitials() ) ) {
+        if (StringScript::isGeorgian($this->getInitials())) {
             return __DIR__ . '/fonts/script/Noto-Georgian-Regular.ttf';
         }
 
         // Hebrew
-        if ( StringScript::isHebrew( $this->getInitials() ) ) {
+        if (StringScript::isHebrew($this->getInitials())) {
             return __DIR__ . '/fonts/script/Noto-Hebrew-Regular.ttf';
         }
 
         // Mongolian
-        if ( StringScript::isMongolian( $this->getInitials() ) ) {
+        if (StringScript::isMongolian($this->getInitials())) {
             return __DIR__ . '/fonts/script/Noto-Mongolian-Regular.ttf';
         }
 
         // Thai
-        if ( StringScript::isThai( $this->getInitials() ) ) {
+        if (StringScript::isThai($this->getInitials())) {
             return __DIR__ . '/fonts/script/Noto-Thai-Regular.ttf';
         }
 
         // Tibetan
-        if ( StringScript::isTibetan( $this->getInitials() ) ) {
+        if (StringScript::isTibetan($this->getInitials())) {
             return __DIR__ . '/fonts/script/Noto-Tibetan-Regular.ttf';
         }
 
         // Chinese & Japanese
-        if ( StringScript::isJapanese( $this->getInitials() ) || StringScript::isChinese( $this->getInitials() ) ) {
+        if (StringScript::isJapanese($this->getInitials()) || StringScript::isChinese($this->getInitials())) {
             return __DIR__ . '/fonts/script/Noto-CJKJP-Regular.otf';
         }
 
