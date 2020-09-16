@@ -42,21 +42,21 @@ class InitialAvatar
     protected $preferBold = false;
 
     /**
-     * Language eg.en zh-CN
+     * Language eg.en zh-CN.
      *
      * @var string
      */
     protected $language = 'en';
 
     /**
-     * Role translator
+     * Role translator.
      *
      * @var Base
      */
     protected $translator;
 
     /**
-     * Language related to translator
+     * Language related to translator.
      *
      * @var array
      */
@@ -72,7 +72,7 @@ class InitialAvatar
     }
 
     /**
-     * Create a ImageManager instance
+     * Create a ImageManager instance.
      */
     protected function setupImageManager()
     {
@@ -89,14 +89,14 @@ class InitialAvatar
     public function name($nameOrInitials)
     {
         $nameOrInitials = $this->translate($nameOrInitials);
-        $this->name     = $nameOrInitials;
+        $this->name = $nameOrInitials;
         $this->initials_generator->name($nameOrInitials);
 
         return $this;
     }
 
     /**
-     * Transforms a unicode string to the proper format
+     * Transforms a unicode string to the proper format.
      *
      * @param string $char the code to be converted (e.g., f007 would mean the "user" symbol)
      *
@@ -133,7 +133,7 @@ class InitialAvatar
      */
     public function size($size)
     {
-        $this->width  = (int) $size;
+        $this->width = (int) $size;
         $this->height = (int) $size;
 
         return $this;
@@ -168,7 +168,7 @@ class InitialAvatar
     }
 
     /**
-     * Prefer bold fonts (if possible)
+     * Prefer bold fonts (if possible).
      *
      * @return $this
      */
@@ -180,7 +180,7 @@ class InitialAvatar
     }
 
     /**
-     * Prefer regular fonts (if possible)
+     * Prefer regular fonts (if possible).
      *
      * @return $this
      */
@@ -220,16 +220,15 @@ class InitialAvatar
     }
 
     /**
-     * Automatically set a font and/or background color based on the supplied name
-     * 
+     * Automatically set a font and/or background color based on the supplied name.
+     *
      * @param bool $foreground
      * @param bool $background
-     * 
+     *
      * @return $this
      */
     public function autoColor(bool $foreground = true, bool $background = true, int $saturation = 85, int $luminance = 60)
     {
-
         $hue = (crc32($this->name) % 360) / 360;
         $saturation /= 100;
         $luminance /= 100;
@@ -255,7 +254,7 @@ class InitialAvatar
     }
 
     /**
-     * Set the font name
+     * Set the font name.
      *
      * Example: "Open Sans"
      *
@@ -356,7 +355,7 @@ class InitialAvatar
     }
 
     /**
-     * Set if should allow (or remove) special characters
+     * Set if should allow (or remove) special characters.
      *
      * @param bool $allowSpecialCharacters
      *
@@ -394,7 +393,7 @@ class InitialAvatar
     public function generate($name = null)
     {
         if ($name !== null) {
-            $this->name               = $name;
+            $this->name = $name;
             $this->generated_initials = $this->initials_generator->keepCase($this->getKeepCase())
                 ->allowSpecialCharacters($this->getAllowSpecialCharacters())
                 ->generate($name);
@@ -413,7 +412,7 @@ class InitialAvatar
     public function generateSvg($name = null)
     {
         if ($name !== null) {
-            $this->name               = $name;
+            $this->name = $name;
             $this->generated_initials = $this->initials_generator->keepCase($this->getKeepCase())
                 ->allowSpecialCharacters($this->getAllowSpecialCharacters())
                 ->generate($name);
@@ -546,7 +545,7 @@ class InitialAvatar
     /**
      * Will return the keepCase parameter.
      *
-     * @return boolean
+     * @return bool
      */
     public function getKeepCase()
     {
@@ -556,7 +555,7 @@ class InitialAvatar
     /**
      * Will return the allowSpecialCharacters parameter.
      *
-     * @return boolean
+     * @return bool
      */
     public function getAllowSpecialCharacters()
     {
@@ -578,7 +577,7 @@ class InitialAvatar
      * ```php
      * $avatar->language('en')->name('Mr Green'); // Right
      * $avatar->name('Mr Green')->language('en'); // Wrong
-     * ```
+     * ```.
      *
      * @param string $language
      *
@@ -592,15 +591,15 @@ class InitialAvatar
     }
 
     /**
-     * Add new translators designed by user
+     * Add new translators designed by user..
      *
      * @param array $translatorMap
-     *     ```php
-     *     $translatorMap = [
-     *     'fr' => 'foo\bar\Fr',
-     *     'zh-TW' => 'foo\bar\ZhTW'
-     *     ];
-     *     ```
+     *                             ```php
+     *                             $translatorMap = [
+     *                             'fr' => 'foo\bar\Fr',
+     *                             'zh-TW' => 'foo\bar\ZhTW'
+     *                             ];
+     *                             ```
      *
      * @return $this
      */
@@ -611,16 +610,13 @@ class InitialAvatar
         return $this;
     }
 
-    /**
-     * @inheritdoc
-     */
     protected function translate($nameOrInitials)
     {
         return $this->getTranslator()->translate($nameOrInitials);
     }
 
     /**
-     * Instance the translator by language
+     * Instance the translator by language.
      *
      * @return Base
      */
@@ -642,12 +638,12 @@ class InitialAvatar
      */
     protected function makeAvatar($image)
     {
-        $width    = $this->getWidth();
-        $height   = $this->getHeight();
-        $bgColor  = $this->getBackgroundColor();
-        $name     = $this->getInitials();
+        $width = $this->getWidth();
+        $height = $this->getHeight();
+        $bgColor = $this->getBackgroundColor();
+        $name = $this->getInitials();
         $fontFile = $this->findFontFile();
-        $color    = $this->getColor();
+        $color = $this->getColor();
         $fontSize = $this->getFontSize();
 
         if ($this->getRounded() && $this->getSmooth()) {
@@ -684,7 +680,7 @@ class InitialAvatar
     protected function makeSvgAvatar()
     {
         // Original document
-        $image    = new SVG($this->getWidth(), $this->getHeight());
+        $image = new SVG($this->getWidth(), $this->getHeight());
         $document = $image->getDocument();
 
         // Background
@@ -745,12 +741,12 @@ class InitialAvatar
                 return $fontFile;
             }
 
-            if (file_exists(__DIR__ . $fontFile)) {
-                return __DIR__ . $fontFile;
+            if (file_exists(__DIR__.$fontFile)) {
+                return __DIR__.$fontFile;
             }
 
-            if (file_exists(__DIR__ . '/' . $fontFile)) {
-                return __DIR__ . '/' . $fontFile;
+            if (file_exists(__DIR__.'/'.$fontFile)) {
+                return __DIR__.'/'.$fontFile;
             }
         }
 
@@ -761,54 +757,54 @@ class InitialAvatar
     {
         // Arabic
         if (StringScript::isArabic($this->getInitials())) {
-            return __DIR__ . '/fonts/script/Noto-Arabic-Regular.ttf';
+            return __DIR__.'/fonts/script/Noto-Arabic-Regular.ttf';
         }
 
         // Armenian
         if (StringScript::isArmenian($this->getInitials())) {
-            return __DIR__ . '/fonts/script/Noto-Armenian-Regular.ttf';
+            return __DIR__.'/fonts/script/Noto-Armenian-Regular.ttf';
         }
 
         // Bengali
         if (StringScript::isBengali($this->getInitials())) {
-            return __DIR__ . '/fonts/script/Noto-Bengali-Regular.ttf';
+            return __DIR__.'/fonts/script/Noto-Bengali-Regular.ttf';
         }
 
         // Georgian
         if (StringScript::isGeorgian($this->getInitials())) {
-            return __DIR__ . '/fonts/script/Noto-Georgian-Regular.ttf';
+            return __DIR__.'/fonts/script/Noto-Georgian-Regular.ttf';
         }
 
         // Hebrew
         if (StringScript::isHebrew($this->getInitials())) {
-            return __DIR__ . '/fonts/script/Noto-Hebrew-Regular.ttf';
+            return __DIR__.'/fonts/script/Noto-Hebrew-Regular.ttf';
         }
 
         // Mongolian
         if (StringScript::isMongolian($this->getInitials())) {
-            return __DIR__ . '/fonts/script/Noto-Mongolian-Regular.ttf';
+            return __DIR__.'/fonts/script/Noto-Mongolian-Regular.ttf';
         }
 
         // Thai
         if (StringScript::isThai($this->getInitials())) {
-            return __DIR__ . '/fonts/script/Noto-Thai-Regular.ttf';
+            return __DIR__.'/fonts/script/Noto-Thai-Regular.ttf';
         }
 
         // Tibetan
         if (StringScript::isTibetan($this->getInitials())) {
-            return __DIR__ . '/fonts/script/Noto-Tibetan-Regular.ttf';
+            return __DIR__.'/fonts/script/Noto-Tibetan-Regular.ttf';
         }
 
         // Chinese & Japanese
         if (StringScript::isJapanese($this->getInitials()) || StringScript::isChinese($this->getInitials())) {
-            return __DIR__ . '/fonts/script/Noto-CJKJP-Regular.otf';
+            return __DIR__.'/fonts/script/Noto-CJKJP-Regular.otf';
         }
 
         return $this->getFontFile();
     }
 
     /**
-     * Convert HSL color value produced by autoColor() to RGB value expected by image driver
+     * Convert HSL color value produced by autoColor() to RGB value expected by image driver.
      */
     protected function convertHSLtoRGB($h, $s, $l, $toHex = true)
     {
@@ -868,9 +864,10 @@ class InitialAvatar
         $blue = round($blue * 255, 0);
 
         if ($toHex) {
-            $red = ($red < 15) ? '0' . dechex($red) : dechex($red);
-            $green = ($green < 15) ? '0' . dechex($green) : dechex($green);
-            $blue = ($blue < 15) ? '0' . dechex($blue) : dechex($blue);
+            $red = ($red < 15) ? '0'.dechex($red) : dechex($red);
+            $green = ($green < 15) ? '0'.dechex($green) : dechex($green);
+            $blue = ($blue < 15) ? '0'.dechex($blue) : dechex($blue);
+
             return "#{$red}{$green}{$blue}";
         } else {
             return ['red' => $red, 'green' => $green, 'blue' => $blue];
@@ -878,7 +875,7 @@ class InitialAvatar
     }
 
     /**
-     * Get contrasting foreground color for autoColor background
+     * Get contrasting foreground color for autoColor background.
      */
     protected function getContrastColor($hexColor)
     {
@@ -889,7 +886,7 @@ class InitialAvatar
         $B1 = hexdec(substr($hexColor, 5, 2));
 
         // Black RGB
-        $blackColor = "#000000";
+        $blackColor = '#000000';
         $R2BlackColor = hexdec(substr($blackColor, 1, 2));
         $G2BlackColor = hexdec(substr($blackColor, 3, 2));
         $B2BlackColor = hexdec(substr($blackColor, 5, 2));
@@ -905,9 +902,9 @@ class InitialAvatar
 
         $contrastRatio = 0;
         if ($L1 > $L2) {
-            $contrastRatio = (int)(($L1 + 0.05) / ($L2 + 0.05));
+            $contrastRatio = (int) (($L1 + 0.05) / ($L2 + 0.05));
         } else {
-            $contrastRatio = (int)(($L2 + 0.05) / ($L1 + 0.05));
+            $contrastRatio = (int) (($L2 + 0.05) / ($L1 + 0.05));
         }
 
         // If contrast is more than 5, return black color

@@ -24,6 +24,6 @@ class AutoColorUtilsTest extends TestCase
 
         $avatar->name('D')->autoColor();
         $this->assertEquals('#f04293', $avatar->getBackgroundColor());
-        $this->assertEquals('#ffffff', $avatar->getColor());
+        $this->assertEquals('#FFFFFF', $avatar->getColor());
     }
 }
