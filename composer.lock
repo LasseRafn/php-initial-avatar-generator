@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c3b9dc39fd434371ef33dd19210b8d06",
+    "content-hash": "a2096ecf543eaa7f3620cd334c7a42bd",
     "packages": [
         {
             "name": "guzzlehttp/psr7",
@@ -193,20 +193,20 @@
         },
         {
             "name": "lasserafn/php-string-script-language",
-            "version": "0.1",
+            "version": "0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/LasseRafn/php-string-script-language.git",
-                "reference": "afde8404f211af21f7ec8b453eb84ce70bbd3692"
+                "reference": "49a09d4a5e38c1e59a2656ac05b601d615c7cddb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/LasseRafn/php-string-script-language/zipball/afde8404f211af21f7ec8b453eb84ce70bbd3692",
-                "reference": "afde8404f211af21f7ec8b453eb84ce70bbd3692",
+                "url": "https://api.github.com/repos/LasseRafn/php-string-script-language/zipball/49a09d4a5e38c1e59a2656ac05b601d615c7cddb",
+                "reference": "49a09d4a5e38c1e59a2656ac05b601d615c7cddb",
                 "shasum": ""
             },
             "require": {
-                "php": "^5.6|^7.0|^7.1"
+                "php": "^5.6|^7.0|^7.1|^8.0"
             },
             "require-dev": {
                 "doctrine/instantiator": "1.0.5",
@@ -237,7 +237,11 @@
                 "php",
                 "string"
             ],
-            "time": "2017-10-02T18:34:33+00:00"
+            "support": {
+                "issues": "https://github.com/LasseRafn/php-string-script-language/issues",
+                "source": "https://github.com/LasseRafn/php-string-script-language/tree/0.3"
+            },
+            "time": "2020-12-24T12:43:59+00:00"
         },
         {
             "name": "meyfa/php-svg",
@@ -2609,11 +2613,12 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": "^7.0|^7.1|^7.2|^7.3|^7.4",
+        "php": "^7.0|^7.1|^7.2|^7.3|^7.4|^8.0",
         "ext-json": "*"
     },
     "platform-dev": [],
     "platform-overrides": {
         "php": "7.0"
-    }
+    },
+    "plugin-api-version": "2.0.0"
 }
