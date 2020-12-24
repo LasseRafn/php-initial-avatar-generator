@@ -111,6 +111,12 @@ $image = $avatar->background('#ff0000')->generate();
 $image = $avatar->color('#ff0000')->generate();
 ````
 
+### Auto Color
+````php
+// Will choose a background color based on `name` and a contrasting font color. The color for a specific name will always be the same.
+$image = $avatar->autoColor()->generate();
+````
+
 ### Font file - default: /fonts/OpenSans-Regular.ttf
 Two fonts with two variants are included:
 * /fonts/OpenSans-Regular.ttf
