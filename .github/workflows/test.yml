@@ -47,9 +47,6 @@ jobs:
     - name: Run tests
       run: php -d pcov.enabled=1 -d memory_limit=4G vendor/bin/phpunit --coverage-clover=build/logs/clover.xml tests
       
-    - name: debug
-      run: cat build/logs/clover.xml
-      
     - name: Upload Coverage
       env:
         OTTERWISE_TOKEN: ${{ secrets.OTTERWISE_TOKEN }}

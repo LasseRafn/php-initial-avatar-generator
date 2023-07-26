@@ -20,7 +20,7 @@
 		</exclude>
 	</source>
 
-	<coverage>
+	<coverage processUncoveredFiles="true">
 		<include>
 			<directory suffix=".php">./src</directory>
 		</include>
@@ -29,9 +29,4 @@
 			<directory>./tests</directory>
 		</exclude>
 	</coverage>
-
-	<logging>
-		<log type="coverage-clover" target="build/logs/clover.xml"/>
-		<log type="junit" target="build/logs/junit.xml" logIncompleteSkipped="false"/>
-	</logging>
 </phpunit>
