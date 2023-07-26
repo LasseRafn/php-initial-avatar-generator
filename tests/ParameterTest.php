@@ -5,7 +5,7 @@ use PHPUnit\Framework\TestCase;
 
 class ParameterTest extends TestCase
 {
-	/** @test */
+    /** @test */
     public function can_set_background_color()
     {
         $avatar = new InitialAvatar();
