@@ -5,3 +5,4 @@ gen
 vendor
 .gitignore
 build
+composer.lock

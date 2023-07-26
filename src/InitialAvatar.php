@@ -568,7 +568,7 @@ class InitialAvatar
 
 		$translatorClass = array_key_exists( $this->language, $this->translatorMap ) ? $this->translatorMap[ $this->language ] : 'LasseRafn\\InitialAvatarGenerator\\Translator\\En';
 
-		return $this->translato = new $translatorClass();
+		return $this->translator = new $translatorClass();
 	}
 
 	/**
