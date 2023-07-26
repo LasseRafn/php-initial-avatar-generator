@@ -879,7 +879,6 @@ class InitialAvatar
      */
     protected function getContrastColor($hexColor)
     {
-
         // hexColor RGB
         $R1 = hexdec(substr($hexColor, 1, 2));
         $G1 = hexdec(substr($hexColor, 3, 2));
