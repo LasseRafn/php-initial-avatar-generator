@@ -3,6 +3,7 @@
 		 colors="true"
 		 processIsolation="false"
 		 stopOnFailure="false">
+
 	<testsuites>
 		<testsuite name="Package Test Suite">
 			<directory suffix=".php">./tests/</directory>
@@ -19,7 +20,7 @@
 		</exclude>
 	</source>
 
-	<coverage processUncoveredFiles="true">
+	<coverage>
 		<include>
 			<directory suffix=".php">./src</directory>
 		</include>
@@ -28,16 +29,6 @@
 			<directory>./tests</directory>
 		</exclude>
 	</coverage>
-
-	<filter>
-		<whitelist processUncoveredFilesFromWhitelist="true">
-			<directory>./src</directory>
-			<exclude>
-				<directory>./vendor</directory>
-				<directory>./tests</directory>
-			</exclude>
-		</whitelist>
-	</filter>
 
 	<logging>
 		<log type="coverage-clover" target="build/logs/clover.xml"/>
