@@ -7,14 +7,14 @@ use Overtrue\Pinyin\Pinyin;
 class ZhCN implements Base
 {
     /**
-     * Inherent instance of zh-CN translator
+     * Inherent instance of zh-CN translator.
      *
      * @var Pinyin
      */
     protected $inherent;
 
     /**
-     * ZhCN constructor, set the instance of PinYin
+     * ZhCN constructor, set the instance of PinYin.
      */
     public function __construct()
     {

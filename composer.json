@@ -25,9 +25,7 @@
 		"overtrue/pinyin": "^4.0"
 	},
 	"require-dev": {
-		"doctrine/instantiator": "1.0.*",
-		"phpunit/phpunit": "^6.5",
-		"satooshi/php-coveralls": "^1.0"
+		"phpunit/phpunit": "^8.5"
 	},
 	"autoload": {
 		"psr-4": {
@@ -40,9 +38,6 @@
 		}
 	},
 	"config": {
-		"sort-packages": true,
-		"platform": {
-			"php": "7.0"
-		}
+		"sort-packages": true
 	}
 }
