@@ -98,4 +98,16 @@ class ParameterTest extends TestCase
 
         $this->assertNotTrue($avatar->getAutoFont());
     }
+
+    /** @test */
+    public function can_set_auto_color()
+    {
+        $avatar = new InitialAvatar();
+
+        $avatar->autoColor();
+
+        $this->assertEquals('#eaf042', $avatar->getBackgroundColor());
+
+        $this->assertEquals('#000000', $avatar->getColor());
+    }
 }
