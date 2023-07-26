@@ -352,13 +352,13 @@ class InitialAvatar
      * Set the font size in percentage
      * (0.1 = 10%).
      *
-     * @param float $size
+     * @param double $size
      *
      * @return $this
      */
     public function fontSize($size = 0.5)
     {
-        $this->fontSize = number_format($size, 2);
+        $this->fontSize = (double) round($size, 2);
 
         return $this;
     }
@@ -447,7 +447,7 @@ class InitialAvatar
     /**
      * Will return the font size parameter.
      *
-     * @return float
+     * @return double
      */
     public function getFontSize()
     {
