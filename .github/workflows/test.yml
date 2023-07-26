@@ -45,7 +45,7 @@ jobs:
       run: composer install --prefer-dist --no-progress
 
     - name: Run tests
-      run: php -d xdebug.profiler_enable=on -d memory_limit=4G vendor/bin/phpunit --path-coverage --coverage-clover=build/logs/clover.xml tests
+      run: php -d xdebug.profiler_enable=on -d memory_limit=4G vendor/bin/phpunit --coverage-clover=build/logs/clover.xml tests
       
     - name: debug
       run: cat build/logs/clover.xml
