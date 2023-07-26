@@ -378,7 +378,7 @@ class InitialAvatar
      */
     public function fontSize($size = 0.5)
     {
-        $this->fontSize = number_format($size, 2);
+        $this->fontSize = (float) round($size, 2);
 
         return $this;
     }
@@ -395,8 +395,8 @@ class InitialAvatar
         if ($name !== null) {
             $this->name = $name;
             $this->generated_initials = $this->initials_generator->keepCase($this->getKeepCase())
-                ->allowSpecialCharacters($this->getAllowSpecialCharacters())
-                ->generate($name);
+                                                                 ->allowSpecialCharacters($this->getAllowSpecialCharacters())
+                                                                 ->generate($name);
         }
 
         return $this->makeAvatar($this->image);
@@ -414,8 +414,8 @@ class InitialAvatar
         if ($name !== null) {
             $this->name = $name;
             $this->generated_initials = $this->initials_generator->keepCase($this->getKeepCase())
-                ->allowSpecialCharacters($this->getAllowSpecialCharacters())
-                ->generate($name);
+                                                                 ->allowSpecialCharacters($this->getAllowSpecialCharacters())
+                                                                 ->generate($name);
         }
 
         return $this->makeSvgAvatar();
@@ -429,9 +429,9 @@ class InitialAvatar
     public function getInitials()
     {
         return $this->initials_generator->keepCase($this->getKeepCase())
-            ->allowSpecialCharacters($this->getAllowSpecialCharacters())
-            ->name($this->name)
-            ->getInitials();
+                                        ->allowSpecialCharacters($this->getAllowSpecialCharacters())
+                                        ->name($this->name)
+                                        ->getInitials();
     }
 
     /**
@@ -591,7 +591,7 @@ class InitialAvatar
     }
 
     /**
-     * Add new translators designed by user..
+     * Add new translators designed by user.
      *
      * @param array $translatorMap
      *                             ```php
@@ -628,7 +628,7 @@ class InitialAvatar
 
         $translatorClass = array_key_exists($this->language, $this->translatorMap) ? $this->translatorMap[$this->language] : 'LasseRafn\\InitialAvatarGenerator\\Translator\\En';
 
-        return $this->translato = new $translatorClass();
+        return $this->translator = new $translatorClass();
     }
 
     /**

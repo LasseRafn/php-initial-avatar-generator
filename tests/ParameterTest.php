@@ -40,11 +40,11 @@ class ParameterTest extends TestCase
 
         $avatar->fontSize(0.3);
 
-        $this->assertEquals('0.3', $avatar->getFontSize()); // Had to use strings as floats in PHP are nasty..
+        $this->assertEquals(0.3, $avatar->getFontSize());
 
         $avatar->fontSize(0.7);
 
-        $this->assertEquals('0.7', $avatar->getFontSize()); // Had to use strings as floats in PHP are nasty..
+        $this->assertEquals(0.7, $avatar->getFontSize());
     }
 
     /** @test */
