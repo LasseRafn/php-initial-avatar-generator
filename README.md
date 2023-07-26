@@ -2,7 +2,7 @@
 Ever seen those avatars (basically everywhere) that has your initials — mine would be LR; Lasse Rafn — well this package allows you to generate those, in a simple manner.
 
 <p align="center">
-<img src="https://apricot.dk/github/php-initial-avatar-generator.jpg" alt="Banner" />
+<img src="https://ui-avatars.com/assets/promo-new.png" alt="Banner" />
 </p>
  
 <p align="center"> 
