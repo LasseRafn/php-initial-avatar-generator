@@ -16,18 +16,16 @@
 		}
 	],
 	"require": {
-		"php": "^7.0|^7.1|^7.2|^7.3|^7.4|^8.0",
+		"php": "^7.0|^7.1|^7.2|^7.3|^7.4|^8.0|^8.1|^8.2",
 		"ext-json": "*",
 		"intervention/image": "^2.3",
 		"lasserafn/php-initials": "^3.0",
-		"lasserafn/php-string-script-language": "^0.3.0",
+		"lasserafn/php-string-script-language": "^0.4",
 		"meyfa/php-svg": "^0.9.0",
 		"overtrue/pinyin": "^4.0"
 	},
 	"require-dev": {
-		"doctrine/instantiator": "1.0.*",
-		"phpunit/phpunit": "^6.5",
-		"satooshi/php-coveralls": "^1.0"
+		"phpunit/phpunit": "^8.5"
 	},
 	"autoload": {
 		"psr-4": {
@@ -40,9 +38,6 @@
 		}
 	},
 	"config": {
-		"sort-packages": true,
-		"platform": {
-			"php": "7.0"
-		}
+		"sort-packages": true
 	}
 }

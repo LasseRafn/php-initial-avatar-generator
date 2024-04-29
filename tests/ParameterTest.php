@@ -5,7 +5,7 @@ use PHPUnit\Framework\TestCase;
 
 class ParameterTest extends TestCase
 {
-	/** @test */
+    /** @test */
     public function can_set_background_color()
     {
         $avatar = new InitialAvatar();
@@ -40,11 +40,11 @@ class ParameterTest extends TestCase
 
         $avatar->fontSize(0.3);
 
-        $this->assertEquals('0.3', $avatar->getFontSize()); // Had to use strings as floats in PHP are nasty..
+        $this->assertEquals(0.3, $avatar->getFontSize());
 
         $avatar->fontSize(0.7);
 
-        $this->assertEquals('0.7', $avatar->getFontSize()); // Had to use strings as floats in PHP are nasty..
+        $this->assertEquals(0.7, $avatar->getFontSize());
     }
 
     /** @test */
@@ -97,5 +97,17 @@ class ParameterTest extends TestCase
         $avatar->autoFont(false);
 
         $this->assertNotTrue($avatar->getAutoFont());
+    }
+
+    /** @test */
+    public function can_set_auto_color()
+    {
+        $avatar = new InitialAvatar();
+
+        $avatar->autoColor();
+
+        $this->assertEquals('#eaf042', $avatar->getBackgroundColor());
+
+        $this->assertEquals('#000000', $avatar->getColor());
     }
 }

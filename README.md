@@ -2,12 +2,12 @@
 Ever seen those avatars (basically everywhere) that has your initials — mine would be LR; Lasse Rafn — well this package allows you to generate those, in a simple manner.
 
 <p align="center">
-<img src="https://apricot.dk/github/php-initial-avatar-generator.jpg" alt="Banner" />
+<img src="https://ui-avatars.com/assets/promo-new.png" alt="Banner" />
 </p>
  
 <p align="center"> 
-<a href="https://travis-ci.org/LasseRafn/php-initial-avatar-generator"><img src="https://img.shields.io/travis/LasseRafn/php-initial-avatar-generator.svg?style=flat-square" alt="Build Status"></a>
-<a href="https://coveralls.io/github/LasseRafn/php-initial-avatar-generator"><img src="https://img.shields.io/coveralls/LasseRafn/php-initial-avatar-generator.svg?style=flat-square" alt="Coverage"></a>
+<a href="https://github.com/LasseRafn/php-initial-avatar-generator/actions/workflows/test.yml"><img src="https://github.com/LasseRafn/php-initial-avatar-generator/actions/workflows/test.yml/badge.svg" alt="Build Status"></a>
+<a href="https://otterwise.app/github/lasserafn/php-initial-avatar-generator"><img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fotterwise.app%2Fbadge%2Fgithub%2Flasserafn%2Fphp-initial-avatar-generator%2F6db6fcbb-95a6-446a-b5a1-15d7b1809dca" alt="OtterWise Coverage"></a>
 <a href="https://styleci.io/repos/78973710"><img src="https://styleci.io/repos/78973710/shield?branch=master" alt="StyleCI Status"></a>
 <a href="https://packagist.org/packages/LasseRafn/php-initial-avatar-generator"><img src="https://img.shields.io/packagist/dt/LasseRafn/php-initial-avatar-generator.svg?style=flat-square" alt="Total Downloads"></a>
 <a href="https://packagist.org/packages/LasseRafn/php-initial-avatar-generator"><img src="https://img.shields.io/packagist/v/LasseRafn/php-initial-avatar-generator.svg?style=flat-square" alt="Latest Stable Version"></a>
@@ -109,6 +109,12 @@ $image = $avatar->background('#ff0000')->generate();
 ````php
 // will be red
 $image = $avatar->color('#ff0000')->generate();
+````
+
+### Auto Color
+````php
+// Will choose a background color based on `name` and a contrasting font color. The color for a specific name will always be the same.
+$image = $avatar->autoColor()->generate();
 ````
 
 ### Font file - default: /fonts/OpenSans-Regular.ttf
