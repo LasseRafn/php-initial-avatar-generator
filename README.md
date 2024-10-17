@@ -4,6 +4,7 @@ Ever seen those avatars (basically everywhere) that has your initials — mine w
 <p align="center">
 <img src="https://ui-avatars.com/assets/promo-new.png" alt="Banner" />
 </p>
+
  
 <p align="center"> 
 <a href="https://github.com/LasseRafn/php-initial-avatar-generator/actions/workflows/test.yml"><img src="https://github.com/LasseRafn/php-initial-avatar-generator/actions/workflows/test.yml/badge.svg" alt="Build Status"></a>
@@ -12,6 +13,11 @@ Ever seen those avatars (basically everywhere) that has your initials — mine w
 <a href="https://packagist.org/packages/LasseRafn/php-initial-avatar-generator"><img src="https://img.shields.io/packagist/dt/LasseRafn/php-initial-avatar-generator.svg?style=flat-square" alt="Total Downloads"></a>
 <a href="https://packagist.org/packages/LasseRafn/php-initial-avatar-generator"><img src="https://img.shields.io/packagist/v/LasseRafn/php-initial-avatar-generator.svg?style=flat-square" alt="Latest Stable Version"></a>
 <a href="https://packagist.org/packages/LasseRafn/php-initial-avatar-generator"><img src="https://img.shields.io/packagist/l/LasseRafn/php-initial-avatar-generator.svg?style=flat-square" alt="License"></a>
+</p>
+
+
+<p align="center">
+ <a href="https://getotterwise.com?ref=ui-avatars-gh" target="_blank" align="center"><img style="width: 600px;" src="https://getotterwise.com/images/ext/uiavatars-ad.png" alt="OtterWise Code Coverage reporting"></a>
 </p>
 
 ## Backers
