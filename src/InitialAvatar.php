@@ -636,43 +636,43 @@ class InitialAvatar
      *
      * @return Image
      */
-    protected function makeAvatar($image)
-    {
-        $width = $this->getWidth();
-        $height = $this->getHeight();
-        $bgColor = $this->getBackgroundColor();
-        $name = $this->getInitials();
-        $fontFile = $this->findFontFile();
-        $color = $this->getColor();
-        $fontSize = $this->getFontSize();
+  protected function makeAvatar($image)
+{
+    $width = $this->getWidth();
+    $height = $this->getHeight();
+    $bgColor = $this->getBackgroundColor();
+    $name = $this->getInitials();
+    $fontFile = $this->findFontFile();
+    $color = $this->getColor();
+    $fontSize = $this->getFontSize();
 
-        if ($this->getRounded() && $this->getSmooth()) {
-            $width *= 5;
-            $height *= 5;
-        }
+    if ($this->getRounded() && $this->getSmooth()) {
+        $width *= 5;
+        $height *= 5;
+    }
 
-        $avatar = $image->canvas($width, $height, !$this->getRounded() ? $bgColor : null);
+    $avatar = $image->canvas($width, $height, !$this->getRounded() ? $bgColor : null);
 
-        if ($this->getRounded()) {
-            $avatar = $avatar->circle($width - 2, $width / 2, $height / 2, function ($draw) use ($bgColor) {
-                return $draw->background($bgColor);
-            });
-        }
-
-        if ($this->getRounded() && $this->getSmooth()) {
-            $width /= 5;
-            $height /= 5;
-            $avatar->resize($width, $height);
-        }
-
-        return $avatar->text($name, $width / 2, $height / 2, function (AbstractFont $font) use ($width, $color, $fontFile, $fontSize) {
-            $font->file($fontFile);
-            $font->size($width * $fontSize);
-            $font->color($color);
-            $font->align('center');
-            $font->valign('center');
+    if ($this->getRounded()) {
+        $avatar = $avatar->circle($width - 2, $width / 2, $height / 2, function ($draw) use ($bgColor) {
+            return $draw->background($bgColor);
         });
     }
+
+    if ($this->getRounded() && $this->getSmooth()) {
+        $width /= 5;
+        $height /= 5;
+        $avatar->resize($width, $height);
+    }
+
+    return $avatar->text($name, $width / 2, $height / 2, function ($draw) use ($width, $color, $fontFile, $fontSize) {
+        $draw->file($fontFile);
+        $draw->size($width * $fontSize);
+        $draw->color($color);
+        $draw->align('center');
+        $draw->valign('center');
+    });
+}
 
     /**
      * @return SVG
