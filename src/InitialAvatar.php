@@ -683,6 +683,7 @@ class InitialAvatar
         // Original document
         $image = new SVG($this->getWidth(), $this->getHeight());
         $document = $image->getDocument();
+        $document->setAttribute('viewBox', "0 0 {$this->getWidth()} {$this->getHeight()}");
 
         // Background
         if ($this->getRounded()) {
