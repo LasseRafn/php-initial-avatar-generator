@@ -6,6 +6,7 @@ use Intervention\Image\Image;
 use Intervention\Image\ImageManager;
 use LasseRafn\InitialAvatarGenerator\Translator\Base;
 use LasseRafn\InitialAvatarGenerator\Translator\En;
+use LasseRafn\InitialAvatarGenerator\Translator\Tr;
 use LasseRafn\InitialAvatarGenerator\Translator\ZhCN;
 use LasseRafn\Initials\Initials;
 use LasseRafn\StringScript;
@@ -61,6 +62,7 @@ class InitialAvatar
      */
     protected $translatorMap = [
         'en'    => En::class,
+        'tr'    => Tr::class,
         'zh-CN' => ZhCN::class,
     ];
 
@@ -792,6 +794,11 @@ class InitialAvatar
         // Tibetan
         if (StringScript::isTibetan($this->getInitials())) {
             return __DIR__.'/fonts/script/Noto-Tibetan-Regular.ttf';
+        }
+
+        // Turkish
+        if (StringScript::isLatin($this->getInitials())) {
+            return __DIR__.'/fonts/NotoSans-Regular.ttf';
         }
 
         // Chinese & Japanese
