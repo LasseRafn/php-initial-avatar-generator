@@ -798,7 +798,7 @@ class InitialAvatar
 
         // Turkish
         if (StringScript::isLatin($this->getInitials())) {
-            return __DIR__.'/fonts/NotoSans-Regular.tt';
+            return __DIR__.'/fonts/NotoSans-Regular.ttf';
         }
 
         // Chinese & Japanese
