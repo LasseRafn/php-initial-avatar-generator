@@ -94,6 +94,17 @@ class ScriptLanguageDetectionTest extends TestCase
     }
 
     /** @test */
+    public function can_detect_and_use_script_Turkish()
+    {
+        $avatar = new InitialAvatar();
+
+        $image = $avatar->autoFont()->generate('şçğüöı');
+
+        $this->assertEquals('Intervention\Image\Image', get_class($image));
+        $this->assertTrue($image->stream()->isReadable());
+    }
+
+    /** @test */
     public function can_detect_and_use_script_Uncommon()
     {
         $avatar = new InitialAvatar();

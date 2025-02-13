@@ -10,6 +10,7 @@ use LasseRafn\InitialAvatarGenerator\Translator\ZhCN;
 use LasseRafn\Initials\Initials;
 use LasseRafn\StringScript;
 use SVG\Nodes\Shapes\SVGCircle;
+use LasseRafn\InitialAvatarGenerator\Translator\Tr;
 use SVG\Nodes\Shapes\SVGRect;
 use SVG\Nodes\Structures\SVGFont;
 use SVG\Nodes\Texts\SVGText;
@@ -61,6 +62,7 @@ class InitialAvatar
      */
     protected $translatorMap = [
         'en'    => En::class,
+        'tr'    => Tr::class,
         'zh-CN' => ZhCN::class,
     ];
 
@@ -792,6 +794,11 @@ class InitialAvatar
         // Tibetan
         if (StringScript::isTibetan($this->getInitials())) {
             return __DIR__.'/fonts/script/Noto-Tibetan-Regular.ttf';
+        }
+
+        // Turkish
+        if (StringScript::isLatin($this->getInitials())) {
+            return __DIR__.'/fonts/script/Noto-Sans-Regular.ttf';
         }
 
         // Chinese & Japanese
