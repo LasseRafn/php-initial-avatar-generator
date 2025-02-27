@@ -207,25 +207,25 @@ class InitialAvatar
 
         return $this;
     }
-    
+
     /**
      * Set background color to be randomly generated for each avatar.
-     * 
+     *
      * @param bool $random
-     * @param int $saturation Saturation value (0-100)
-     * @param int $luminance Luminance value (0-100)
-     * 
+     * @param int  $saturation Saturation value (0-100)
+     * @param int  $luminance  Luminance value (0-100)
+     *
      * @return $this
      */
     public function randomBackground($random = true, int $saturation = 85, int $luminance = 60)
     {
         $this->randomBgColor = (bool) $random;
-        
+
         if ($random) {
             // Generate an initial random color
             $this->generateRandomColor($saturation, $luminance);
         }
-        
+
         return $this;
     }
 
@@ -470,10 +470,10 @@ class InitialAvatar
             // Generate a new random color each time this method is called
             $this->generateRandomColor();
         }
-        
+
         return $this->bgColor;
     }
-    
+
     /**
      * Will return whether random background color is enabled.
      *
@@ -960,13 +960,13 @@ class InitialAvatar
             return '#FFFFFF';
         }
     }
-    
+
     /**
      * Generate a random background color.
-     * 
+     *
      * @param int $saturation Saturation value (0-100)
-     * @param int $luminance Luminance value (0-100)
-     * 
+     * @param int $luminance  Luminance value (0-100)
+     *
      * @return string The generated hex color
      */
     protected function generateRandomColor(int $saturation = 85, int $luminance = 60)
@@ -975,11 +975,11 @@ class InitialAvatar
         $hue = mt_rand(0, 359) / 360;
         $saturation /= 100;
         $luminance /= 100;
-        
+
         $hexColor = $this->convertHSLtoRGB($hue, $saturation, $luminance);
         $this->bgColor = $hexColor;
         $this->fontColor = $this->getContrastColor($hexColor);
-        
+
         return $hexColor;
     }
 }
