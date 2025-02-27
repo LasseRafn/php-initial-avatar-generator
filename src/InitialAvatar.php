@@ -40,6 +40,7 @@ class InitialAvatar
     protected $fontName = 'OpenSans, sans-serif';
     protected $generated_initials = 'JD';
     protected $preferBold = false;
+    protected $randomBgColor = false;
 
     /**
      * Language eg.en zh-CN.
@@ -202,7 +203,29 @@ class InitialAvatar
     public function background($background)
     {
         $this->bgColor = (string) $background;
+        $this->randomBgColor = false;
 
+        return $this;
+    }
+    
+    /**
+     * Set background color to be randomly generated for each avatar.
+     * 
+     * @param bool $random
+     * @param int $saturation Saturation value (0-100)
+     * @param int $luminance Luminance value (0-100)
+     * 
+     * @return $this
+     */
+    public function randomBackground($random = true, int $saturation = 85, int $luminance = 60)
+    {
+        $this->randomBgColor = (bool) $random;
+        
+        if ($random) {
+            // Generate an initial random color
+            $this->generateRandomColor($saturation, $luminance);
+        }
+        
         return $this;
     }
 
@@ -437,12 +460,28 @@ class InitialAvatar
 
     /**
      * Will return the background color parameter.
+     * If randomBgColor is enabled, generates a new random color each time.
      *
      * @return string
      */
     public function getBackgroundColor()
     {
+        if ($this->randomBgColor) {
+            // Generate a new random color each time this method is called
+            $this->generateRandomColor();
+        }
+        
         return $this->bgColor;
+    }
+    
+    /**
+     * Will return whether random background color is enabled.
+     *
+     * @return bool
+     */
+    public function getRandomBackgroundColor()
+    {
+        return $this->randomBgColor;
     }
 
     /**
@@ -920,5 +959,27 @@ class InitialAvatar
             // if not, return white color.
             return '#FFFFFF';
         }
+    }
+    
+    /**
+     * Generate a random background color.
+     * 
+     * @param int $saturation Saturation value (0-100)
+     * @param int $luminance Luminance value (0-100)
+     * 
+     * @return string The generated hex color
+     */
+    protected function generateRandomColor(int $saturation = 85, int $luminance = 60)
+    {
+        // Generate a random hue (0-1)
+        $hue = mt_rand(0, 359) / 360;
+        $saturation /= 100;
+        $luminance /= 100;
+        
+        $hexColor = $this->convertHSLtoRGB($hue, $saturation, $luminance);
+        $this->bgColor = $hexColor;
+        $this->fontColor = $this->getContrastColor($hexColor);
+        
+        return $hexColor;
     }
 }
