@@ -778,9 +778,21 @@ class InitialAvatar
         foreach ($weightsToTry as $weight) {
             $fontFile = preg_replace('/(\-(Bold|Semibold|Regular))/', "-{$weight}", $originalFile);
 
-            if (file_exists($fontFile)) {
-                return $fontFile;
-            }
+			/*
+			  - with php 8.1 AND
+			  - with open_basedir restriction enabled where /fonts/ is not present (is there a linux/unix box where
+			    there is a directory on root level called /fonts/? I do not know any)
+
+			  THEN
+
+			  - the below file_exists check will throw a warning, which is wrong :)
+			*/
+
+			/*
+			  if ( file_exists( $fontFile ) ) {
+				return $fontFile;
+			  }
+			*/
 
             if (file_exists(__DIR__.$fontFile)) {
                 return __DIR__.$fontFile;
